@@ -1,0 +1,31 @@
+[versions]
+lombok = "1.18.36"
+spring-boot = "3.4.1"
+spring-dependency-management = "1.1.7"
+mybatis = "3.0.4"
+mysql = "9.1.0"
+micrometer = "1.14.3"
+rest-assured = "5.5.0"
+mockito = "5.15.2"
+springdoc = "2.8.3"
+springdoc-openapi = "1.9.0"
+
+[libraries]
+lombok = { group = "org.projectlombok", name = "lombok", version.ref = "lombok" }
+spring-boot-starter-web = { group = "org.springframework.boot", name = "spring-boot-starter-web", version.ref = "spring-boot" }
+spring-boot-starter-validation = { group = "org.springframework.boot", name = "spring-boot-starter-validation", version.ref = "spring-boot" }
+spring-boot-starter-actuator = { group = "org.springframework.boot", name = "spring-boot-starter-actuator", version.ref = "spring-boot" }
+spring-boot-configuration-processor = { group = "org.springframework.boot", name = "spring-boot-configuration-processor", version.ref = "spring-boot" }
+mybatis-spring-boot-starter = { group = "org.mybatis.spring.boot", name = "mybatis-spring-boot-starter", version.ref = "mybatis" }
+mysql-connector-j = { group = "com.mysql", name = "mysql-connector-j", version.ref = "mysql" }
+micrometer-registry-prometheus = { group = "io.micrometer", name = "micrometer-registry-prometheus", version.ref = "micrometer" }
+springdoc-openapi-starter-webmvc-ui = { group = "org.springdoc", name = "springdoc-openapi-starter-webmvc-ui", version.ref = "springdoc" }
+
+spring-boot-starter-test = { group = "org.springframework.boot", name = "spring-boot-starter-test", version.ref = "spring-boot" }
+mockito-junit-jupiter = { group = "org.mockito", name = "mockito-junit-jupiter", version.ref = "mockito" }
+rest-assured = { group = "io.rest-assured", name = "rest-assured", version.ref = "rest-assured" }
+
+[plugins]
+spring-boot = { id = "org.springframework.boot", version.ref = "spring-boot" }
+spring-dependency-management = { id = "io.spring.dependency-management", version.ref = "spring-dependency-management" }
+springdoc-openapi = { id = "org.springdoc.openapi-gradle-plguin", version.ref = "springdoc-openapi" }
