@@ -24,5 +24,5 @@ docker compose down
 ### exec-mysql
 
 ```sh { name=exec-mysql }
-docker compose exec db mysql local_db -ulocal_user -plocal_pass
+docker compose exec db mysql demo -uapp -papp
 ```

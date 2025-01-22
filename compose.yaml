@@ -1,0 +1,20 @@
+services:
+  db:
+    container_name: db
+    image: mysql:9.1
+    restart: always
+    ports:
+      - 3306:3306
+    volumes:
+      - ./compose/mysql/init:/docker-entrypoint-initdb.d
+      - ./compose/mysql/my.conf:/etc/mysql/conf.d/my.cnf
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: demo
+      MYSQL_USER: app
+      MYSQL_PASSWORD: app
+    healthcheck:
+      test: mysqladmin ping -uapp -papp
+      timeout: 10s
+      interval: 5s
+      retries: 10
