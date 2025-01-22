@@ -1,5 +1,12 @@
 # demo-springboot-multi-project
 
+## TODO
+
+- application.yaml の設定
+- profile の分割（local を用意する）
+- build.gradle の共通部分をルートに移譲
+- フォーマッタを整備
+
 ## Tasks
 
 ### clean

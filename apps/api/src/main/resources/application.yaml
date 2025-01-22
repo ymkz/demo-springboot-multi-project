@@ -5,3 +5,8 @@ spring:
     url: jdbc:mysql://localhost:3306/demo
     username: app
     password: app
+springdoc:
+  api-docs:
+    path: /spec/openapi.json
+  swagger-ui:
+    path: /spec
