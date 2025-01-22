@@ -28,12 +28,11 @@ public class IsbnTest {
     String value = "9783161484101";
 
     // when
-    var exception =
-        assertThrows(
-            IllegalArgumentException.class,
-            () -> {
-              Isbn.of(value);
-            });
+    var exception = assertThrows(
+        IllegalArgumentException.class,
+        () -> {
+          Isbn.of(value);
+        });
 
     // then
     assertThat(exception.getMessage(), is("Invalid ISBN-13 format"));
@@ -45,12 +44,11 @@ public class IsbnTest {
     String value = "123456789012";
 
     // when
-    var exception =
-        assertThrows(
-            StringIndexOutOfBoundsException.class,
-            () -> {
-              Isbn.of(value);
-            });
+    var exception = assertThrows(
+        StringIndexOutOfBoundsException.class,
+        () -> {
+          Isbn.of(value);
+        });
 
     // then
     assertThat(exception.getMessage(), is("Index 12 out of bounds for length 12"));

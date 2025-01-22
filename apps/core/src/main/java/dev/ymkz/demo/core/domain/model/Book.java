@@ -20,4 +20,5 @@ public record Book(
     @Nullable LocalDateTime publishedAt,
     LocalDateTime createdAt,
     @Nullable LocalDateTime updatedAt,
-    @Nullable LocalDateTime deletedAt) {}
+    @Nullable LocalDateTime deletedAt) {
+}

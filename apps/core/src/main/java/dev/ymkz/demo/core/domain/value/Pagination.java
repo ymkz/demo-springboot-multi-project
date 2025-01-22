@@ -6,4 +6,5 @@ import jakarta.validation.constraints.PositiveOrZero;
 import java.util.List;
 
 public record Pagination<T>(
-    List<T> content, @PositiveOrZero int total, @Min(0) int offset, @Min(1) @Max(100) int limit) {}
+    List<T> content, @PositiveOrZero int total, @Min(0) int offset, @Min(1) @Max(100) int limit) {
+}

@@ -32,9 +32,11 @@ public enum BookOrder {
   /**
    * SQL用のカラム名とソート順を返す
    *
-   * <p>例: +price -> price ASC, -price -> price DESC
+   * <p>
+   * 例: +price -> price ASC, -price -> price DESC
    *
-   * <p>MyBatisのmapperがGetterとして認識するため、prefixをgetに必要がある
+   * <p>
+   * MyBatisのmapperがGetterとして認識するため、prefixをgetに必要がある
    */
   public String getOrderBy() {
     var symbol = _value.substring(0, 1);

@@ -30,9 +30,8 @@ class RangeTimeTest {
     var end = LocalDateTime.of(2023, 1, 1, 0, 0).atZone(ZoneId.of("Asia/Tokyo")).toInstant();
 
     // when
-    IllegalArgumentException exception =
-        org.junit.jupiter.api.Assertions.assertThrows(
-            IllegalArgumentException.class, () -> RangeTime.of(start, end));
+    IllegalArgumentException exception = org.junit.jupiter.api.Assertions.assertThrows(
+        IllegalArgumentException.class, () -> RangeTime.of(start, end));
 
     // then
     assertThat(exception.getMessage(), is("The start value is greater than the end value"));

@@ -15,4 +15,5 @@ public record BookSearchQuery(
     RangeTime publishedTimeRange,
     BookOrder order,
     Integer offset,
-    Integer limit) {}
+    Integer limit) {
+}
