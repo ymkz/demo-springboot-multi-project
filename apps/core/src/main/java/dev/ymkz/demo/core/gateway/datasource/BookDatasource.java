@@ -5,7 +5,6 @@ import dev.ymkz.demo.core.domain.model.BookCreateCommand;
 import dev.ymkz.demo.core.domain.model.BookSearchQuery;
 import dev.ymkz.demo.core.domain.model.BookUpdateCommand;
 import dev.ymkz.demo.core.domain.repository.BookRepository;
-import dev.ymkz.demo.core.domain.value.Isbn;
 import dev.ymkz.demo.core.domain.value.Pagination;
 import java.util.Optional;
 import org.springframework.stereotype.Repository;
@@ -25,7 +24,7 @@ public class BookDatasource implements BookRepository {
   }
 
   @Override
-  public Optional<Book> findByIsbn(Isbn isbn) {
+  public Optional<Book> findById(long id) {
     return null;
   }
 
@@ -41,11 +40,6 @@ public class BookDatasource implements BookRepository {
 
   @Override
   public void delete(long id) {
-    return;
-  }
-
-  @Override
-  public void deleteByIsbn(Isbn isbn) {
     return;
   }
 

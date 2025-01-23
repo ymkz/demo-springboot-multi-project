@@ -3,3 +3,5 @@ spring:
     url: jdbc:mysql://localhost:3306/demo
     username: app
     password: app
+  main:
+    log-startup-info: false
