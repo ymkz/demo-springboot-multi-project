@@ -136,16 +136,6 @@
           }
         ],
         "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/FindBooksResponse"
-                }
-              }
-            }
-          },
           "400": {
             "description": "不正なリクエスト",
             "content": {
@@ -162,6 +152,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "正常応答",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FindBooksResponse"
                 }
               }
             }
@@ -184,9 +184,6 @@
           "required": true
         },
         "responses": {
-          "200": {
-            "description": "OK"
-          },
           "400": {
             "description": "不正なリクエスト",
             "content": {
@@ -206,6 +203,9 @@
                 }
               }
             }
+          },
+          "201": {
+            "description": "正常応答"
           }
         }
       }
@@ -228,26 +228,6 @@
           }
         ],
         "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/FindBookByIdResponse"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "存在しないリソース",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetail"
-                }
-              }
-            }
-          },
           "400": {
             "description": "不正なリクエスト",
             "content": {
@@ -260,6 +240,26 @@
           },
           "500": {
             "description": "サーバーエラー",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "正常応答",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FindBookByIdResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "存在しないリソース",
             "content": {
               "application/json": {
                 "schema": {
@@ -287,19 +287,6 @@
           }
         ],
         "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "404": {
-            "description": "存在しないリソース",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetail"
-                }
-              }
-            }
-          },
           "400": {
             "description": "不正なリクエスト",
             "content": {
@@ -310,8 +297,21 @@
               }
             }
           },
+          "204": {
+            "description": "正常応答"
+          },
           "500": {
             "description": "サーバーエラー",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "存在しないリソース",
             "content": {
               "application/json": {
                 "schema": {
@@ -349,19 +349,6 @@
           "required": true
         },
         "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "404": {
-            "description": "存在しないリソース",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetail"
-                }
-              }
-            }
-          },
           "400": {
             "description": "不正なリクエスト",
             "content": {
@@ -374,6 +361,19 @@
           },
           "500": {
             "description": "サーバーエラー",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "正常応答"
+          },
+          "404": {
+            "description": "存在しないリソース",
             "content": {
               "application/json": {
                 "schema": {

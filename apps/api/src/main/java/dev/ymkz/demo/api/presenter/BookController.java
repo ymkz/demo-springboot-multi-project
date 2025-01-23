@@ -20,6 +20,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springdoc.core.annotations.ParameterObject;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ProblemDetail;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,6 +29,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -41,7 +43,7 @@ public class BookController {
   @GetMapping(produces = APPLICATION_JSON_VALUE)
   @Operation(operationId = "findBooks")
   @ApiResponses(value = {
-      @ApiResponse(responseCode = "200", description = "OK"),
+      @ApiResponse(responseCode = "200", description = "正常応答"),
       @ApiResponse(responseCode = "400", description = "不正なリクエスト", content = @Content(schema = @Schema(implementation = ProblemDetail.class))),
       @ApiResponse(responseCode = "500", description = "サーバーエラー", content = @Content(schema = @Schema(implementation = ProblemDetail.class)))
   })
@@ -64,7 +66,7 @@ public class BookController {
   @GetMapping(value = "{id}", produces = APPLICATION_JSON_VALUE)
   @Operation(operationId = "findBookById")
   @ApiResponses(value = {
-      @ApiResponse(responseCode = "200", description = "OK"),
+      @ApiResponse(responseCode = "200", description = "正常応答"),
       @ApiResponse(responseCode = "400", description = "不正なリクエスト", content = @Content(schema = @Schema(implementation = ProblemDetail.class))),
       @ApiResponse(responseCode = "404", description = "存在しないリソース", content = @Content(schema = @Schema(implementation = ProblemDetail.class))),
       @ApiResponse(responseCode = "500", description = "サーバーエラー", content = @Content(schema = @Schema(implementation = ProblemDetail.class)))
@@ -74,9 +76,10 @@ public class BookController {
   }
 
   @PostMapping(consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
+  @ResponseStatus(HttpStatus.CREATED)
   @Operation(operationId = "createBook")
   @ApiResponses(value = {
-      @ApiResponse(responseCode = "200", description = "OK"),
+      @ApiResponse(responseCode = "201", description = "正常応答"),
       @ApiResponse(responseCode = "400", description = "不正なリクエスト", content = @Content(schema = @Schema(implementation = ProblemDetail.class))),
       @ApiResponse(responseCode = "500", description = "サーバーエラー", content = @Content(schema = @Schema(implementation = ProblemDetail.class)))
   })
@@ -86,7 +89,7 @@ public class BookController {
   @PatchMapping(value = "{id}", consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
   @Operation(operationId = "updateBook")
   @ApiResponses(value = {
-      @ApiResponse(responseCode = "200", description = "OK"),
+      @ApiResponse(responseCode = "200", description = "正常応答"),
       @ApiResponse(responseCode = "400", description = "不正なリクエスト", content = @Content(schema = @Schema(implementation = ProblemDetail.class))),
       @ApiResponse(responseCode = "404", description = "存在しないリソース", content = @Content(schema = @Schema(implementation = ProblemDetail.class))),
       @ApiResponse(responseCode = "500", description = "サーバーエラー", content = @Content(schema = @Schema(implementation = ProblemDetail.class)))
@@ -95,9 +98,10 @@ public class BookController {
   }
 
   @DeleteMapping(value = "{id}", produces = APPLICATION_JSON_VALUE)
+  @ResponseStatus(HttpStatus.NO_CONTENT)
   @Operation(operationId = "deleteBook")
   @ApiResponses(value = {
-      @ApiResponse(responseCode = "200", description = "OK"),
+      @ApiResponse(responseCode = "204", description = "正常応答"),
       @ApiResponse(responseCode = "400", description = "不正なリクエスト", content = @Content(schema = @Schema(implementation = ProblemDetail.class))),
       @ApiResponse(responseCode = "404", description = "存在しないリソース", content = @Content(schema = @Schema(implementation = ProblemDetail.class))),
       @ApiResponse(responseCode = "500", description = "サーバーエラー", content = @Content(schema = @Schema(implementation = ProblemDetail.class)))
