@@ -39,7 +39,7 @@ public class BookController {
   private final BookSearchUsecase bookSearchUsecase;
 
   @GetMapping(produces = APPLICATION_JSON_VALUE)
-  @Operation(operationId = "findBooks", summary = "書籍データを検索する")
+  @Operation(operationId = "findBooks")
   @ApiResponses(value = {
       @ApiResponse(responseCode = "200", description = "OK"),
       @ApiResponse(responseCode = "400", description = "不正なリクエスト", content = @Content(schema = @Schema(implementation = ProblemDetail.class))),
@@ -62,7 +62,7 @@ public class BookController {
   }
 
   @GetMapping(value = "{id}", produces = APPLICATION_JSON_VALUE)
-  @Operation(operationId = "findBookById", summary = "書籍データを取得する")
+  @Operation(operationId = "findBookById")
   @ApiResponses(value = {
       @ApiResponse(responseCode = "200", description = "OK"),
       @ApiResponse(responseCode = "400", description = "不正なリクエスト", content = @Content(schema = @Schema(implementation = ProblemDetail.class))),
@@ -74,7 +74,7 @@ public class BookController {
   }
 
   @PostMapping(consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
-  @Operation(operationId = "createBook", summary = "書籍データを作成する")
+  @Operation(operationId = "createBook")
   @ApiResponses(value = {
       @ApiResponse(responseCode = "200", description = "OK"),
       @ApiResponse(responseCode = "400", description = "不正なリクエスト", content = @Content(schema = @Schema(implementation = ProblemDetail.class))),
@@ -84,7 +84,7 @@ public class BookController {
   }
 
   @PatchMapping(value = "{id}", consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
-  @Operation(operationId = "updateBook", summary = "書籍データを更新する")
+  @Operation(operationId = "updateBook")
   @ApiResponses(value = {
       @ApiResponse(responseCode = "200", description = "OK"),
       @ApiResponse(responseCode = "400", description = "不正なリクエスト", content = @Content(schema = @Schema(implementation = ProblemDetail.class))),
@@ -95,7 +95,7 @@ public class BookController {
   }
 
   @DeleteMapping(value = "{id}", produces = APPLICATION_JSON_VALUE)
-  @Operation(operationId = "deleteBook", summary = "書籍データを削除する")
+  @Operation(operationId = "deleteBook")
   @ApiResponses(value = {
       @ApiResponse(responseCode = "200", description = "OK"),
       @ApiResponse(responseCode = "400", description = "不正なリクエスト", content = @Content(schema = @Schema(implementation = ProblemDetail.class))),

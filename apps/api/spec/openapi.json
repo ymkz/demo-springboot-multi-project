@@ -16,7 +16,6 @@
         "tags": [
           "Book"
         ],
-        "summary": "書籍データを検索する",
         "operationId": "findBooks",
         "parameters": [
           {
@@ -147,8 +146,8 @@
               }
             }
           },
-          "500": {
-            "description": "サーバーエラー",
+          "400": {
+            "description": "不正なリクエスト",
             "content": {
               "application/json": {
                 "schema": {
@@ -157,8 +156,8 @@
               }
             }
           },
-          "400": {
-            "description": "不正なリクエスト",
+          "500": {
+            "description": "サーバーエラー",
             "content": {
               "application/json": {
                 "schema": {
@@ -173,7 +172,6 @@
         "tags": [
           "Book"
         ],
-        "summary": "書籍データを作成する",
         "operationId": "createBook",
         "requestBody": {
           "content": {
@@ -189,8 +187,8 @@
           "200": {
             "description": "OK"
           },
-          "500": {
-            "description": "サーバーエラー",
+          "400": {
+            "description": "不正なリクエスト",
             "content": {
               "application/json": {
                 "schema": {
@@ -199,8 +197,8 @@
               }
             }
           },
-          "400": {
-            "description": "不正なリクエスト",
+          "500": {
+            "description": "サーバーエラー",
             "content": {
               "application/json": {
                 "schema": {
@@ -217,7 +215,6 @@
         "tags": [
           "Book"
         ],
-        "summary": "書籍データを取得する",
         "operationId": "findBookById",
         "parameters": [
           {
@@ -241,16 +238,6 @@
               }
             }
           },
-          "500": {
-            "description": "サーバーエラー",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetail"
-                }
-              }
-            }
-          },
           "404": {
             "description": "存在しないリソース",
             "content": {
@@ -270,6 +257,16 @@
                 }
               }
             }
+          },
+          "500": {
+            "description": "サーバーエラー",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
           }
         }
       },
@@ -277,7 +274,6 @@
         "tags": [
           "Book"
         ],
-        "summary": "書籍データを削除する",
         "operationId": "deleteBook",
         "parameters": [
           {
@@ -294,16 +290,6 @@
           "200": {
             "description": "OK"
           },
-          "500": {
-            "description": "サーバーエラー",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetail"
-                }
-              }
-            }
-          },
           "404": {
             "description": "存在しないリソース",
             "content": {
@@ -323,6 +309,16 @@
                 }
               }
             }
+          },
+          "500": {
+            "description": "サーバーエラー",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
           }
         }
       },
@@ -330,7 +326,6 @@
         "tags": [
           "Book"
         ],
-        "summary": "書籍データを更新する",
         "operationId": "updateBook",
         "parameters": [
           {
@@ -357,16 +352,6 @@
           "200": {
             "description": "OK"
           },
-          "500": {
-            "description": "サーバーエラー",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetail"
-                }
-              }
-            }
-          },
           "404": {
             "description": "存在しないリソース",
             "content": {
@@ -379,6 +364,16 @@
           },
           "400": {
             "description": "不正なリクエスト",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "サーバーエラー",
             "content": {
               "application/json": {
                 "schema": {
