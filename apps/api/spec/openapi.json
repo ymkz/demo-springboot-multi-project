@@ -168,11 +168,258 @@
             }
           }
         }
+      },
+      "post": {
+        "tags": [
+          "Book"
+        ],
+        "summary": "書籍データを作成する",
+        "operationId": "createBook",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateBookBody"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "サーバーエラー",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "不正なリクエスト",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/books/{id}": {
+      "get": {
+        "tags": [
+          "Book"
+        ],
+        "summary": "書籍データを取得する",
+        "operationId": "findBookById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FindBookByIdResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "サーバーエラー",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "存在しないリソース",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "不正なリクエスト",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Book"
+        ],
+        "summary": "書籍データを削除する",
+        "operationId": "deleteBook",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "サーバーエラー",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "存在しないリソース",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "不正なリクエスト",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Book"
+        ],
+        "summary": "書籍データを更新する",
+        "operationId": "updateBook",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateBookBody"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "サーバーエラー",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "存在しないリソース",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "不正なリクエスト",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          }
+        }
       }
     }
   },
   "components": {
     "schemas": {
+      "CreateBookBody": {
+        "type": "object",
+        "properties": {
+          "isbn": {
+            "type": "string",
+            "example": 9784873115658
+          },
+          "title": {
+            "type": "string",
+            "example": "リーダブルコード"
+          },
+          "price": {
+            "type": "integer",
+            "format": "int32",
+            "example": 2640
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "UNPUBLISHED",
+              "PUBLISHED",
+              "OUT_OF_PRINT"
+            ],
+            "example": "PUBLISHED"
+          }
+        }
+      },
       "ProblemDetail": {
         "type": "object",
         "properties": {
@@ -199,6 +446,33 @@
             "additionalProperties": {
               "type": "object"
             }
+          }
+        }
+      },
+      "UpdateBookBody": {
+        "type": "object",
+        "properties": {
+          "isbn": {
+            "type": "string",
+            "example": 9784873115658
+          },
+          "title": {
+            "type": "string",
+            "example": "リーダブルコード"
+          },
+          "price": {
+            "type": "integer",
+            "format": "int32",
+            "example": 2640
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "UNPUBLISHED",
+              "PUBLISHED",
+              "OUT_OF_PRINT"
+            ],
+            "example": "PUBLISHED"
           }
         }
       },
@@ -283,6 +557,56 @@
             "type": "integer",
             "format": "int32",
             "example": 1
+          }
+        }
+      },
+      "FindBookByIdResponse": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64",
+            "example": 1
+          },
+          "isbn": {
+            "type": "string",
+            "example": 9784873115658
+          },
+          "title": {
+            "type": "string",
+            "example": "リーダブルコード"
+          },
+          "price": {
+            "type": "integer",
+            "format": "int32",
+            "example": 2640
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "UNPUBLISHED",
+              "PUBLISHED",
+              "OUT_OF_PRINT"
+            ],
+            "example": "PUBLISHED"
+          },
+          "authorId": {
+            "type": "integer",
+            "format": "int32",
+            "example": 1
+          },
+          "authorName": {
+            "type": "string",
+            "example": "Dustin Boswell"
+          },
+          "publisherId": {
+            "type": "integer",
+            "format": "int32",
+            "example": 1
+          },
+          "publisherName": {
+            "type": "string",
+            "example": "O\u0027Reilly"
           }
         }
       }
