@@ -1,5 +1,7 @@
 package dev.ymkz.demo.api.presenter;
 
+import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
+
 import dev.ymkz.demo.api.domain.FindBooksQueryParam;
 import dev.ymkz.demo.api.domain.FindBooksResponse;
 import dev.ymkz.demo.api.usecase.BookSearchUsecase;
@@ -8,11 +10,14 @@ import dev.ymkz.demo.core.domain.value.Isbn;
 import dev.ymkz.demo.core.domain.value.RangeInteger;
 import dev.ymkz.demo.core.domain.value.RangeTime;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springdoc.core.annotations.ParameterObject;
+import org.springframework.http.ProblemDetail;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -25,12 +30,12 @@ public class BookController {
 
   private final BookSearchUsecase bookSearchUsecase;
 
-  @GetMapping
+  @GetMapping(produces = APPLICATION_JSON_VALUE)
   @Operation(operationId = "findBooks", summary = "書籍データを検索する")
   @ApiResponses(value = {
       @ApiResponse(responseCode = "200", description = "OK"),
-      @ApiResponse(responseCode = "400", description = "不正なリクエスト"),
-      @ApiResponse(responseCode = "500", description = "サーバーエラー")
+      @ApiResponse(responseCode = "400", description = "不正なリクエスト", content = @Content(schema = @Schema(implementation = ProblemDetail.class))),
+      @ApiResponse(responseCode = "500", description = "サーバーエラー", content = @Content(schema = @Schema(implementation = ProblemDetail.class)))
   })
   public FindBooksResponse findBooks(@ParameterObject FindBooksQueryParam queryParam) {
 

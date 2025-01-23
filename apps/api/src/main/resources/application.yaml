@@ -14,6 +14,8 @@ spring:
       enabled: true
   lifecycle:
     timeout-per-shutdown-phase: 20s
+server:
+  shutdown: graceful
 mybatis:
   configuration:
     map-underscore-to-camel-case: true
@@ -33,5 +35,8 @@ management:
           - 0.999
   server:
     port: 8081
-server:
-  shutdown: graceful
+springdoc:
+  api-docs:
+    path: /spec/openapi.json
+  swagger-ui:
+    path: /spec

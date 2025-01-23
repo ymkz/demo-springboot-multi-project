@@ -7,7 +7,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.List;
 
 @Schema(name = "FindBooksResponse")
-public record FindBooksResponse(ResponsePagination pagination, List<Hit> hits) {
+public record FindBooksResponse(ResponsePagination pagination, List<ResponseHit> hits) {
 
   record ResponsePagination(
       @Schema(example = "0") int offset,
@@ -15,7 +15,7 @@ public record FindBooksResponse(ResponsePagination pagination, List<Hit> hits) {
       @Schema(example = "1") int total) {
   }
 
-  record Hit(
+  record ResponseHit(
       @Schema(example = "1") long id,
       @Schema(example = "9784873115658") String isbn,
       @Schema(example = "リーダブルコード") String title,
@@ -26,8 +26,8 @@ public record FindBooksResponse(ResponsePagination pagination, List<Hit> hits) {
       @Schema(example = "1") int publisherId,
       @Schema(example = "O'Reilly") String publisherName) {
 
-    private static Hit of(Book book) {
-      return new Hit(
+    private static ResponseHit of(Book book) {
+      return new ResponseHit(
           book.id(),
           book.isbn().value(),
           book.title(),
@@ -43,6 +43,6 @@ public record FindBooksResponse(ResponsePagination pagination, List<Hit> hits) {
   public static FindBooksResponse of(Pagination<Book> data) {
     return new FindBooksResponse(
         new ResponsePagination(data.offset(), data.limit(), data.total()),
-        data.content().stream().map(Hit::of).toList());
+        data.content().stream().map(ResponseHit::of).toList());
   }
 }

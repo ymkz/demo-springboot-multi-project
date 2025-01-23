@@ -53,3 +53,9 @@ tasks.compileTestJava {
 tasks.withType<Test> {
   useJUnitPlatform()
 }
+
+openApi {
+  apiDocsUrl.set("http://localhost:8080/spec/openapi.json")
+  outputDir.set(file("spec"))
+  outputFileName.set("openapi.json")
+}
