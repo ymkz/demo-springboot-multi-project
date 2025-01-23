@@ -31,5 +31,5 @@ docker compose down
 ### exec-mysql
 
 ```sh { name=exec-mysql }
-docker compose exec db mysql demo -uapp -papp
+docker compose exec demo-db mysql demo -uapp -papp
 ```

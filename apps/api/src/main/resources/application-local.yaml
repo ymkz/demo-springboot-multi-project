@@ -1,0 +1,15 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/demo
+    username: app
+    password: app
+  # devtools:
+  #   livereload:
+  #     enabled: true
+  #   restart:
+  #     enabled: true
+springdoc:
+  api-docs:
+    path: /spec/openapi.json
+  swagger-ui:
+    path: /spec

@@ -1,12 +1,37 @@
 spring:
   application:
     name: demo-api
-  datasource:
-    url: jdbc:mysql://localhost:3306/demo
-    username: app
-    password: app
-springdoc:
-  api-docs:
-    path: /spec/openapi.json
-  swagger-ui:
-    path: /spec
+  profiles:
+    active:
+      - local
+  main:
+    banner-mode: "off"
+  web:
+    resources:
+      add-mappings: false
+  mvc:
+    problemdetails:
+      enabled: true
+  lifecycle:
+    timeout-per-shutdown-phase: 20s
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+          - health
+          - metrics
+          - prometheus
+  metrics:
+    distribution:
+      percentiles:
+        "[http.server.requests]":
+          - 0.99
+          - 0.999
+  server:
+    port: 8081
+server:
+  shutdown: graceful
