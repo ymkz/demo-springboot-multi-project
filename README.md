@@ -2,9 +2,8 @@
 
 ## TODO
 
-- application.yaml の設定
-- profile の分割（local を用意する）
 - build.gradle の共通部分をルートに移譲
+- generateOpenApiDocs を build と bootrun で呼び出す
 - フォーマッタを整備
 
 ## Tasks
