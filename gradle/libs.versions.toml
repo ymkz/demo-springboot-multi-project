@@ -1,18 +1,21 @@
 [versions]
-lombok = "1.18.36"
-mybatis = "3.0.4"
-mysql = "9.1.0"
-micrometer = "1.14.3"
-rest-assured = "5.5.0"
-mockito = "5.15.2"
-springdoc = "2.8.3"
+lombok = "1.18.36" # https://mvnrepository.com/artifact/org.projectlombok/lombok
 
-spring-boot-plugin = "3.4.2"
-spring-dependency-management-plugin = "1.1.7"
-springdoc-plugin = "1.9.0"
+mybatis = "3.0.4" # https://mvnrepository.com/artifact/org.mybatis.spring.boot/mybatis-spring-boot-starter
+mysql = "9.1.0" # https://mvnrepository.com/artifact/com.mysql/mysql-connector-j
+micrometer = "1.14.3" # https://mvnrepository.com/artifact/io.micrometer/micrometer-registry-prometheus
+springdoc-webmvc-ui = "2.8.3" # https://mvnrepository.com/artifact/org.springdoc/springdoc-openapi-starter-webmvc-ui
+mockito = "5.15.2" # https://mvnrepository.com/artifact/org.mockito/mockito-junit-jupiter
+rest-assured = "5.5.0" # https://mvnrepository.com/artifact/io.rest-assured/rest-assured
+junit-platform-launcher = "1.11.4" # https://mvnrepository.com/artifact/org.junit.platform/junit-platform-launcher
+
+spring-boot-plugin = "3.4.2" # https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-gradle-plugin
+spring-dependency-management-plugin = "1.1.7" # https://mvnrepository.com/artifact/io.spring.gradle/dependency-management-plugin
+springdoc-plugin = "1.9.0" # https://mvnrepository.com/artifact/org.springdoc.openapi-gradle-plugin/org.springdoc.openapi-gradle-plugin.gradle.plugin
 
 [libraries]
 lombok = { group = "org.projectlombok", name = "lombok", version.ref = "lombok" }
+
 spring-boot-starter-web = { group = "org.springframework.boot", name = "spring-boot-starter-web" }
 spring-boot-starter-validation = { group = "org.springframework.boot", name = "spring-boot-starter-validation" }
 spring-boot-starter-actuator = { group = "org.springframework.boot", name = "spring-boot-starter-actuator" }
@@ -20,11 +23,12 @@ spring-boot-configuration-processor = { group = "org.springframework.boot", name
 mybatis-spring-boot-starter = { group = "org.mybatis.spring.boot", name = "mybatis-spring-boot-starter", version.ref = "mybatis" }
 mysql-connector-j = { group = "com.mysql", name = "mysql-connector-j", version.ref = "mysql" }
 micrometer-registry-prometheus = { group = "io.micrometer", name = "micrometer-registry-prometheus", version.ref = "micrometer" }
-springdoc-openapi-starter-webmvc-ui = { group = "org.springdoc", name = "springdoc-openapi-starter-webmvc-ui", version.ref = "springdoc" }
+springdoc-openapi-starter-webmvc-ui = { group = "org.springdoc", name = "springdoc-openapi-starter-webmvc-ui", version.ref = "springdoc-webmvc-ui" }
 
 spring-boot-starter-test = { group = "org.springframework.boot", name = "spring-boot-starter-test" }
 mockito-junit-jupiter = { group = "org.mockito", name = "mockito-junit-jupiter", version.ref = "mockito" }
 rest-assured = { group = "io.rest-assured", name = "rest-assured", version.ref = "rest-assured" }
+junit-platform-launcher = { group = "org.junit.platform", name = "junit-platform-launcher", version.ref = "junit-platform-launcher" }
 
 [plugins]
 spring-boot = { id = "org.springframework.boot", version.ref = "spring-boot-plugin" }
