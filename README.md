@@ -1,10 +1,5 @@
 # demo-springboot-multi-project
 
-## TODO
-
-- build.gradle の共通部分を convention-plugin にする
-- フォーマッタを整備
-
 ## Tasks
 
 ### clean
@@ -12,6 +7,11 @@
 ```sh { name=clean }
 find . -name '.gradle' -type d -prune -exec rm -rf '{}' +
 find . -name 'build' -type d -prune -exec rm -rf '{}' +
+find . -name 'coverage' -type d -prune -exec rm -rf '{}' +
+find . -name 'dist' -type d -prune -exec rm -rf '{}' +
+find . -name 'node_modules' -type d -prune -exec rm -rf '{}' +
+find . -name 'pnpm-lock.yaml' -type f -prune -exec rm -rf '{}' +
+find . -name 'tsconfig.tsbuildinfo' -type f -prune -exec rm -rf '{}' +
 ```
 
 ### up
@@ -30,4 +30,10 @@ docker compose down
 
 ```sh { name=exec-mysql }
 docker compose exec demo-db mysql demo -uapp -papp
+```
+
+### gen-db-docs
+
+```sh { name=en-db-docs }
+tbls doc --force
 ```

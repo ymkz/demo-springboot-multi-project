@@ -7,8 +7,8 @@ import dev.ymkz.demo.core.domain.model.BookUpdateCommand;
 import dev.ymkz.demo.core.domain.repository.BookRepository;
 import dev.ymkz.demo.core.domain.value.Pagination;
 import java.util.Optional;
-import org.springframework.stereotype.Repository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Repository;
 
 @Repository
 @RequiredArgsConstructor
@@ -42,5 +42,4 @@ public class BookDatasource implements BookRepository {
   public void delete(long id) {
     return;
   }
-
 }

@@ -1,0 +1,13 @@
+{
+  "name": "demo-springboot-multi-project",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "lint": "prettier --check .",
+    "format": "prettier --write ."
+  },
+  "devDependencies": {
+    "prettier": "3.4.2",
+    "prettier-plugin-java": "2.6.7"
+  }
+}

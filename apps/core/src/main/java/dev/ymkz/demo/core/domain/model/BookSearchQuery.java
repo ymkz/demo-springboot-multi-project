@@ -8,12 +8,12 @@ import dev.ymkz.demo.core.domain.value.RangeTime;
 import java.util.List;
 
 public record BookSearchQuery(
-    Isbn isbn,
-    String title,
-    RangeInteger priceRange,
-    List<BookStatus> statuses,
-    RangeTime publishedAtRange,
-    BookOrder order,
-    Integer offset,
-    Integer limit) {
-}
+  Isbn isbn,
+  String title,
+  RangeInteger priceRange,
+  List<BookStatus> statuses,
+  RangeTime publishedAtRange,
+  BookOrder order,
+  Integer offset,
+  Integer limit
+) {}

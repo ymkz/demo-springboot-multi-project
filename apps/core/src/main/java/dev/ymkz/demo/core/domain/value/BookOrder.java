@@ -24,9 +24,9 @@ public enum BookOrder {
 
   public static BookOrder fromString(String value) {
     return Arrays.stream(values())
-        .filter(order -> order._value.equals(value))
-        .findFirst()
-        .orElseThrow(() -> new IllegalArgumentException("Invalid BookOrder value: " + value));
+      .filter(order -> order._value.equals(value))
+      .findFirst()
+      .orElseThrow(() -> new IllegalArgumentException("Invalid BookOrder value: " + value));
   }
 
   /**

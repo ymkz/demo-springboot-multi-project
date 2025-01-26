@@ -3,7 +3,6 @@ package dev.ymkz.demo.core.domain.value;
 import java.time.LocalDateTime;
 
 public record RangeTime(LocalDateTime start, LocalDateTime end) {
-
   public RangeTime {
     if (start != null && end != null && start.isAfter(end)) {
       throw new IllegalArgumentException("The start value is greater than the end value");

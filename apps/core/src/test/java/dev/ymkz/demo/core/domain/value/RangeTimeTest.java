@@ -30,7 +30,9 @@ class RangeTimeTest {
 
     // when
     IllegalArgumentException exception = org.junit.jupiter.api.Assertions.assertThrows(
-        IllegalArgumentException.class, () -> RangeTime.of(start, end));
+      IllegalArgumentException.class,
+      () -> RangeTime.of(start, end)
+    );
 
     // then
     assertThat(exception.getMessage(), is("The start value is greater than the end value"));

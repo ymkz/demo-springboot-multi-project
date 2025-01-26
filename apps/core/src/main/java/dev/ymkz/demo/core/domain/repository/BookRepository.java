@@ -8,7 +8,6 @@ import dev.ymkz.demo.core.domain.value.Pagination;
 import java.util.Optional;
 
 public interface BookRepository {
-
   Pagination<Book> findMany(BookSearchQuery query);
 
   Optional<Book> findById(long id);
@@ -18,5 +17,4 @@ public interface BookRepository {
   void update(BookUpdateCommand book);
 
   void delete(long id);
-
 }

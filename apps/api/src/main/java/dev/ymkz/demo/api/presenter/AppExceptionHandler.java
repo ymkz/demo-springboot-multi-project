@@ -16,22 +16,16 @@ public class AppExceptionHandler extends ResponseEntityExceptionHandler {
 
   @ExceptionHandler
   public ResponseEntity<ProblemDetail> handleValidationException(ValidationException ex) {
-    return ResponseEntity.of(ProblemDetail.forStatusAndDetail(
-        BAD_REQUEST, ex.getMessage()))
-        .build();
+    return ResponseEntity.of(ProblemDetail.forStatusAndDetail(BAD_REQUEST, ex.getMessage())).build();
   }
 
   @ExceptionHandler
   public ResponseEntity<ProblemDetail> handleMyBatisException(MyBatisSystemException ex) {
-    return ResponseEntity.of(ProblemDetail.forStatusAndDetail(
-        INTERNAL_SERVER_ERROR, ex.getMessage()))
-        .build();
+    return ResponseEntity.of(ProblemDetail.forStatusAndDetail(INTERNAL_SERVER_ERROR, ex.getMessage())).build();
   }
 
   @ExceptionHandler
   public ResponseEntity<ProblemDetail> handleOtherException(Exception ex) {
-    return ResponseEntity.of(ProblemDetail.forStatusAndDetail(
-        INTERNAL_SERVER_ERROR, ex.getMessage()))
-        .build();
+    return ResponseEntity.of(ProblemDetail.forStatusAndDetail(INTERNAL_SERVER_ERROR, ex.getMessage())).build();
   }
 }

@@ -4,7 +4,6 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
 public record Isbn(@NotBlank @Size(min = 13, max = 13) String value) {
-
   public Isbn {
     if (!isValid(value)) {
       throw new IllegalArgumentException("Invalid ISBN-13 format");

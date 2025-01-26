@@ -45,37 +45,62 @@ public class BookController {
 
   @GetMapping(produces = APPLICATION_JSON_VALUE)
   @Operation(operationId = "findBooks")
-  @ApiResponses(value = {
+  @ApiResponses(
+    value = {
       @ApiResponse(responseCode = "200", description = "正常応答"),
-      @ApiResponse(responseCode = "400", description = "不正なリクエスト", content = @Content(schema = @Schema(implementation = ProblemDetail.class))),
-      @ApiResponse(responseCode = "500", description = "サーバーエラー", content = @Content(schema = @Schema(implementation = ProblemDetail.class)))
-  })
+      @ApiResponse(
+        responseCode = "400",
+        description = "不正なリクエスト",
+        content = @Content(schema = @Schema(implementation = ProblemDetail.class))
+      ),
+      @ApiResponse(
+        responseCode = "500",
+        description = "サーバーエラー",
+        content = @Content(schema = @Schema(implementation = ProblemDetail.class))
+      ),
+    }
+  )
   public FindBooksResponse findBooks(@ParameterObject FindBooksQueryParam queryParam) {
-
     log.info("queryParam={}", queryParam);
 
     var data = bookSearchUsecase.execute(
-        new BookSearchQuery(
-            Isbn.of(queryParam.isbn()),
-            queryParam.title(),
-            RangeInteger.of(queryParam.priceFrom(), queryParam.priceTo()),
-            queryParam.status(),
-            RangeTime.of(queryParam.publishedAtStart(), queryParam.publishedAtEnd()),
-            queryParam.order(),
-            queryParam.offset(),
-            queryParam.limit()));
+      new BookSearchQuery(
+        Isbn.of(queryParam.isbn()),
+        queryParam.title(),
+        RangeInteger.of(queryParam.priceFrom(), queryParam.priceTo()),
+        queryParam.status(),
+        RangeTime.of(queryParam.publishedAtStart(), queryParam.publishedAtEnd()),
+        queryParam.order(),
+        queryParam.offset(),
+        queryParam.limit()
+      )
+    );
 
     return FindBooksResponse.of(data);
   }
 
   @GetMapping(value = "{id}", produces = APPLICATION_JSON_VALUE)
   @Operation(operationId = "findBookById")
-  @ApiResponses(value = {
+  @ApiResponses(
+    value = {
       @ApiResponse(responseCode = "200", description = "正常応答"),
-      @ApiResponse(responseCode = "400", description = "不正なリクエスト", content = @Content(schema = @Schema(implementation = ProblemDetail.class))),
-      @ApiResponse(responseCode = "404", description = "存在しないリソース", content = @Content(schema = @Schema(implementation = ProblemDetail.class))),
-      @ApiResponse(responseCode = "500", description = "サーバーエラー", content = @Content(schema = @Schema(implementation = ProblemDetail.class)))
-  })
+      @ApiResponse(
+        responseCode = "400",
+        description = "不正なリクエスト",
+        content = @Content(schema = @Schema(implementation = ProblemDetail.class))
+      ),
+      @ApiResponse(
+        responseCode = "404",
+        description = "存在しないリソース",
+        content = @Content(schema = @Schema(implementation = ProblemDetail.class))
+      ),
+      @ApiResponse(
+        responseCode = "500",
+        description = "サーバーエラー",
+        content = @Content(schema = @Schema(implementation = ProblemDetail.class))
+      ),
+    }
+  )
   public FindBookByIdResponse findBookById(@PathVariable long id) {
     return FindBookByIdResponse.of(null);
   }
@@ -83,34 +108,69 @@ public class BookController {
   @PostMapping(consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
   @ResponseStatus(HttpStatus.CREATED)
   @Operation(operationId = "createBook")
-  @ApiResponses(value = {
+  @ApiResponses(
+    value = {
       @ApiResponse(responseCode = "201", description = "正常応答"),
-      @ApiResponse(responseCode = "400", description = "不正なリクエスト", content = @Content(schema = @Schema(implementation = ProblemDetail.class))),
-      @ApiResponse(responseCode = "500", description = "サーバーエラー", content = @Content(schema = @Schema(implementation = ProblemDetail.class)))
-  })
-  public void createBook(@Validated @RequestBody CreateBookBody body) {
-  }
+      @ApiResponse(
+        responseCode = "400",
+        description = "不正なリクエスト",
+        content = @Content(schema = @Schema(implementation = ProblemDetail.class))
+      ),
+      @ApiResponse(
+        responseCode = "500",
+        description = "サーバーエラー",
+        content = @Content(schema = @Schema(implementation = ProblemDetail.class))
+      ),
+    }
+  )
+  public void createBook(@Validated @RequestBody CreateBookBody body) {}
 
   @PatchMapping(value = "{id}", consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
   @Operation(operationId = "updateBook")
-  @ApiResponses(value = {
+  @ApiResponses(
+    value = {
       @ApiResponse(responseCode = "200", description = "正常応答"),
-      @ApiResponse(responseCode = "400", description = "不正なリクエスト", content = @Content(schema = @Schema(implementation = ProblemDetail.class))),
-      @ApiResponse(responseCode = "404", description = "存在しないリソース", content = @Content(schema = @Schema(implementation = ProblemDetail.class))),
-      @ApiResponse(responseCode = "500", description = "サーバーエラー", content = @Content(schema = @Schema(implementation = ProblemDetail.class)))
-  })
-  public void updateBook(@PathVariable long id, @RequestBody UpdateBookBody body) {
-  }
+      @ApiResponse(
+        responseCode = "400",
+        description = "不正なリクエスト",
+        content = @Content(schema = @Schema(implementation = ProblemDetail.class))
+      ),
+      @ApiResponse(
+        responseCode = "404",
+        description = "存在しないリソース",
+        content = @Content(schema = @Schema(implementation = ProblemDetail.class))
+      ),
+      @ApiResponse(
+        responseCode = "500",
+        description = "サーバーエラー",
+        content = @Content(schema = @Schema(implementation = ProblemDetail.class))
+      ),
+    }
+  )
+  public void updateBook(@PathVariable long id, @RequestBody UpdateBookBody body) {}
 
   @DeleteMapping(value = "{id}", produces = APPLICATION_JSON_VALUE)
   @ResponseStatus(HttpStatus.NO_CONTENT)
   @Operation(operationId = "deleteBook")
-  @ApiResponses(value = {
+  @ApiResponses(
+    value = {
       @ApiResponse(responseCode = "204", description = "正常応答"),
-      @ApiResponse(responseCode = "400", description = "不正なリクエスト", content = @Content(schema = @Schema(implementation = ProblemDetail.class))),
-      @ApiResponse(responseCode = "404", description = "存在しないリソース", content = @Content(schema = @Schema(implementation = ProblemDetail.class))),
-      @ApiResponse(responseCode = "500", description = "サーバーエラー", content = @Content(schema = @Schema(implementation = ProblemDetail.class)))
-  })
-  public void deleteBook(@PathVariable long id) {
-  }
+      @ApiResponse(
+        responseCode = "400",
+        description = "不正なリクエスト",
+        content = @Content(schema = @Schema(implementation = ProblemDetail.class))
+      ),
+      @ApiResponse(
+        responseCode = "404",
+        description = "存在しないリソース",
+        content = @Content(schema = @Schema(implementation = ProblemDetail.class))
+      ),
+      @ApiResponse(
+        responseCode = "500",
+        description = "サーバーエラー",
+        content = @Content(schema = @Schema(implementation = ProblemDetail.class))
+      ),
+    }
+  )
+  public void deleteBook(@PathVariable long id) {}
 }

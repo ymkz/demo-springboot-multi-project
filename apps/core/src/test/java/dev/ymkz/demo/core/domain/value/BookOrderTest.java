@@ -26,11 +26,9 @@ public class BookOrderTest {
     String value = "+invalid";
 
     // when
-    IllegalArgumentException exception = assertThrows(
-        IllegalArgumentException.class,
-        () -> {
-          BookOrder.fromString(value);
-        });
+    IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
+      BookOrder.fromString(value);
+    });
 
     // then
     assertThat(exception.getMessage(), is("Invalid BookOrder value: +invalid"));

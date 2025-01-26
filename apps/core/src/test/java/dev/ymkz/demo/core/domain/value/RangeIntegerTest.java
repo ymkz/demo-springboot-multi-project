@@ -29,7 +29,9 @@ class RangeIntegerTest {
 
     // when
     IllegalArgumentException exception = org.junit.jupiter.api.Assertions.assertThrows(
-        IllegalArgumentException.class, () -> RangeInteger.of(min, max));
+      IllegalArgumentException.class,
+      () -> RangeInteger.of(min, max)
+    );
 
     // then
     assertThat(exception.getMessage(), is("The min value is greater than the max value"));
