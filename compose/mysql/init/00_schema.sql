@@ -1,5 +1,3 @@
--- database/ddl/schema.sql is master schema file
-
 CREATE TABLE authors (
   `id` int NOT NULL AUTO_INCREMENT COMMENT '著者ID（自動採番）',
   `author_name` varchar(128) NOT NULL COMMENT '著者名',
@@ -33,9 +31,9 @@ CREATE TABLE books (
   `title` varchar(512) NOT NULL COMMENT '書籍タイトル',
   `price` int NULL COMMENT '価格',
   `status` varchar(24) NOT NULL COMMENT '書籍ステータス',
+  `published_at` datetime NULL COMMENT '出版日',
   `author_id` int NOT NULL COMMENT '著者ID（authorsテーブル参照）',
   `publisher_id` int NOT NULL COMMENT '出版社ID（publishersテーブル参照）',
-  `published_at` datetime NULL COMMENT '出版日',
   `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'レコード作成時刻',
   `updated_at` datetime NULL ON UPDATE CURRENT_TIMESTAMP COMMENT 'レコード更新時刻',
   `deleted_at` datetime NULL COMMENT 'レコード論理削除時刻',

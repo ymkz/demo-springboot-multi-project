@@ -24,7 +24,7 @@ public class AppExceptionHandler extends ResponseEntityExceptionHandler {
   @ExceptionHandler
   public ResponseEntity<ProblemDetail> handleMyBatisException(MyBatisSystemException ex) {
     return ResponseEntity.of(ProblemDetail.forStatusAndDetail(
-        INTERNAL_SERVER_ERROR, ex.getCause().getMessage()))
+        INTERNAL_SERVER_ERROR, ex.getMessage()))
         .build();
   }
 

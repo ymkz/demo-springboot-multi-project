@@ -27,6 +27,8 @@ dependencies {
   compileOnly(libs.lombok)
   annotationProcessor(libs.lombok)
 
+  developmentOnly(libs.spring.boot.devtools)
+
   implementation(libs.spring.boot.starter.web)
   implementation(libs.spring.boot.starter.validation)
   implementation(libs.spring.boot.starter.actuator)

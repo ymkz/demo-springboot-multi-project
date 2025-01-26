@@ -5,3 +5,6 @@ spring:
     password: app
   main:
     log-startup-info: false
+  devtools:
+    restart:
+      enabled: true

@@ -19,9 +19,11 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springdoc.core.annotations.ParameterObject;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ProblemDetail;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -36,6 +38,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/books")
 @Tag(name = "Book")
 @RequiredArgsConstructor
+@Slf4j
 public class BookController {
 
   private final BookSearchUsecase bookSearchUsecase;
@@ -49,13 +52,15 @@ public class BookController {
   })
   public FindBooksResponse findBooks(@ParameterObject FindBooksQueryParam queryParam) {
 
+    log.info("queryParam={}", queryParam);
+
     var data = bookSearchUsecase.execute(
         new BookSearchQuery(
             Isbn.of(queryParam.isbn()),
             queryParam.title(),
             RangeInteger.of(queryParam.priceFrom(), queryParam.priceTo()),
             queryParam.status(),
-            RangeTime.of(queryParam.publishedTimeStart(), queryParam.publishedTimeEnd()),
+            RangeTime.of(queryParam.publishedAtStart(), queryParam.publishedAtEnd()),
             queryParam.order(),
             queryParam.offset(),
             queryParam.limit()));
@@ -72,7 +77,7 @@ public class BookController {
       @ApiResponse(responseCode = "500", description = "サーバーエラー", content = @Content(schema = @Schema(implementation = ProblemDetail.class)))
   })
   public FindBookByIdResponse findBookById(@PathVariable long id) {
-    return null;
+    return FindBookByIdResponse.of(null);
   }
 
   @PostMapping(consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
@@ -83,7 +88,7 @@ public class BookController {
       @ApiResponse(responseCode = "400", description = "不正なリクエスト", content = @Content(schema = @Schema(implementation = ProblemDetail.class))),
       @ApiResponse(responseCode = "500", description = "サーバーエラー", content = @Content(schema = @Schema(implementation = ProblemDetail.class)))
   })
-  public void createBook(@RequestBody CreateBookBody body) {
+  public void createBook(@Validated @RequestBody CreateBookBody body) {
   }
 
   @PatchMapping(value = "{id}", consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)

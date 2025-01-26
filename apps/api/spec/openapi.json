@@ -77,24 +77,26 @@
             }
           },
           {
-            "name": "publishedTimeStart",
+            "name": "publishedAtStart",
             "in": "query",
             "description": "出版日:開始",
             "required": false,
             "schema": {
               "type": "string",
               "format": "date-time"
-            }
+            },
+            "example": "2025-01-23T01:23:45.000Z"
           },
           {
-            "name": "publishedTimeEnd",
+            "name": "publishedAtEnd",
             "in": "query",
             "description": "出版日:終了",
             "required": false,
             "schema": {
               "type": "string",
               "format": "date-time"
-            }
+            },
+            "example": "2025-01-23T01:23:45.000Z"
           },
           {
             "name": "order",
@@ -228,6 +230,16 @@
           }
         ],
         "responses": {
+          "404": {
+            "description": "存在しないリソース",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          },
           "400": {
             "description": "不正なリクエスト",
             "content": {
@@ -257,16 +269,6 @@
                 }
               }
             }
-          },
-          "404": {
-            "description": "存在しないリソース",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetail"
-                }
-              }
-            }
           }
         }
       },
@@ -287,8 +289,8 @@
           }
         ],
         "responses": {
-          "400": {
-            "description": "不正なリクエスト",
+          "404": {
+            "description": "存在しないリソース",
             "content": {
               "application/json": {
                 "schema": {
@@ -300,8 +302,8 @@
           "204": {
             "description": "正常応答"
           },
-          "500": {
-            "description": "サーバーエラー",
+          "400": {
+            "description": "不正なリクエスト",
             "content": {
               "application/json": {
                 "schema": {
@@ -310,8 +312,8 @@
               }
             }
           },
-          "404": {
-            "description": "存在しないリソース",
+          "500": {
+            "description": "サーバーエラー",
             "content": {
               "application/json": {
                 "schema": {
@@ -349,6 +351,16 @@
           "required": true
         },
         "responses": {
+          "404": {
+            "description": "存在しないリソース",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          },
           "400": {
             "description": "不正なリクエスト",
             "content": {
@@ -371,16 +383,6 @@
           },
           "200": {
             "description": "正常応答"
-          },
-          "404": {
-            "description": "存在しないリソース",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetail"
-                }
-              }
-            }
           }
         }
       }
@@ -393,27 +395,43 @@
         "properties": {
           "isbn": {
             "type": "string",
+            "description": "ISBN-13",
             "example": 9784873115658
           },
           "title": {
             "type": "string",
+            "description": "書籍タイトル",
             "example": "リーダブルコード"
           },
           "price": {
             "type": "integer",
             "format": "int32",
-            "example": 2640
+            "description": "価格",
+            "example": 2640,
+            "minimum": 0
           },
           "status": {
             "type": "string",
+            "description": "ステータス",
             "enum": [
               "UNPUBLISHED",
               "PUBLISHED",
               "OUT_OF_PRINT"
             ],
             "example": "PUBLISHED"
+          },
+          "publishedAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "出版日",
+            "example": "2025-01-23T01:23:45.000Z"
           }
-        }
+        },
+        "required": [
+          "isbn",
+          "status",
+          "title"
+        ]
       },
       "ProblemDetail": {
         "type": "object",
@@ -449,25 +467,36 @@
         "properties": {
           "isbn": {
             "type": "string",
+            "description": "ISBN-13",
             "example": 9784873115658
           },
           "title": {
             "type": "string",
+            "description": "書籍タイトル",
             "example": "リーダブルコード"
           },
           "price": {
             "type": "integer",
             "format": "int32",
-            "example": 2640
+            "description": "価格",
+            "example": 2640,
+            "minimum": 0
           },
           "status": {
             "type": "string",
+            "description": "ステータス",
             "enum": [
               "UNPUBLISHED",
               "PUBLISHED",
               "OUT_OF_PRINT"
             ],
             "example": "PUBLISHED"
+          },
+          "publishedAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "出版日",
+            "example": "2025-01-23T01:23:45.000Z"
           }
         }
       },
@@ -491,23 +520,28 @@
           "id": {
             "type": "integer",
             "format": "int64",
+            "description": "書籍ID",
             "example": 1
           },
           "isbn": {
             "type": "string",
+            "description": "ISBN-13",
             "example": 9784873115658
           },
           "title": {
             "type": "string",
+            "description": "タイトル",
             "example": "リーダブルコード"
           },
           "price": {
             "type": "integer",
             "format": "int32",
+            "description": "価格",
             "example": 2640
           },
           "status": {
             "type": "string",
+            "description": "ステータス",
             "enum": [
               "UNPUBLISHED",
               "PUBLISHED",
@@ -515,22 +549,32 @@
             ],
             "example": "PUBLISHED"
           },
+          "publishedAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "出版日時",
+            "example": "2025-01-23T01:23:45.000Z"
+          },
           "authorId": {
             "type": "integer",
             "format": "int32",
+            "description": "著者ID",
             "example": 1
           },
           "authorName": {
             "type": "string",
+            "description": "著者名",
             "example": "Dustin Boswell"
           },
           "publisherId": {
             "type": "integer",
             "format": "int32",
+            "description": "出版社ID",
             "example": 1
           },
           "publisherName": {
             "type": "string",
+            "description": "出版社名",
             "example": "O\u0027Reilly"
           }
         }
@@ -541,16 +585,19 @@
           "offset": {
             "type": "integer",
             "format": "int32",
+            "description": "取得開始位置",
             "example": 0
           },
           "limit": {
             "type": "integer",
             "format": "int32",
+            "description": "取得数",
             "example": 100
           },
           "total": {
             "type": "integer",
             "format": "int32",
+            "description": "検索ヒット総数",
             "example": 1
           }
         }
@@ -561,23 +608,28 @@
           "id": {
             "type": "integer",
             "format": "int64",
+            "description": "書籍ID",
             "example": 1
           },
           "isbn": {
             "type": "string",
+            "description": "ISBN-13",
             "example": 9784873115658
           },
           "title": {
             "type": "string",
+            "description": "タイトル",
             "example": "リーダブルコード"
           },
           "price": {
             "type": "integer",
             "format": "int32",
+            "description": "価格",
             "example": 2640
           },
           "status": {
             "type": "string",
+            "description": "ステータス",
             "enum": [
               "UNPUBLISHED",
               "PUBLISHED",
@@ -585,22 +637,32 @@
             ],
             "example": "PUBLISHED"
           },
+          "publishedAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "出版日時",
+            "example": "2025-01-23T01:23:45.000Z"
+          },
           "authorId": {
             "type": "integer",
             "format": "int32",
+            "description": "著者ID",
             "example": 1
           },
           "authorName": {
             "type": "string",
+            "description": "著者名",
             "example": "Dustin Boswell"
           },
           "publisherId": {
             "type": "integer",
             "format": "int32",
+            "description": "出版社ID",
             "example": 1
           },
           "publisherName": {
             "type": "string",
+            "description": "出版社名",
             "example": "O\u0027Reilly"
           }
         }

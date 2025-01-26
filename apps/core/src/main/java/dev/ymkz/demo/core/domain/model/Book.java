@@ -13,11 +13,11 @@ public record Book(
     @NotBlank String title,
     @Nullable @PositiveOrZero Integer price,
     BookStatus status,
+    @Nullable LocalDateTime publishedAt,
     int authorId,
     @NotBlank String authorName,
     int publisherId,
     @NotBlank String publisherName,
-    @Nullable LocalDateTime publishedAt,
     LocalDateTime createdAt,
     @Nullable LocalDateTime updatedAt,
     @Nullable LocalDateTime deletedAt) {

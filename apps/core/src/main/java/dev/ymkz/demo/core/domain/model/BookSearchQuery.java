@@ -12,7 +12,7 @@ public record BookSearchQuery(
     String title,
     RangeInteger priceRange,
     List<BookStatus> statuses,
-    RangeTime publishedTimeRange,
+    RangeTime publishedAtRange,
     BookOrder order,
     Integer offset,
     Integer limit) {

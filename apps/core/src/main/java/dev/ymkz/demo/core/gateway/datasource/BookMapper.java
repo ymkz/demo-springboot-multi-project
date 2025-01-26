@@ -46,11 +46,11 @@ public interface BookMapper {
                       #{status}
                   </foreach>
               </if>
-              <if test="publishedTimeRange.start != null">
-                  AND b.published_at &gt;= #{publishedTimeRange.start}
+              <if test="publishedAtRange.start != null">
+                  AND b.published_at &gt;= #{publishedAtRange.start}
               </if>
-              <if test="publishedTimeRange.end != null">
-                  AND b.published_at &lt;= #{publishedTimeRange.end}
+              <if test="publishedAtRange.end != null">
+                  AND b.published_at &lt;= #{publishedAtRange.end}
               </if>
           </script>
       """)
@@ -64,11 +64,11 @@ public interface BookMapper {
               b.title,
               b.price,
               b.status,
+              b.published_at,
               b.author_id,
               a.author_name,
               b.publisher_id,
               p.publisher_name,
-              b.published_at,
               b.created_at,
               b.updated_at,
               b.deleted_at
@@ -106,11 +106,11 @@ public interface BookMapper {
                       #{status}
                   </foreach>
               </if>
-              <if test="publishedTimeRange.start != null">
-                  AND b.published_at &gt;= #{publishedTimeRange.start}
+              <if test="publishedAtRange.start != null">
+                  AND b.published_at &gt;= #{publishedAtRange.start}
               </if>
-              <if test="publishedTimeRange.end != null">
-                  AND b.published_at &lt;= #{publishedTimeRange.end}
+              <if test="publishedAtRange.end != null">
+                  AND b.published_at &lt;= #{publishedAtRange.end}
               </if>
           ORDER BY
               #{order.orderBy}

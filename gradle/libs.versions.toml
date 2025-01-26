@@ -15,6 +15,7 @@ springdoc-plugin = "1.9.0" # https://mvnrepository.com/artifact/org.springdoc.op
 
 [libraries]
 lombok = { group = "org.projectlombok", name = "lombok", version.ref = "lombok" }
+spring-boot-devtools = { group = "org.springframework.boot", name = "spring-boot-devtools" }
 
 spring-boot-starter-web = { group = "org.springframework.boot", name = "spring-boot-starter-web" }
 spring-boot-starter-validation = { group = "org.springframework.boot", name = "spring-boot-starter-validation" }
