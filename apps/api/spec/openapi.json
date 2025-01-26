@@ -230,8 +230,8 @@
           }
         ],
         "responses": {
-          "404": {
-            "description": "存在しないリソース",
+          "400": {
+            "description": "不正なリクエスト",
             "content": {
               "application/json": {
                 "schema": {
@@ -240,8 +240,8 @@
               }
             }
           },
-          "400": {
-            "description": "不正なリクエスト",
+          "404": {
+            "description": "存在しないリソース",
             "content": {
               "application/json": {
                 "schema": {
@@ -289,6 +289,16 @@
           }
         ],
         "responses": {
+          "400": {
+            "description": "不正なリクエスト",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          },
           "404": {
             "description": "存在しないリソース",
             "content": {
@@ -301,16 +311,6 @@
           },
           "204": {
             "description": "正常応答"
-          },
-          "400": {
-            "description": "不正なリクエスト",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetail"
-                }
-              }
-            }
           },
           "500": {
             "description": "サーバーエラー",
@@ -351,8 +351,8 @@
           "required": true
         },
         "responses": {
-          "404": {
-            "description": "存在しないリソース",
+          "400": {
+            "description": "不正なリクエスト",
             "content": {
               "application/json": {
                 "schema": {
@@ -361,8 +361,8 @@
               }
             }
           },
-          "400": {
-            "description": "不正なリクエスト",
+          "404": {
+            "description": "存在しないリソース",
             "content": {
               "application/json": {
                 "schema": {
