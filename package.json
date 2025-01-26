@@ -8,16 +8,18 @@
     "pnpm": ">=9"
   },
   "scripts": {
-    "dev": "pnpm --filter=web run dev",
-    "build": "pnpm --filter=web run build",
+    "dev": "pnpm --recursive run dev",
+    "build": "pnpm --recursive run build",
     "lint": "prettier --check .",
     "format": "prettier --write .",
+    "generate": "pnpm --recursive run /^generate:.*/",
     "analyze": "knip"
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
     "better-typescript-lib": "2.10.1",
     "knip": "5.43.3",
+    "orval": "7.4.1",
     "prettier": "3.4.2",
     "prettier-plugin-java": "2.6.7",
     "typescript": "5.7.3"

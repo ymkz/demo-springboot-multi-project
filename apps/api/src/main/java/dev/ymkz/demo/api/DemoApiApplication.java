@@ -10,7 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication(scanBasePackages = "dev.ymkz.demo")
 @MapperScan(basePackages = "dev.ymkz.demo.core.gateway.datasource")
 @OpenAPIDefinition(
-  info = @Info(title = "API仕様書", version = "0.0.1"),
+  info = @Info(title = "API仕様書", version = "1.0.0"),
   servers = { @Server(url = "http://localhost:8080", description = "ローカル環境") }
 )
 public class DemoApiApplication {

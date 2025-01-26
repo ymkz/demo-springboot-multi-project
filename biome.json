@@ -9,6 +9,9 @@
     "lineWidth": 120,
     "indentStyle": "space"
   },
+  "linter": {
+    "ignore": ["generated"]
+  },
   "javascript": {
     "formatter": {
       "quoteStyle": "single",
