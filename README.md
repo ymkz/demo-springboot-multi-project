@@ -34,6 +34,6 @@ docker compose exec demo-db mysql demo -uapp -papp
 
 ### gen-db-docs
 
-```sh { name=en-db-docs }
-tbls doc --force
+```sh { name=gen-db-docs }
+tbls doc mysql://app:app@localhost:3306/demo docs/database/schema --force
 ```

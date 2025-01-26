@@ -1,2 +1,0 @@
-dsn: mysql://app:app@localhost:3306/demo
-docPath: docs/schema
