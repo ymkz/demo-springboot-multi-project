@@ -105,6 +105,7 @@
             "required": false,
             "schema": {
               "type": "string",
+              "default": "-published_at",
               "enum": [
                 "+price",
                 "-price",
@@ -121,6 +122,7 @@
             "schema": {
               "type": "integer",
               "format": "int32",
+              "default": 0,
               "minimum": 0
             }
           },
@@ -132,14 +134,15 @@
             "schema": {
               "type": "integer",
               "format": "int32",
+              "default": 20,
               "maximum": 100,
               "minimum": 1
             }
           }
         ],
         "responses": {
-          "400": {
-            "description": "不正なリクエスト",
+          "500": {
+            "description": "サーバーエラー",
             "content": {
               "application/json": {
                 "schema": {
@@ -158,8 +161,8 @@
               }
             }
           },
-          "500": {
-            "description": "サーバーエラー",
+          "400": {
+            "description": "不正なリクエスト",
             "content": {
               "application/json": {
                 "schema": {
@@ -186,6 +189,16 @@
           "required": true
         },
         "responses": {
+          "500": {
+            "description": "サーバーエラー",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          },
           "400": {
             "description": "不正なリクエスト",
             "content": {
@@ -198,16 +211,6 @@
           },
           "201": {
             "description": "正常応答"
-          },
-          "500": {
-            "description": "サーバーエラー",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetail"
-                }
-              }
-            }
           }
         }
       }
@@ -230,8 +233,18 @@
           }
         ],
         "responses": {
-          "400": {
-            "description": "不正なリクエスト",
+          "500": {
+            "description": "サーバーエラー",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "存在しないリソース",
             "content": {
               "application/json": {
                 "schema": {
@@ -250,18 +263,8 @@
               }
             }
           },
-          "500": {
-            "description": "サーバーエラー",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetail"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "存在しないリソース",
+          "400": {
+            "description": "不正なリクエスト",
             "content": {
               "application/json": {
                 "schema": {
@@ -289,19 +292,6 @@
           }
         ],
         "responses": {
-          "400": {
-            "description": "不正なリクエスト",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetail"
-                }
-              }
-            }
-          },
-          "204": {
-            "description": "正常応答"
-          },
           "500": {
             "description": "サーバーエラー",
             "content": {
@@ -314,6 +304,19 @@
           },
           "404": {
             "description": "存在しないリソース",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          },
+          "204": {
+            "description": "正常応答"
+          },
+          "400": {
+            "description": "不正なリクエスト",
             "content": {
               "application/json": {
                 "schema": {
@@ -351,19 +354,6 @@
           "required": true
         },
         "responses": {
-          "400": {
-            "description": "不正なリクエスト",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetail"
-                }
-              }
-            }
-          },
-          "200": {
-            "description": "正常応答"
-          },
           "500": {
             "description": "サーバーエラー",
             "content": {
@@ -376,6 +366,19 @@
           },
           "404": {
             "description": "存在しないリソース",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "正常応答"
+          },
+          "400": {
+            "description": "不正なリクエスト",
             "content": {
               "application/json": {
                 "schema": {

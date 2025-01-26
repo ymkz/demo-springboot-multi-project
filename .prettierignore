@@ -1,3 +1,5 @@
 docs/database/schema
 apps/api/spec/openapi.json
 pnpm-lock.yaml
+**/*.ts
+**/*.tsx
