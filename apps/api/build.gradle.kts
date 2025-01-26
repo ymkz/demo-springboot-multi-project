@@ -57,6 +57,10 @@ tasks.withType<Test> {
   useJUnitPlatform()
 }
 
+tasks.named("build") {
+  dependsOn("generateOpenApiDocs")
+}
+
 openApi {
   apiDocsUrl.set("http://localhost:8080/spec/openapi.json")
   outputDir.set(file("spec"))
