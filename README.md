@@ -2,8 +2,7 @@
 
 ## TODO
 
-- build.gradle の共通部分をルートに移譲
-- generateOpenApiDocs を build と bootrun で呼び出す
+- build.gradle の共通部分を convention-plugin にする
 - フォーマッタを整備
 
 ## Tasks
