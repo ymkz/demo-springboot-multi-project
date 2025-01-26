@@ -11,7 +11,7 @@ public record FindBookByIdResponse(
   @Schema(description = "タイトル", example = "リーダブルコード") String title,
   @Schema(description = "価格", example = "2640") Integer price,
   @Schema(description = "ステータス", example = "PUBLISHED") BookStatus status,
-  @Schema(description = "出版日時", example = "2025-01-23T01:23:45.000Z") LocalDateTime publishedAt,
+  @Schema(description = "出版日時:ISO8601", example = "2025-01-23T01:23:45.000Z") LocalDateTime publishedAt,
   @Schema(description = "著者ID", example = "1") int authorId,
   @Schema(description = "著者名", example = "Dustin Boswell") String authorName,
   @Schema(description = "出版社ID", example = "1") int publisherId,
