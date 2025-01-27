@@ -6,6 +6,8 @@
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
+    "lint": "biome check",
+    "format": "biome check --write",
     "generate:openapi": "orval generate"
   },
   "dependencies": {

@@ -10,8 +10,8 @@
   "scripts": {
     "dev": "pnpm --recursive run dev",
     "build": "pnpm --recursive run build",
-    "lint": "prettier --check .",
-    "format": "prettier --write .",
+    "lint": "pnpm --recursive run lint",
+    "format": "pnpm --recursive run format",
     "generate": "pnpm --recursive run /^generate:.*/",
     "analyze": "knip"
   },

@@ -56,3 +56,15 @@ tasks.compileTestJava {
 tasks.withType<Test> {
   useJUnitPlatform()
 }
+
+tasks.register<Exec>("prettierCheck") {
+  commandLine("pnpx", "prettier", "--check", "src/**/*.java")
+}
+
+tasks.register<Exec>("prettierWrite") {
+  commandLine("pnpx", "prettier", "--write", "src/**/*.java")
+}
+
+tasks.named("check") {
+  dependsOn("prettierCheck")
+}
