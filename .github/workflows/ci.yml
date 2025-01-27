@@ -13,7 +13,7 @@ env:
   DO_NOT_TRACK: 1
 
 jobs:
-  check:
+  check-gradle:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -23,6 +23,11 @@ jobs:
           distribution: temurin
           java-version: 21
       - uses: gradle/actions/setup-gradle@v4
+      - run: ./gradlew build
+  check-pnpm:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
       - uses: pnpm/action-setup@v4
         with:
           version: 9
@@ -31,7 +36,6 @@ jobs:
           node-version-file: package.json
           cache: pnpm
       - run: pnpm install --frozen-lockfile
-      - run: ./gradlew build
       - run: pnpm run typecheck
       - run: pnpm run lint
       - run: pnpm run build
