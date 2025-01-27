@@ -32,4 +32,6 @@ jobs:
           cache: pnpm
       - run: pnpm install --frozen-lockfile
       - run: ./gradlew build
+      - run: pnpm run typecheck
+      - run: pnpm run lint
       - run: pnpm run build
