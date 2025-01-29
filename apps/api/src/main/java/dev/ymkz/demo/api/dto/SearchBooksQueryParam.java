@@ -1,4 +1,4 @@
-package dev.ymkz.demo.api.domain;
+package dev.ymkz.demo.api.dto;
 
 import dev.ymkz.demo.core.domain.value.BookOrder;
 import dev.ymkz.demo.core.domain.value.BookStatus;
@@ -9,7 +9,7 @@ import jakarta.validation.constraints.Min;
 import java.time.LocalDateTime;
 import java.util.List;
 
-public record FindBooksQueryParam(
+public record SearchBooksQueryParam(
   @Parameter(description = "ISBN-13:完全一致", example = "9784873115658") String isbn,
   @Parameter(description = "書籍タイトル:部分一致") String title,
   @Parameter(description = "価格:下限") @Min(0) Integer priceFrom,
@@ -22,7 +22,7 @@ public record FindBooksQueryParam(
   @Parameter(description = "取得開始位置") @Schema(defaultValue = "0") @Min(0) Integer offset,
   @Parameter(description = "取得数") @Schema(defaultValue = "20") @Min(1) @Max(100) Integer limit
 ) {
-  public FindBooksQueryParam {
+  public SearchBooksQueryParam {
     if (order == null) {
       order = BookOrder.PUBLISHED_AT_DESC;
     }

@@ -5,13 +5,10 @@
  * OpenAPI spec version: 1.0.0
  */
 
-/**
- * ステータス
- */
-export type FindBookByIdResponseStatus = (typeof FindBookByIdResponseStatus)[keyof typeof FindBookByIdResponseStatus]
+export type DownloadBooksStatusItem = (typeof DownloadBooksStatusItem)[keyof typeof DownloadBooksStatusItem]
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare
-export const FindBookByIdResponseStatus = {
+export const DownloadBooksStatusItem = {
   UNPUBLISHED: 'UNPUBLISHED',
   PUBLISHED: 'PUBLISHED',
   OUT_OF_PRINT: 'OUT_OF_PRINT',

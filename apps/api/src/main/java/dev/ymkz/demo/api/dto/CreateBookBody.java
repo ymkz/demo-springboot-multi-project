@@ -1,4 +1,4 @@
-package dev.ymkz.demo.api.domain;
+package dev.ymkz.demo.api.dto;
 
 import dev.ymkz.demo.core.domain.value.BookStatus;
 import io.swagger.v3.oas.annotations.media.Schema;

@@ -14,6 +14,6 @@ public class BookSearchUsecase {
   private final BookRepository repository;
 
   public Pagination<Book> execute(BookSearchQuery query) {
-    return repository.findMany(query);
+    return repository.search(query);
   }
 }

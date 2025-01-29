@@ -37,6 +37,7 @@ dependencies {
   implementation(libs.mybatis.spring.boot.starter)
   implementation(libs.micrometer.registry.prometheus)
   implementation(libs.springdoc.openapi.starter.webmvc.ui)
+  implementation(libs.jackson.dataformat.csv)
 
   testImplementation(libs.spring.boot.starter.test)
   testImplementation(libs.mockito.junit.jupiter)
@@ -60,7 +61,7 @@ tasks.withType<Test> {
 
 openApi {
   apiDocsUrl.set("http://localhost:8080/spec/openapi.json")
-  outputDir.set(file("spec"))
+  outputDir.set(rootProject.file("docs/apispec"))
   outputFileName.set("openapi.json")
 }
 

@@ -3,7 +3,7 @@ import { defineConfig } from 'orval'
 export default defineConfig({
   apifetch: {
     input: {
-      target: '../api/spec/openapi.json',
+      target: '../../docs/apispec/openapi.json',
     },
     output: {
       target: './src/generated/openapi/fetch/index.ts',

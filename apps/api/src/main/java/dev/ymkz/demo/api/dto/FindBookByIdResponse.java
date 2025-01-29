@@ -1,4 +1,4 @@
-package dev.ymkz.demo.api.domain;
+package dev.ymkz.demo.api.dto;
 
 import dev.ymkz.demo.core.domain.model.Book;
 import dev.ymkz.demo.core.domain.value.BookStatus;

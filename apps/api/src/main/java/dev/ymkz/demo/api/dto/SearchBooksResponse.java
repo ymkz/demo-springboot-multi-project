@@ -1,4 +1,4 @@
-package dev.ymkz.demo.api.domain;
+package dev.ymkz.demo.api.dto;
 
 import dev.ymkz.demo.core.domain.model.Book;
 import dev.ymkz.demo.core.domain.value.BookStatus;
@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Schema(name = "FindBooksResponse")
-public record FindBooksResponse(ResponsePagination pagination, List<ResponseHit> hits) {
+public record SearchBooksResponse(ResponsePagination pagination, List<ResponseHit> hits) {
   record ResponsePagination(
     @Schema(description = "取得開始位置", example = "0") int offset,
     @Schema(description = "取得数", example = "100") int limit,
@@ -43,8 +43,8 @@ public record FindBooksResponse(ResponsePagination pagination, List<ResponseHit>
     }
   }
 
-  public static FindBooksResponse of(Pagination<Book> data) {
-    return new FindBooksResponse(
+  public static SearchBooksResponse of(Pagination<Book> data) {
+    return new SearchBooksResponse(
       new ResponsePagination(data.offset(), data.limit(), data.total()),
       data.content().stream().map(ResponseHit::of).toList()
     );

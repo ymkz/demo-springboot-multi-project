@@ -1,12 +1,14 @@
 package dev.ymkz.demo.api.presenter;
 
+import static org.springframework.http.HttpHeaders.CONTENT_DISPOSITION;
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
-import dev.ymkz.demo.api.domain.CreateBookBody;
-import dev.ymkz.demo.api.domain.FindBookByIdResponse;
-import dev.ymkz.demo.api.domain.FindBooksQueryParam;
-import dev.ymkz.demo.api.domain.FindBooksResponse;
-import dev.ymkz.demo.api.domain.UpdateBookBody;
+import dev.ymkz.demo.api.dto.CreateBookBody;
+import dev.ymkz.demo.api.dto.FindBookByIdResponse;
+import dev.ymkz.demo.api.dto.SearchBooksQueryParam;
+import dev.ymkz.demo.api.dto.SearchBooksResponse;
+import dev.ymkz.demo.api.dto.UpdateBookBody;
+import dev.ymkz.demo.api.usecase.BookDownloadUsecase;
 import dev.ymkz.demo.api.usecase.BookSearchUsecase;
 import dev.ymkz.demo.core.domain.model.BookSearchQuery;
 import dev.ymkz.demo.core.domain.value.Isbn;
@@ -19,10 +21,11 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springdoc.core.annotations.ParameterObject;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ProblemDetail;
+import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -38,13 +41,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/books")
 @Tag(name = "Book")
 @RequiredArgsConstructor
-@Slf4j
 public class BookController {
 
   private final BookSearchUsecase bookSearchUsecase;
+  private final BookDownloadUsecase bookDownloadUsecase;
 
   @GetMapping(produces = APPLICATION_JSON_VALUE)
-  @Operation(operationId = "findBooks")
+  @Operation(operationId = "searchBooks")
   @ApiResponses(
     value = {
       @ApiResponse(responseCode = "200", description = "正常応答"),
@@ -60,9 +63,7 @@ public class BookController {
       ),
     }
   )
-  public FindBooksResponse findBooks(@ParameterObject FindBooksQueryParam queryParam) {
-    log.info("queryParam={}", queryParam);
-
+  public SearchBooksResponse searchBooks(@ParameterObject SearchBooksQueryParam queryParam) {
     var data = bookSearchUsecase.execute(
       new BookSearchQuery(
         Isbn.of(queryParam.isbn()),
@@ -76,10 +77,50 @@ public class BookController {
       )
     );
 
-    return FindBooksResponse.of(data);
+    return SearchBooksResponse.of(data);
   }
 
-  @GetMapping(value = "{id}", produces = APPLICATION_JSON_VALUE)
+  @GetMapping(path = "download", produces = "text/csv")
+  @Operation(operationId = "downloadBooks")
+  @ApiResponses(
+    value = {
+      @ApiResponse(responseCode = "200", description = "正常応答"),
+      @ApiResponse(
+        responseCode = "400",
+        description = "不正なリクエスト",
+        content = @Content(schema = @Schema(implementation = ProblemDetail.class))
+      ),
+      @ApiResponse(
+        responseCode = "500",
+        description = "サーバーエラー",
+        content = @Content(schema = @Schema(implementation = ProblemDetail.class))
+      ),
+    }
+  )
+  public ResponseEntity<byte[]> downloadBooks(@ParameterObject SearchBooksQueryParam queryParam) {
+    var data = bookDownloadUsecase.execute(
+      new BookSearchQuery(
+        Isbn.of(queryParam.isbn()),
+        queryParam.title(),
+        RangeInteger.of(queryParam.priceFrom(), queryParam.priceTo()),
+        queryParam.status(),
+        RangeTime.of(queryParam.publishedAtStart(), queryParam.publishedAtEnd()),
+        queryParam.order(),
+        queryParam.offset(),
+        queryParam.limit()
+      )
+    );
+
+    final var MEDIA_TYPE_TEXT_CSV = new MediaType("text", "csv");
+    final var CONTENT_DISPOSITION_VALUE = "attachment; filename=download.csv";
+
+    return ResponseEntity.ok()
+      .header(CONTENT_DISPOSITION, CONTENT_DISPOSITION_VALUE)
+      .contentType(MEDIA_TYPE_TEXT_CSV)
+      .body(data);
+  }
+
+  @GetMapping(path = "{id}", produces = APPLICATION_JSON_VALUE)
   @Operation(operationId = "findBookById")
   @ApiResponses(
     value = {
@@ -125,7 +166,7 @@ public class BookController {
   )
   public void createBook(@Validated @RequestBody CreateBookBody body) {}
 
-  @PatchMapping(value = "{id}", consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
+  @PatchMapping(path = "{id}", consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
   @Operation(operationId = "updateBook")
   @ApiResponses(
     value = {
@@ -149,7 +190,7 @@ public class BookController {
   )
   public void updateBook(@PathVariable long id, @RequestBody UpdateBookBody body) {}
 
-  @DeleteMapping(value = "{id}", produces = APPLICATION_JSON_VALUE)
+  @DeleteMapping(path = "{id}", produces = APPLICATION_JSON_VALUE)
   @ResponseStatus(HttpStatus.NO_CONTENT)
   @Operation(operationId = "deleteBook")
   @ApiResponses(

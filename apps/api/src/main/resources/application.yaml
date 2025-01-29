@@ -12,6 +12,9 @@ spring:
   mvc:
     problemdetails:
       enabled: true
+    contentnegotiation:
+      media-types:
+        csv: text/csv
   lifecycle:
     timeout-per-shutdown-phase: 20s
 server:

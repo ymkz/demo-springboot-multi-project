@@ -2,7 +2,7 @@
   "openapi": "3.1.0",
   "info": {
     "title": "API仕様書",
-    "version": "0.0.1"
+    "version": "1.0.0"
   },
   "servers": [
     {
@@ -16,7 +16,7 @@
         "tags": [
           "Book"
         ],
-        "operationId": "findBooks",
+        "operationId": "searchBooks",
         "parameters": [
           {
             "name": "isbn",
@@ -141,16 +141,6 @@
           }
         ],
         "responses": {
-          "500": {
-            "description": "サーバーエラー",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetail"
-                }
-              }
-            }
-          },
           "200": {
             "description": "正常応答",
             "content": {
@@ -163,6 +153,16 @@
           },
           "400": {
             "description": "不正なリクエスト",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "サーバーエラー",
             "content": {
               "application/json": {
                 "schema": {
@@ -189,15 +189,8 @@
           "required": true
         },
         "responses": {
-          "500": {
-            "description": "サーバーエラー",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetail"
-                }
-              }
-            }
+          "201": {
+            "description": "正常応答"
           },
           "400": {
             "description": "不正なリクエスト",
@@ -209,8 +202,15 @@
               }
             }
           },
-          "201": {
-            "description": "正常応答"
+          "500": {
+            "description": "サーバーエラー",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
           }
         }
       }
@@ -233,16 +233,6 @@
           }
         ],
         "responses": {
-          "500": {
-            "description": "サーバーエラー",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetail"
-                }
-              }
-            }
-          },
           "404": {
             "description": "存在しないリソース",
             "content": {
@@ -272,6 +262,16 @@
                 }
               }
             }
+          },
+          "500": {
+            "description": "サーバーエラー",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
           }
         }
       },
@@ -292,16 +292,6 @@
           }
         ],
         "responses": {
-          "500": {
-            "description": "サーバーエラー",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetail"
-                }
-              }
-            }
-          },
           "404": {
             "description": "存在しないリソース",
             "content": {
@@ -317,6 +307,16 @@
           },
           "400": {
             "description": "不正なリクエスト",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "サーバーエラー",
             "content": {
               "application/json": {
                 "schema": {
@@ -354,16 +354,6 @@
           "required": true
         },
         "responses": {
-          "500": {
-            "description": "サーバーエラー",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetail"
-                }
-              }
-            }
-          },
           "404": {
             "description": "存在しないリソース",
             "content": {
@@ -381,6 +371,180 @@
             "description": "不正なリクエスト",
             "content": {
               "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "サーバーエラー",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/books/download": {
+      "get": {
+        "tags": [
+          "Book"
+        ],
+        "operationId": "downloadBooks",
+        "parameters": [
+          {
+            "name": "isbn",
+            "in": "query",
+            "description": "ISBN-13:完全一致",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "example": 9784873115658
+          },
+          {
+            "name": "title",
+            "in": "query",
+            "description": "書籍タイトル:部分一致",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "priceFrom",
+            "in": "query",
+            "description": "価格:下限",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "minimum": 0
+            }
+          },
+          {
+            "name": "priceTo",
+            "in": "query",
+            "description": "価格:上限",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "minimum": 0
+            }
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "description": "ステータス",
+            "required": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "enum": [
+                  "UNPUBLISHED",
+                  "PUBLISHED",
+                  "OUT_OF_PRINT"
+                ]
+              }
+            }
+          },
+          {
+            "name": "publishedAtStart",
+            "in": "query",
+            "description": "出版日時:ISO8601:開始",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "example": "2025-01-23T01:23:45.000Z"
+          },
+          {
+            "name": "publishedAtEnd",
+            "in": "query",
+            "description": "出版日時:ISO8601:終了",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "example": "2025-01-23T01:23:45.000Z"
+          },
+          {
+            "name": "order",
+            "in": "query",
+            "description": "並び順",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "-published_at",
+              "enum": [
+                "+price",
+                "-price",
+                "+published_at",
+                "-published_at"
+              ]
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "description": "取得開始位置",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 0,
+              "minimum": 0
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "取得数",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 20,
+              "maximum": 100,
+              "minimum": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "正常応答",
+            "content": {
+              "text/csv": {
+                "schema": {
+                  "type": "string",
+                  "format": "byte"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "不正なリクエスト",
+            "content": {
+              "text/csv": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "サーバーエラー",
+            "content": {
+              "text/csv": {
                 "schema": {
                   "$ref": "#/components/schemas/ProblemDetail"
                 }
