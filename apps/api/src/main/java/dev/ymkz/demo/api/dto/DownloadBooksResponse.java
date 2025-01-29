@@ -2,7 +2,6 @@ package dev.ymkz.demo.api.dto;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import dev.ymkz.demo.core.domain.model.Book;
-import jakarta.annotation.Nullable;
 
 @JsonPropertyOrder(
   {
@@ -25,9 +24,9 @@ public record DownloadBooksResponse(
   long id,
   String isbn,
   String title,
-  @Nullable Integer price,
+  Integer price,
   String status,
-  @Nullable String publishedAt,
+  String publishedAt,
   int authorId,
   String authorName,
   int publisherId,
