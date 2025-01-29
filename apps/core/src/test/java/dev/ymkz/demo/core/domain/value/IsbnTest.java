@@ -5,16 +5,13 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import java.util.stream.Stream;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 
 public class IsbnTest {
-
-  @Test
-  void validIsbnShouldBeCreated() {
-    Isbn isbn = Isbn.of("9781234567897");
-    assertNotNull(isbn);
-    assertEquals("9781234567897", isbn.value());
-  }
 
   @Test
   void nullIsbnShouldReturnNull() {
@@ -22,20 +19,30 @@ public class IsbnTest {
     assertNull(isbn);
   }
 
-  @Test
-  void invalidIsbnShouldThrowException() {
-    assertThrows(IllegalArgumentException.class, () -> Isbn.of("123456789012"));
-    assertThrows(IllegalArgumentException.class, () -> Isbn.of("9781234567890"));
-    assertThrows(IllegalArgumentException.class, () -> Isbn.of("invalidisbn123"));
+  @ParameterizedTest
+  @MethodSource("validIsbnProvider")
+  void validIsbnShouldBeCreated(String isbnValue) {
+    Isbn isbn = Isbn.of(isbnValue);
+    assertNotNull(isbn);
+    assertEquals(isbnValue, isbn.value());
   }
 
-  @Test
-  void isbnWithInvalidChecksumShouldThrowException() {
-    assertThrows(IllegalArgumentException.class, () -> Isbn.of("9781234567890"));
+  static Stream<Arguments> validIsbnProvider() {
+    return Stream.of(Arguments.of("9784150310196"), Arguments.of("9784150117429"));
   }
 
-  @Test
-  void isbnWithNonDigitCharactersShouldThrowException() {
-    assertThrows(IllegalArgumentException.class, () -> Isbn.of("97812345678a7"));
+  @ParameterizedTest
+  @MethodSource("invalidIsbnProvider")
+  void invalidIsbnShouldThrowException(String isbnValue) {
+    assertThrows(IllegalArgumentException.class, () -> Isbn.of(isbnValue));
+  }
+
+  static Stream<Arguments> invalidIsbnProvider() {
+    return Stream.of(
+      Arguments.of("123456789012"),
+      Arguments.of("9781234567890"),
+      Arguments.of("invalidisbn123"),
+      Arguments.of("97812345678a7")
+    );
   }
 }
