@@ -88,12 +88,12 @@ public class BookController {
       @ApiResponse(
         responseCode = "400",
         description = "不正なリクエスト",
-        content = @Content(schema = @Schema(implementation = ProblemDetail.class))
+        content = @Content(schema = @Schema(implementation = ProblemDetail.class), mediaType = APPLICATION_JSON_VALUE)
       ),
       @ApiResponse(
         responseCode = "500",
         description = "サーバーエラー",
-        content = @Content(schema = @Schema(implementation = ProblemDetail.class))
+        content = @Content(schema = @Schema(implementation = ProblemDetail.class), mediaType = APPLICATION_JSON_VALUE)
       ),
     }
   )
