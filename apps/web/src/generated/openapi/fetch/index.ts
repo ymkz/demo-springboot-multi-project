@@ -8,14 +8,14 @@ import type {
   CreateBookBody,
   DownloadBooksParams,
   FindBookByIdResponse,
-  FindBooksResponse,
   ProblemDetail,
   SearchBooksParams,
+  SearchBooksResponse,
   UpdateBookBody,
 } from '../schema'
 
 export type searchBooksResponse = {
-  data: FindBooksResponse | ProblemDetail
+  data: SearchBooksResponse | ProblemDetail
   status: number
   headers: Headers
 }
@@ -40,7 +40,7 @@ export const searchBooks = async (params?: SearchBooksParams, options?: RequestI
     method: 'GET',
   })
 
-  const data: FindBooksResponse = [204, 205, 304].includes(res.status) || !res.body ? {} : await res.json()
+  const data: SearchBooksResponse = [204, 205, 304].includes(res.status) || !res.body ? {} : await res.json()
 
   return { status: res.status, data, headers: res.headers }
 }

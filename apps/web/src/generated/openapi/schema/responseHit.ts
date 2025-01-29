@@ -8,15 +8,15 @@ import type { ResponseHitStatus } from './responseHitStatus'
 
 export interface ResponseHit {
   /** 書籍ID */
-  id?: number
+  id: number
   /** ISBN-13 */
-  isbn?: string
+  isbn: string
   /** タイトル */
-  title?: string
+  title: string
   /** 価格 */
   price?: number
   /** ステータス */
-  status?: ResponseHitStatus
+  status: ResponseHitStatus
   /** 出版日時:ISO8601 */
   publishedAt?: string
   /** 著者ID */

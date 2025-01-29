@@ -7,9 +7,9 @@
 
 export interface ResponsePagination {
   /** 取得開始位置 */
-  offset?: number
+  offset: number
   /** 取得数 */
-  limit?: number
+  limit: number
   /** 検索ヒット総数 */
-  total?: number
+  total: number
 }
