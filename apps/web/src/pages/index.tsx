@@ -1,3 +1,4 @@
+import { stringify } from 'node:querystring'
 import type { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next'
 import { createLoader, parseAsInteger, parseAsIsoDateTime, parseAsString, parseAsStringLiteral } from 'nuqs/server'
 import { FindBooksOrder } from '../generated/openapi/schema'
@@ -22,6 +23,7 @@ export const getServerSideProps = async (context: GetServerSidePropsContext) => 
   return {
     props: {
       searchParams: context.query,
+      downloadUrl: `/api/books/download?${stringify(context.query)}`,
     },
   }
 }
@@ -31,6 +33,7 @@ export default function Page(props: InferGetServerSidePropsType<typeof getServer
     <>
       <h1>Page</h1>
       <div>{JSON.stringify(props.searchParams)}</div>
+      <a href={props.downloadUrl}>download</a>
     </>
   )
 }
