@@ -17,11 +17,11 @@
     "analyze": "knip"
   },
   "devDependencies": {
-    "@biomejs/biome": "1.9.4",
-    "knip": "5.43.6",
-    "orval": "7.4.1",
-    "prettier": "3.4.2",
-    "prettier-plugin-java": "2.6.7",
-    "typescript": "5.7.3"
+    "@biomejs/biome": "catalog:",
+    "knip": "catalog:",
+    "orval": "catalog:",
+    "prettier": "catalog:",
+    "prettier-plugin-java": "catalog:",
+    "typescript": "catalog:"
   }
 }
