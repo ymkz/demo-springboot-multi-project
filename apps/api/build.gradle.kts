@@ -27,22 +27,9 @@ repositories {
 dependencies {
   compileOnly(libs.lombok)
   annotationProcessor(libs.lombok)
-
   developmentOnly(libs.spring.boot.devtools)
-
-  implementation(libs.spring.boot.starter.web)
-  implementation(libs.spring.boot.starter.validation)
-  implementation(libs.spring.boot.starter.actuator)
-  implementation(libs.spring.boot.configuration.processor)
-  implementation(libs.mybatis.spring.boot.starter)
-  implementation(libs.micrometer.registry.prometheus)
-  implementation(libs.springdoc.openapi.starter.webmvc.ui)
-  implementation(libs.jackson.dataformat.csv)
-
-  testImplementation(libs.spring.boot.starter.test)
-  testImplementation(libs.mockito.junit.jupiter)
-  testImplementation(libs.rest.assured)
-  testRuntimeOnly(libs.junit.platform.launcher)
+  implementation(libs.bundles.api)
+  testImplementation(libs.bundles.test)
 
   implementation(project(":apps:core"))
 }

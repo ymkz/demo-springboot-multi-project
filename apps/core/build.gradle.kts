@@ -32,16 +32,8 @@ dependencyManagement {
 dependencies {
   compileOnly(libs.lombok)
   annotationProcessor(libs.lombok)
-
-  implementation(libs.spring.boot.starter.web)
-  implementation(libs.spring.boot.starter.validation)
-  implementation(libs.spring.boot.configuration.processor)
-  implementation(libs.mybatis.spring.boot.starter)
-  implementation(libs.mysql.connector.j)
-
-  testImplementation(libs.spring.boot.starter.test)
-  testImplementation(libs.mockito.junit.jupiter)
-  testRuntimeOnly(libs.junit.platform.launcher)
+  implementation(libs.bundles.core)
+  testImplementation(libs.bundles.test)
 }
 
 tasks.compileJava {

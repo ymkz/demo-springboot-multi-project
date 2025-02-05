@@ -33,6 +33,31 @@ mockito-junit-jupiter = { group = "org.mockito", name = "mockito-junit-jupiter",
 rest-assured = { group = "io.rest-assured", name = "rest-assured", version.ref = "rest-assured" }
 junit-platform-launcher = { group = "org.junit.platform", name = "junit-platform-launcher", version.ref = "junit-platform-launcher" }
 
+[bundles]
+api = [
+  "spring-boot-starter-web",
+  "spring-boot-starter-validation",
+  "spring-boot-starter-actuator",
+  "spring-boot-configuration-processor",
+  "mybatis-spring-boot-starter",
+  "micrometer-registry-prometheus",
+  "springdoc-openapi-starter-webmvc-ui",
+  "jackson-dataformat-csv",
+]
+core = [
+  "spring-boot-starter-web",
+  "spring-boot-starter-validation",
+  "spring-boot-configuration-processor",
+  "mybatis-spring-boot-starter",
+  "mysql-connector-j",
+]
+test = [
+  "spring-boot-starter-test",
+  "mockito-junit-jupiter",
+  "rest-assured",
+  "junit-platform-launcher",
+]
+
 [plugins]
 spring-boot = { id = "org.springframework.boot", version.ref = "spring-boot-plugin" }
 spring-dependency-management = { id = "io.spring.dependency-management", version.ref = "spring-dependency-management-plugin" }
