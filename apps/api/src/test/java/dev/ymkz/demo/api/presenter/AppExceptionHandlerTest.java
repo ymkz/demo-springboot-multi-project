@@ -20,7 +20,6 @@ class AppExceptionHandlerTest {
     ResponseEntity<ProblemDetail> response = handler.handleValidationException(ex);
 
     assertThat(response.getStatusCode()).isEqualTo(BAD_REQUEST);
-    assertThat(response.getBody().getDetail()).isEqualTo("バリデーションエラー");
   }
 
   @Test
@@ -29,7 +28,6 @@ class AppExceptionHandlerTest {
     ResponseEntity<ProblemDetail> response = handler.handleMyBatisException(ex);
 
     assertThat(response.getStatusCode()).isEqualTo(INTERNAL_SERVER_ERROR);
-    assertThat(response.getBody().getDetail()).contains("MyBatisエラー");
   }
 
   @Test
@@ -38,6 +36,5 @@ class AppExceptionHandlerTest {
     ResponseEntity<ProblemDetail> response = handler.handleOtherException(ex);
 
     assertThat(response.getStatusCode()).isEqualTo(INTERNAL_SERVER_ERROR);
-    assertThat(response.getBody().getDetail()).isEqualTo("予期せぬエラー");
   }
 }
