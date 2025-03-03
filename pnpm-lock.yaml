@@ -10,8 +10,8 @@ catalogs:
       specifier: 1.9.4
       version: 1.9.4
     '@types/node':
-      specifier: 22.13.0
-      version: 22.13.0
+      specifier: 22.13.9
+      version: 22.13.9
     knip:
       specifier: 5.43.6
       version: 5.43.6
@@ -59,7 +59,7 @@ importers:
         version: 1.9.4
       knip:
         specifier: 'catalog:'
-        version: 5.43.6(@types/node@22.13.4)(typescript@5.7.3)
+        version: 5.43.6(@types/node@22.13.9)(typescript@5.7.3)
       orval:
         specifier: 'catalog:'
         version: 7.4.1(openapi-types@12.1.3)
@@ -93,7 +93,7 @@ importers:
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
-        version: 22.13.0
+        version: 22.13.9
       '@types/react':
         specifier: catalog:web
         version: 19.0.8
@@ -699,11 +699,11 @@ packages:
   '@types/mdast@4.0.4':
     resolution: {integrity: sha512-kGaNbPh1k7AFzgpud/gMdvIm5xuECykRR+JnWKQno9TAXVa6WIVCGTPvYGekIDL4uwCZQSYbUxNBSb1aUo79oA==}
 
-  '@types/node@22.13.0':
-    resolution: {integrity: sha512-ClIbNe36lawluuvq3+YYhnIN2CELi+6q8NpnM7PYp4hBn/TatfboPgVSm2rwKRfnV2M+Ty9GWDFI64KEe+kysA==}
-
   '@types/node@22.13.4':
     resolution: {integrity: sha512-ywP2X0DYtX3y08eFVx5fNIw7/uIv8hYUKgXoK8oayJlLnKcRfEYCxWMVE1XagUdVtCJlZT1AU4LXEABW+L1Peg==}
+
+  '@types/node@22.13.9':
+    resolution: {integrity: sha512-acBjXdRJ3A6Pb3tqnw9HZmyR3Fiol3aGxRCK1x3d+6CDAMjl7I649wpSd+yNURCjbOUGu9tqtLKnTGxmK6CyGw==}
 
   '@types/react-dom@19.0.3':
     resolution: {integrity: sha512-0Knk+HJiMP/qOZgMyNFamlIjw9OFCsyC2ZbigmEEyXXixgre6IQpm/4V+r3qH4GC1JPvRJKInw+on2rV6YZLeA==}
@@ -2692,11 +2692,11 @@ snapshots:
     dependencies:
       '@types/unist': 3.0.3
 
-  '@types/node@22.13.0':
+  '@types/node@22.13.4':
     dependencies:
       undici-types: 6.20.0
 
-  '@types/node@22.13.4':
+  '@types/node@22.13.9':
     dependencies:
       undici-types: 6.20.0
 
@@ -3421,11 +3421,11 @@ snapshots:
 
   jsonschema@1.5.0: {}
 
-  knip@5.43.6(@types/node@22.13.4)(typescript@5.7.3):
+  knip@5.43.6(@types/node@22.13.9)(typescript@5.7.3):
     dependencies:
       '@nodelib/fs.walk': 3.0.1
       '@snyk/github-codeowners': 1.1.0
-      '@types/node': 22.13.4
+      '@types/node': 22.13.9
       easy-table: 1.2.0
       enhanced-resolve: 5.18.1
       fast-glob: 3.3.3
