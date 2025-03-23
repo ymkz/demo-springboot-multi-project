@@ -1,7 +1,7 @@
 services:
   demo-db:
     container_name: demo-db
-    image: mysql:9.1
+    image: mysql:9.2
     restart: always
     ports:
       - 3306:3306
