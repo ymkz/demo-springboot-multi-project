@@ -8,7 +8,7 @@ springdoc-webmvc-ui = "2.8.4" # https://mvnrepository.com/artifact/org.springdoc
 mockito = "5.15.2" # https://mvnrepository.com/artifact/org.mockito/mockito-junit-jupiter
 rest-assured = "5.5.0" # https://mvnrepository.com/artifact/io.rest-assured/rest-assured
 junit-platform-launcher = "1.11.4" # https://mvnrepository.com/artifact/org.junit.platform/junit-platform-launcher
-jackson = "2.18.2" # https://mvnrepository.com/artifact/com.fasterxml.jackson.dataformat/jackson-dataformat-csv
+jackson = "2.18.3" # https://mvnrepository.com/artifact/com.fasterxml.jackson.dataformat/jackson-dataformat-csv
 
 spring-boot-plugin = "3.4.2" # https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-gradle-plugin
 spring-dependency-management-plugin = "1.1.7" # https://mvnrepository.com/artifact/io.spring.gradle/dependency-management-plugin
