@@ -1,5 +1,5 @@
 [versions]
-lombok = "1.18.36" # https://mvnrepository.com/artifact/org.projectlombok/lombok
+lombok = "1.18.38" # https://mvnrepository.com/artifact/org.projectlombok/lombok
 
 mybatis = "3.0.4" # https://mvnrepository.com/artifact/org.mybatis.spring.boot/mybatis-spring-boot-starter
 mysql = "9.2.0" # https://mvnrepository.com/artifact/com.mysql/mysql-connector-j
