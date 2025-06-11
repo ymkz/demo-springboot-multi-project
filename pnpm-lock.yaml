@@ -22,8 +22,8 @@ catalogs:
       specifier: 3.5.3
       version: 3.5.3
     prettier-plugin-java:
-      specifier: 2.6.7
-      version: 2.6.7
+      specifier: 2.6.8
+      version: 2.6.8
     typescript:
       specifier: 5.8.3
       version: 5.8.3
@@ -68,7 +68,7 @@ importers:
         version: 3.5.3
       prettier-plugin-java:
         specifier: 'catalog:'
-        version: 2.6.7(prettier@3.5.3)
+        version: 2.6.8(prettier@3.5.3)
       typescript:
         specifier: 'catalog:'
         version: 5.8.3
@@ -1299,8 +1299,8 @@ packages:
   isexe@2.0.0:
     resolution: {integrity: sha512-RHxMLp9lnKHGHRng9QFhRCMbYAcVpn69smSGcq3f36xjgVVWThj4qqLbTLlq7Ssj8B+fIQ1EuCEGI2lKsyQeIw==}
 
-  java-parser@2.3.3:
-    resolution: {integrity: sha512-9YY8OGlNGfq5TDDq2SBjtIEHMVLeV8vSSZrXDaQBhQ84hi1zc3/+5l3DF3wW8JGqQT2kNVha05dziSamvN8M/g==}
+  java-parser@2.3.4:
+    resolution: {integrity: sha512-5fnUDL2AUYX7gs6YlfyVmvq+bFL+HlSBE+MdPdUsfaE898KObdu9aafJCKTJIzXi2IF+P/RiCA5kvGc0msxhYA==}
 
   jiti@2.4.2:
     resolution: {integrity: sha512-rg9zJN+G4n2nfJl5MW3BMygZX56zKPNVEYYqq7adpmMh4Jn2QNEwhvQlFy6jPVdcod7txZtKHWnyZiA3a0zP7A==}
@@ -1597,8 +1597,8 @@ packages:
     resolution: {integrity: sha512-PS08Iboia9mts/2ygV3eLpY5ghnUcfLV/EXTOW1E2qYxJKGGBUtNjN76FYHnMs36RmARn41bC0AZmn+rR0OVpQ==}
     engines: {node: ^10 || ^12 || >=14}
 
-  prettier-plugin-java@2.6.7:
-    resolution: {integrity: sha512-AVm+X7fhAZpYKiUCdUIGZ8HJbkGkTUgYQIKVuCQEplcqpGw2ewVnNGcPb1Kc3+MYMfiEqzhd8ZYhMGVHw6tZdQ==}
+  prettier-plugin-java@2.6.8:
+    resolution: {integrity: sha512-bHfkGld8uRlCiEy//nqJmD4RAzMEZNZW+hZ+8Lo89CaKtBa6ZL8OkkKZKlp1/OwcpcePsRYOUhh/YlQ8QeJHfw==}
     peerDependencies:
       prettier: ^3.0.0
 
@@ -3283,7 +3283,7 @@ snapshots:
 
   isexe@2.0.0: {}
 
-  java-parser@2.3.3:
+  java-parser@2.3.4:
     dependencies:
       chevrotain: 11.0.3
       chevrotain-allstar: 0.3.1(chevrotain@11.0.3)
@@ -3612,9 +3612,9 @@ snapshots:
       picocolors: 1.1.1
       source-map-js: 1.2.1
 
-  prettier-plugin-java@2.6.7(prettier@3.5.3):
+  prettier-plugin-java@2.6.8(prettier@3.5.3):
     dependencies:
-      java-parser: 2.3.3
+      java-parser: 2.3.4
       lodash: 4.17.21
       prettier: 3.5.3
 
