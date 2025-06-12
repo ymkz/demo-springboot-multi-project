@@ -3,13 +3,13 @@ packages:
 catalog:
   "@biomejs/biome": 1.9.4
   "@types/node": 22.15.29
-  "@vitest/coverage-v8": 3.2.1
+  "@vitest/coverage-v8": 3.2.2
   "knip": 5.60.0
   "orval": 7.9.0
   "prettier": 3.5.3
   "prettier-plugin-java": 2.6.8
   "typescript": 5.8.3
-  "vitest": 3.2.1
+  "vitest": 3.2.2
 catalogs:
   web:
     "httpxy": 0.1.7
