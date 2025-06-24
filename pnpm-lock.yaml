@@ -13,8 +13,8 @@ catalogs:
       specifier: 22.15.32
       version: 22.15.32
     knip:
-      specifier: 5.61.0
-      version: 5.61.0
+      specifier: 5.61.1
+      version: 5.61.1
     orval:
       specifier: 7.10.0
       version: 7.10.0
@@ -59,7 +59,7 @@ importers:
         version: 1.9.4
       knip:
         specifier: 'catalog:'
-        version: 5.61.0(@types/node@22.15.32)(typescript@5.8.3)
+        version: 5.61.1(@types/node@22.15.32)(typescript@5.8.3)
       orval:
         specifier: 'catalog:'
         version: 7.10.0(openapi-types@12.1.3)
@@ -1335,8 +1335,8 @@ packages:
   jsonschema@1.5.0:
     resolution: {integrity: sha512-K+A9hhqbn0f3pJX17Q/7H6yQfD/5OXgdrR5UE12gMXCiN9D5Xq2o5mddV2QEcX/bjla99ASsAAQUyMCCRWAEhw==}
 
-  knip@5.61.0:
-    resolution: {integrity: sha512-g4zwSPUoSCWXWTHshNgtsiuM90jnLpZyBZ6J7BQaydfoOjclgh4NfrD7BL+TjChgDbeYg5bEQcERKK/vdJlpmA==}
+  knip@5.61.1:
+    resolution: {integrity: sha512-keywAzpu8R9S50JRT3qxilb1i/pv3ztBHhZ3tRuHvRclqfhfPkY7kb/G6l4q7zozbyndidSr7IScvayG76HtkA==}
     engines: {node: '>=18.18.0'}
     hasBin: true
     peerDependencies:
@@ -3318,7 +3318,7 @@ snapshots:
 
   jsonschema@1.5.0: {}
 
-  knip@5.61.0(@types/node@22.15.32)(typescript@5.8.3):
+  knip@5.61.1(@types/node@22.15.32)(typescript@5.8.3):
     dependencies:
       '@nodelib/fs.walk': 1.2.8
       '@types/node': 22.15.32
