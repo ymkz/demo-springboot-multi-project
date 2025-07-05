@@ -10,8 +10,8 @@ catalogs:
       specifier: 1.9.4
       version: 1.9.4
     '@types/node':
-      specifier: 22.15.33
-      version: 22.15.33
+      specifier: 22.15.34
+      version: 22.15.34
     knip:
       specifier: 5.61.2
       version: 5.61.2
@@ -59,7 +59,7 @@ importers:
         version: 1.9.4
       knip:
         specifier: 'catalog:'
-        version: 5.61.2(@types/node@22.15.33)(typescript@5.8.3)
+        version: 5.61.2(@types/node@22.15.34)(typescript@5.8.3)
       orval:
         specifier: 'catalog:'
         version: 7.10.0(openapi-types@12.1.3)
@@ -93,7 +93,7 @@ importers:
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
-        version: 22.15.33
+        version: 22.15.34
       '@types/react':
         specifier: catalog:web
         version: 19.1.8
@@ -761,11 +761,11 @@ packages:
   '@types/json-schema@7.0.15':
     resolution: {integrity: sha512-5+fP8P8MFNC+AyZCDxrB2pkZFPGzqQWUzpSeuuVLvm8VMcorNYavBqoFcxK8bQz4Qsbn4oUEEem4wDLfcysGHA==}
 
-  '@types/node@22.15.32':
-    resolution: {integrity: sha512-3jigKqgSjsH6gYZv2nEsqdXfZqIFGAV36XYYjf9KGZ3PSG+IhLecqPnI310RvjutyMwifE2hhhNEklOUrvx/wA==}
-
   '@types/node@22.15.33':
     resolution: {integrity: sha512-wzoocdnnpSxZ+6CjW4ADCK1jVmd1S/J3ArNWfn8FDDQtRm8dkDg7TA+mvek2wNrfCgwuZxqEOiB9B1XCJ6+dbw==}
+
+  '@types/node@22.15.34':
+    resolution: {integrity: sha512-8Y6E5WUupYy1Dd0II32BsWAx5MWdcnRd8L84Oys3veg1YrYtNtzgO4CFhiBg6MDSjk7Ay36HYOnU7/tuOzIzcw==}
 
   '@types/react-dom@19.1.6':
     resolution: {integrity: sha512-4hOiT/dwO8Ko0gV1m/TJZYk3y0KBnY9vzDh7W+DH17b2HFSOGgdj33dhihPeuy3l0q23+4e+hoXHV6hCC4dCXw==}
@@ -2641,7 +2641,7 @@ snapshots:
 
   '@types/es-aggregate-error@1.0.6':
     dependencies:
-      '@types/node': 22.15.32
+      '@types/node': 22.15.33
 
   '@types/hast@3.0.4':
     dependencies:
@@ -2649,11 +2649,11 @@ snapshots:
 
   '@types/json-schema@7.0.15': {}
 
-  '@types/node@22.15.32':
+  '@types/node@22.15.33':
     dependencies:
       undici-types: 6.21.0
 
-  '@types/node@22.15.33':
+  '@types/node@22.15.34':
     dependencies:
       undici-types: 6.21.0
 
@@ -3318,10 +3318,10 @@ snapshots:
 
   jsonschema@1.5.0: {}
 
-  knip@5.61.2(@types/node@22.15.33)(typescript@5.8.3):
+  knip@5.61.2(@types/node@22.15.34)(typescript@5.8.3):
     dependencies:
       '@nodelib/fs.walk': 1.2.8
-      '@types/node': 22.15.33
+      '@types/node': 22.15.34
       fast-glob: 3.3.3
       formatly: 0.2.4
       jiti: 2.4.2
