@@ -7,7 +7,7 @@ micrometer = "1.15.2" # https://mvnrepository.com/artifact/io.micrometer/microme
 springdoc-webmvc-ui = "2.8.9" # https://mvnrepository.com/artifact/org.springdoc/springdoc-openapi-starter-webmvc-ui
 mockito = "5.18.0" # https://mvnrepository.com/artifact/org.mockito/mockito-junit-jupiter
 rest-assured = "5.5.5" # https://mvnrepository.com/artifact/io.rest-assured/rest-assured
-junit-platform-launcher = "1.11.4" # https://mvnrepository.com/artifact/org.junit.platform/junit-platform-launcher
+junit-platform-launcher = "1.13.3" # https://mvnrepository.com/artifact/org.junit.platform/junit-platform-launcher
 jackson = "2.19.1" # https://mvnrepository.com/artifact/com.fasterxml.jackson.dataformat/jackson-dataformat-csv
 
 spring-boot-plugin = "3.4.3" # https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-gradle-plugin
