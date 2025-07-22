@@ -10,7 +10,7 @@ rest-assured = "5.5.5" # https://mvnrepository.com/artifact/io.rest-assured/rest
 junit-platform-launcher = "1.11.4" # https://mvnrepository.com/artifact/org.junit.platform/junit-platform-launcher
 jackson = "2.19.1" # https://mvnrepository.com/artifact/com.fasterxml.jackson.dataformat/jackson-dataformat-csv
 
-spring-boot-plugin = "3.4.3" # https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-gradle-plugin
+spring-boot-plugin = "3.5.3" # https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-gradle-plugin
 spring-dependency-management-plugin = "1.1.7" # https://mvnrepository.com/artifact/io.spring.gradle/dependency-management-plugin
 springdoc-plugin = "1.9.0" # https://mvnrepository.com/artifact/org.springdoc.openapi-gradle-plugin/org.springdoc.openapi-gradle-plugin.gradle.plugin
 
