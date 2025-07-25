@@ -3,6 +3,7 @@
   "prettier.enable": true,
   "typescript.preferences.importModuleSpecifier": "shortest",
   "typescript.tsdk": "./node_modules/typescript/lib",
+  "java.autobuild.enabled": false,
   "java.compile.nullAnalysis.mode": "automatic",
   "java.configuration.updateBuildConfiguration": "automatic",
   "java.completion.importOrder": ["#"],
