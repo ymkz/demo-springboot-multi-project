@@ -45,6 +45,6 @@ management:
     port: 8081
 springdoc:
   api-docs:
-    enabled: false
+    path: /spec/openapi.json
   swagger-ui:
-    enabled: false
+    path: /spec

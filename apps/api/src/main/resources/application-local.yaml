@@ -8,8 +8,3 @@ spring:
   devtools:
     restart:
       enabled: true
-springdoc:
-  api-docs:
-    path: /spec/openapi.json
-  swagger-ui:
-    path: /spec

@@ -1,8 +1,8 @@
-.gradle
-.next
-build
-coverage
-dist
-node_modules
+.gradle/
+.next/
+build/
+coverage/
+dist/
+node_modules/
 next-env.d.ts
 tsconfig.tsbuildinfo
