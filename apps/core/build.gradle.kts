@@ -1,7 +1,6 @@
 plugins {
   java
   alias(libs.plugins.spring.boot) apply false
-  alias(libs.plugins.spring.dependency.management)
 }
 
 group = "dev.ymkz"
@@ -23,13 +22,10 @@ repositories {
   mavenCentral()
 }
 
-dependencyManagement {
-  imports {
-    mavenBom(org.springframework.boot.gradle.plugin.SpringBootPlugin.BOM_COORDINATES)
-  }
-}
-
 dependencies {
+  implementation(platform(libs.springboot.bom))
+  implementation(platform(libs.junit.bom))
+
   compileOnly(libs.lombok)
   annotationProcessor(libs.lombok)
   implementation(libs.bundles.core)
@@ -50,11 +46,11 @@ tasks.withType<Test> {
 }
 
 tasks.register<Exec>("prettierCheck") {
-  commandLine("pnpx", "prettier", "--check", "src/**/*.java")
+  commandLine("pnpm", "prettier", "--check", "**/src/**/*.java")
 }
 
 tasks.register<Exec>("prettierWrite") {
-  commandLine("pnpx", "prettier", "--write", "src/**/*.java")
+  commandLine("pnpm", "prettier", "--write", "**/src/**/*.java")
 }
 
 tasks.named("check") {

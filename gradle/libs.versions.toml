@@ -1,37 +1,39 @@
 [versions]
-lombok = "1.18.38" # https://mvnrepository.com/artifact/org.projectlombok/lombok
+springboot-bom = "3.5.4" # https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-dependencies
+junit-bom = "5.13.4" # https://mvnrepository.com/artifact/org.junit/junit-bom
 
+springboot-plugin = "3.5.4" # https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-gradle-plugin
+springdoc-plugin = "1.9.0" # https://mvnrepository.com/artifact/org.springdoc.openapi-gradle-plugin/org.springdoc.openapi-gradle-plugin.gradle.plugin
+
+lombok = "1.18.38" # https://mvnrepository.com/artifact/org.projectlombok/lombok
 mybatis = "3.0.5" # https://mvnrepository.com/artifact/org.mybatis.spring.boot/mybatis-spring-boot-starter
 mysql = "9.3.0" # https://mvnrepository.com/artifact/com.mysql/mysql-connector-j
 micrometer = "1.15.2" # https://mvnrepository.com/artifact/io.micrometer/micrometer-registry-prometheus
 springdoc-webmvc-ui = "2.8.9" # https://mvnrepository.com/artifact/org.springdoc/springdoc-openapi-starter-webmvc-ui
 mockito = "5.18.0" # https://mvnrepository.com/artifact/org.mockito/mockito-junit-jupiter
 rest-assured = "5.5.5" # https://mvnrepository.com/artifact/io.rest-assured/rest-assured
-junit-platform-launcher = "1.11.4" # https://mvnrepository.com/artifact/org.junit.platform/junit-platform-launcher
-jackson = "2.19.1" # https://mvnrepository.com/artifact/com.fasterxml.jackson.dataformat/jackson-dataformat-csv
-
-spring-boot-plugin = "3.4.3" # https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-gradle-plugin
-spring-dependency-management-plugin = "1.1.7" # https://mvnrepository.com/artifact/io.spring.gradle/dependency-management-plugin
-springdoc-plugin = "1.9.0" # https://mvnrepository.com/artifact/org.springdoc.openapi-gradle-plugin/org.springdoc.openapi-gradle-plugin.gradle.plugin
+jackson = "2.19.2" # https://mvnrepository.com/artifact/com.fasterxml.jackson.dataformat/jackson-dataformat-csv
 
 [libraries]
-lombok = { group = "org.projectlombok", name = "lombok", version.ref = "lombok" }
-spring-boot-devtools = { group = "org.springframework.boot", name = "spring-boot-devtools" }
+springboot-bom = { group = "org.springframework.boot", name = "spring-boot-dependencies", version.ref = "springboot-bom" }
+junit-bom = { group = "org.junit", name = "junit-bom", version.ref = "junit-bom" }
 
-spring-boot-starter-web = { group = "org.springframework.boot", name = "spring-boot-starter-web" }
-spring-boot-starter-validation = { group = "org.springframework.boot", name = "spring-boot-starter-validation" }
-spring-boot-starter-actuator = { group = "org.springframework.boot", name = "spring-boot-starter-actuator" }
-spring-boot-configuration-processor = { group = "org.springframework.boot", name = "spring-boot-configuration-processor" }
+spring-boot-devtools = { group = "org.springframework.boot", name = "spring-boot-devtools" } # managed by springboot-bom
+spring-boot-starter-web = { group = "org.springframework.boot", name = "spring-boot-starter-web" } # managed by springboot-bom
+spring-boot-starter-validation = { group = "org.springframework.boot", name = "spring-boot-starter-validation" } # managed by springboot-bom
+spring-boot-starter-actuator = { group = "org.springframework.boot", name = "spring-boot-starter-actuator" } # managed by springboot-bom
+spring-boot-configuration-processor = { group = "org.springframework.boot", name = "spring-boot-configuration-processor" } # managed by springboot-bom
 mybatis-spring-boot-starter = { group = "org.mybatis.spring.boot", name = "mybatis-spring-boot-starter", version.ref = "mybatis" }
 mysql-connector-j = { group = "com.mysql", name = "mysql-connector-j", version.ref = "mysql" }
 micrometer-registry-prometheus = { group = "io.micrometer", name = "micrometer-registry-prometheus", version.ref = "micrometer" }
 springdoc-openapi-starter-webmvc-ui = { group = "org.springdoc", name = "springdoc-openapi-starter-webmvc-ui", version.ref = "springdoc-webmvc-ui" }
 jackson-dataformat-csv = { group = "com.fasterxml.jackson.dataformat", name = "jackson-dataformat-csv", version.ref = "jackson" }
+lombok = { group = "org.projectlombok", name = "lombok", version.ref = "lombok" }
 
-spring-boot-starter-test = { group = "org.springframework.boot", name = "spring-boot-starter-test" }
+spring-boot-starter-test = { group = "org.springframework.boot", name = "spring-boot-starter-test" } # managed by springboot-bom
+junit-platform-launcher = { group = "org.junit.platform", name = "junit-platform-launcher" } # managed by junit-bom
 mockito-junit-jupiter = { group = "org.mockito", name = "mockito-junit-jupiter", version.ref = "mockito" }
 rest-assured = { group = "io.rest-assured", name = "rest-assured", version.ref = "rest-assured" }
-junit-platform-launcher = { group = "org.junit.platform", name = "junit-platform-launcher", version.ref = "junit-platform-launcher" }
 
 [bundles]
 api = [
@@ -59,6 +61,5 @@ test = [
 ]
 
 [plugins]
-spring-boot = { id = "org.springframework.boot", version.ref = "spring-boot-plugin" }
-spring-dependency-management = { id = "io.spring.dependency-management", version.ref = "spring-dependency-management-plugin" }
+spring-boot = { id = "org.springframework.boot", version.ref = "springboot-plugin" }
 springdoc-openapi = { id = "org.springdoc.openapi-gradle-plugin", version.ref = "springdoc-plugin" }

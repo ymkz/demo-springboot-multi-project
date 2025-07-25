@@ -1,7 +1,6 @@
 plugins {
   java
   alias(libs.plugins.spring.boot)
-  alias(libs.plugins.spring.dependency.management)
   alias(libs.plugins.springdoc.openapi)
 }
 
@@ -25,9 +24,12 @@ repositories {
 }
 
 dependencies {
+  implementation(platform(libs.springboot.bom))
+  implementation(platform(libs.junit.bom))
+
   compileOnly(libs.lombok)
   annotationProcessor(libs.lombok)
-  developmentOnly(libs.spring.boot.devtools)
+  runtimeOnly(libs.spring.boot.devtools)
   implementation(libs.bundles.api)
   testImplementation(libs.bundles.test)
 
@@ -53,11 +55,11 @@ openApi {
 }
 
 tasks.register<Exec>("prettierCheck") {
-  commandLine("pnpx", "prettier", "--check", "src/**/*.java")
+  commandLine("pnpm", "prettier", "--check", "**/src/**/*.java")
 }
 
 tasks.register<Exec>("prettierWrite") {
-  commandLine("pnpx", "prettier", "--write", "src/**/*.java")
+  commandLine("pnpm", "prettier", "--write", "**/src/**/*.java")
 }
 
 tasks.named("check") {
