@@ -1,7 +1,7 @@
 package dev.ymkz.demo.core.domain.model;
 
-import dev.ymkz.demo.core.domain.value.BookStatus;
-import dev.ymkz.demo.core.domain.value.Isbn;
+import dev.ymkz.demo.core.domain.valueobject.BookStatus;
+import dev.ymkz.demo.core.domain.valueobject.Isbn;
 import jakarta.annotation.Nullable;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.PositiveOrZero;

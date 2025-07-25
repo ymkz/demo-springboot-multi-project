@@ -142,7 +142,7 @@
         ],
         "responses": {
           "200": {
-            "description": "正常応答",
+            "description": "成功",
             "content": {
               "application/json": {
                 "schema": {
@@ -162,7 +162,7 @@
             }
           },
           "500": {
-            "description": "サーバーエラー",
+            "description": "アプリケーションエラー",
             "content": {
               "application/json": {
                 "schema": {
@@ -190,7 +190,7 @@
         },
         "responses": {
           "201": {
-            "description": "正常応答"
+            "description": "成功"
           },
           "400": {
             "description": "不正なリクエスト",
@@ -203,7 +203,7 @@
             }
           },
           "500": {
-            "description": "サーバーエラー",
+            "description": "アプリケーションエラー",
             "content": {
               "application/json": {
                 "schema": {
@@ -234,7 +234,7 @@
         ],
         "responses": {
           "200": {
-            "description": "正常応答",
+            "description": "成功",
             "content": {
               "application/json": {
                 "schema": {
@@ -264,7 +264,7 @@
             }
           },
           "500": {
-            "description": "サーバーエラー",
+            "description": "アプリケーションエラー",
             "content": {
               "application/json": {
                 "schema": {
@@ -293,7 +293,7 @@
         ],
         "responses": {
           "204": {
-            "description": "正常応答"
+            "description": "成功"
           },
           "400": {
             "description": "不正なリクエスト",
@@ -316,7 +316,7 @@
             }
           },
           "500": {
-            "description": "サーバーエラー",
+            "description": "アプリケーションエラー",
             "content": {
               "application/json": {
                 "schema": {
@@ -355,7 +355,7 @@
         },
         "responses": {
           "200": {
-            "description": "正常応答"
+            "description": "成功"
           },
           "400": {
             "description": "不正なリクエスト",
@@ -378,7 +378,7 @@
             }
           },
           "500": {
-            "description": "サーバーエラー",
+            "description": "アプリケーションエラー",
             "content": {
               "application/json": {
                 "schema": {
@@ -521,7 +521,7 @@
         ],
         "responses": {
           "200": {
-            "description": "正常応答",
+            "description": "成功",
             "content": {
               "text/csv": {
                 "schema": {
@@ -542,7 +542,7 @@
             }
           },
           "500": {
-            "description": "サーバーエラー",
+            "description": "アプリケーションエラー",
             "content": {
               "application/json": {
                 "schema": {
@@ -850,6 +850,13 @@
           "status",
           "title"
         ]
+      }
+    },
+    "securitySchemes": {
+      "ApiKeyAuth": {
+        "type": "apiKey",
+        "name": "ApiKeyAuth",
+        "in": "header"
       }
     }
   }

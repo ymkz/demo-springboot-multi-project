@@ -1,8 +1,8 @@
-package dev.ymkz.demo.api.dto;
+package dev.ymkz.demo.api.presentation.dto;
 
 import dev.ymkz.demo.core.domain.model.Book;
-import dev.ymkz.demo.core.domain.value.BookStatus;
-import dev.ymkz.demo.core.domain.value.Pagination;
+import dev.ymkz.demo.core.domain.valueobject.BookStatus;
+import dev.ymkz.demo.core.domain.valueobject.Pagination;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotNull;
 import java.time.LocalDateTime;

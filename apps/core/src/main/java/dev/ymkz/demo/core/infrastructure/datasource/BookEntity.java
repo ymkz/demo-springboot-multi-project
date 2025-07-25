@@ -1,8 +1,8 @@
-package dev.ymkz.demo.core.gateway.datasource;
+package dev.ymkz.demo.core.infrastructure.datasource;
 
 import dev.ymkz.demo.core.domain.model.Book;
-import dev.ymkz.demo.core.domain.value.BookStatus;
-import dev.ymkz.demo.core.domain.value.Isbn;
+import dev.ymkz.demo.core.domain.valueobject.BookStatus;
+import dev.ymkz.demo.core.domain.valueobject.Isbn;
 import jakarta.annotation.Nullable;
 import java.time.LocalDateTime;
 

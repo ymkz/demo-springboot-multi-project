@@ -1,6 +1,6 @@
-package dev.ymkz.demo.api.dto;
+package dev.ymkz.demo.api.presentation.dto;
 
-import dev.ymkz.demo.core.domain.value.BookStatus;
+import dev.ymkz.demo.core.domain.valueobject.BookStatus;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;

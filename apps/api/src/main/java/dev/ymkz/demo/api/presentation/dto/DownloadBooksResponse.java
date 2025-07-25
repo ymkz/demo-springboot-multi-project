@@ -1,4 +1,4 @@
-package dev.ymkz.demo.api.dto;
+package dev.ymkz.demo.api.presentation.dto;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import dev.ymkz.demo.core.domain.model.Book;

@@ -1,4 +1,4 @@
-package dev.ymkz.demo.core.domain.value;
+package dev.ymkz.demo.core.domain.valueobject;
 
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;

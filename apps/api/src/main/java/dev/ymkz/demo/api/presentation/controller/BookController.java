@@ -1,19 +1,19 @@
-package dev.ymkz.demo.api.presenter;
+package dev.ymkz.demo.api.presentation.controller;
 
 import static org.springframework.http.HttpHeaders.CONTENT_DISPOSITION;
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
-import dev.ymkz.demo.api.dto.CreateBookBody;
-import dev.ymkz.demo.api.dto.FindBookByIdResponse;
-import dev.ymkz.demo.api.dto.SearchBooksQueryParam;
-import dev.ymkz.demo.api.dto.SearchBooksResponse;
-import dev.ymkz.demo.api.dto.UpdateBookBody;
-import dev.ymkz.demo.api.usecase.BookDownloadUsecase;
-import dev.ymkz.demo.api.usecase.BookSearchUsecase;
+import dev.ymkz.demo.api.application.usecase.BookDownloadUsecase;
+import dev.ymkz.demo.api.application.usecase.BookSearchUsecase;
+import dev.ymkz.demo.api.presentation.dto.CreateBookBody;
+import dev.ymkz.demo.api.presentation.dto.FindBookByIdResponse;
+import dev.ymkz.demo.api.presentation.dto.SearchBooksQueryParam;
+import dev.ymkz.demo.api.presentation.dto.SearchBooksResponse;
+import dev.ymkz.demo.api.presentation.dto.UpdateBookBody;
 import dev.ymkz.demo.core.domain.model.BookSearchQuery;
-import dev.ymkz.demo.core.domain.value.Isbn;
-import dev.ymkz.demo.core.domain.value.RangeInteger;
-import dev.ymkz.demo.core.domain.value.RangeTime;
+import dev.ymkz.demo.core.domain.valueobject.Isbn;
+import dev.ymkz.demo.core.domain.valueobject.RangeInteger;
+import dev.ymkz.demo.core.domain.valueobject.RangeTime;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -50,7 +50,7 @@ public class BookController {
   @Operation(operationId = "searchBooks")
   @ApiResponses(
     value = {
-      @ApiResponse(responseCode = "200", description = "正常応答"),
+      @ApiResponse(responseCode = "200", description = "成功"),
       @ApiResponse(
         responseCode = "400",
         description = "不正なリクエスト",
@@ -58,7 +58,7 @@ public class BookController {
       ),
       @ApiResponse(
         responseCode = "500",
-        description = "サーバーエラー",
+        description = "アプリケーションエラー",
         content = @Content(schema = @Schema(implementation = ProblemDetail.class))
       ),
     }
@@ -84,7 +84,7 @@ public class BookController {
   @Operation(operationId = "downloadBooks")
   @ApiResponses(
     value = {
-      @ApiResponse(responseCode = "200", description = "正常応答"),
+      @ApiResponse(responseCode = "200", description = "成功"),
       @ApiResponse(
         responseCode = "400",
         description = "不正なリクエスト",
@@ -92,7 +92,7 @@ public class BookController {
       ),
       @ApiResponse(
         responseCode = "500",
-        description = "サーバーエラー",
+        description = "アプリケーションエラー",
         content = @Content(schema = @Schema(implementation = ProblemDetail.class), mediaType = APPLICATION_JSON_VALUE)
       ),
     }
@@ -124,7 +124,7 @@ public class BookController {
   @Operation(operationId = "findBookById")
   @ApiResponses(
     value = {
-      @ApiResponse(responseCode = "200", description = "正常応答"),
+      @ApiResponse(responseCode = "200", description = "成功"),
       @ApiResponse(
         responseCode = "400",
         description = "不正なリクエスト",
@@ -137,7 +137,7 @@ public class BookController {
       ),
       @ApiResponse(
         responseCode = "500",
-        description = "サーバーエラー",
+        description = "アプリケーションエラー",
         content = @Content(schema = @Schema(implementation = ProblemDetail.class))
       ),
     }
@@ -151,7 +151,7 @@ public class BookController {
   @Operation(operationId = "createBook")
   @ApiResponses(
     value = {
-      @ApiResponse(responseCode = "201", description = "正常応答"),
+      @ApiResponse(responseCode = "201", description = "成功"),
       @ApiResponse(
         responseCode = "400",
         description = "不正なリクエスト",
@@ -159,7 +159,7 @@ public class BookController {
       ),
       @ApiResponse(
         responseCode = "500",
-        description = "サーバーエラー",
+        description = "アプリケーションエラー",
         content = @Content(schema = @Schema(implementation = ProblemDetail.class))
       ),
     }
@@ -170,7 +170,7 @@ public class BookController {
   @Operation(operationId = "updateBook")
   @ApiResponses(
     value = {
-      @ApiResponse(responseCode = "200", description = "正常応答"),
+      @ApiResponse(responseCode = "200", description = "成功"),
       @ApiResponse(
         responseCode = "400",
         description = "不正なリクエスト",
@@ -183,7 +183,7 @@ public class BookController {
       ),
       @ApiResponse(
         responseCode = "500",
-        description = "サーバーエラー",
+        description = "アプリケーションエラー",
         content = @Content(schema = @Schema(implementation = ProblemDetail.class))
       ),
     }
@@ -195,7 +195,7 @@ public class BookController {
   @Operation(operationId = "deleteBook")
   @ApiResponses(
     value = {
-      @ApiResponse(responseCode = "204", description = "正常応答"),
+      @ApiResponse(responseCode = "204", description = "成功"),
       @ApiResponse(
         responseCode = "400",
         description = "不正なリクエスト",
@@ -208,7 +208,7 @@ public class BookController {
       ),
       @ApiResponse(
         responseCode = "500",
-        description = "サーバーエラー",
+        description = "アプリケーションエラー",
         content = @Content(schema = @Schema(implementation = ProblemDetail.class))
       ),
     }

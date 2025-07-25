@@ -1,4 +1,4 @@
-package dev.ymkz.demo.core.domain.value;
+package dev.ymkz.demo.core.domain.valueobject;
 
 public record RangeInteger(Integer min, Integer max) {
   public RangeInteger {

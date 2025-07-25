@@ -1,4 +1,4 @@
-package dev.ymkz.demo.core.gateway.datasource;
+package dev.ymkz.demo.core.infrastructure.datasource;
 
 import dev.ymkz.demo.core.domain.model.BookSearchQuery;
 import java.util.List;

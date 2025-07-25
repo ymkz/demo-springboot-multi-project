@@ -1,4 +1,4 @@
-package dev.ymkz.demo.api.presenter;
+package dev.ymkz.demo.api.presentation;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.http.HttpStatus.BAD_REQUEST;

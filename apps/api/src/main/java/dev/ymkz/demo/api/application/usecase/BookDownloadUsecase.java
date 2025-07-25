@@ -1,9 +1,9 @@
-package dev.ymkz.demo.api.usecase;
+package dev.ymkz.demo.api.application.usecase;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.dataformat.csv.CsvGenerator;
 import com.fasterxml.jackson.dataformat.csv.CsvMapper;
-import dev.ymkz.demo.api.dto.DownloadBooksResponse;
+import dev.ymkz.demo.api.presentation.dto.DownloadBooksResponse;
 import dev.ymkz.demo.core.domain.model.BookSearchQuery;
 import dev.ymkz.demo.core.domain.repository.BookRepository;
 import java.nio.charset.StandardCharsets;

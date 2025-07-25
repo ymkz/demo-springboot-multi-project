@@ -4,7 +4,7 @@ import dev.ymkz.demo.core.domain.model.Book;
 import dev.ymkz.demo.core.domain.model.BookCreateCommand;
 import dev.ymkz.demo.core.domain.model.BookSearchQuery;
 import dev.ymkz.demo.core.domain.model.BookUpdateCommand;
-import dev.ymkz.demo.core.domain.value.Pagination;
+import dev.ymkz.demo.core.domain.valueobject.Pagination;
 import java.util.List;
 import java.util.Optional;
 

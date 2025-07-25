@@ -4,6 +4,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import dev.ymkz.demo.core.domain.valueobject.BookOrder;
 import org.junit.jupiter.api.Test;
 
 public class BookOrderTest {
