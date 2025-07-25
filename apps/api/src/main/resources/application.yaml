@@ -18,6 +18,7 @@ spring:
   lifecycle:
     timeout-per-shutdown-phase: 20s
 server:
+  port: 8080
   shutdown: graceful
 mybatis:
   configuration:
@@ -44,6 +45,6 @@ management:
     port: 8081
 springdoc:
   api-docs:
-    path: /spec/openapi.json
+    enabled: false
   swagger-ui:
-    path: /spec
+    enabled: false
