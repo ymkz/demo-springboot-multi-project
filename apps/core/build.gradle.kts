@@ -26,8 +26,10 @@ dependencies {
   implementation(platform(libs.springboot.bom))
   implementation(platform(libs.junit.bom))
 
-  compileOnly(libs.lombok)
   annotationProcessor(libs.lombok)
+
+  compileOnly(libs.lombok)
+
   implementation(libs.bundles.core)
   testImplementation(libs.bundles.test)
 }
