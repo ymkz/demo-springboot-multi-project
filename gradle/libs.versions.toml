@@ -2,8 +2,11 @@
 springboot-bom = "3.5.4" # https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-dependencies
 junit-bom = "5.13.4" # https://mvnrepository.com/artifact/org.junit/junit-bom
 
+spotless-plugin = "7.2.1" # https://mvnrepository.com/artifact/com.diffplug.spotless/spotless-plugin-gradle
 springboot-plugin = "3.5.4" # https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-gradle-plugin
 springdoc-plugin = "1.9.0" # https://mvnrepository.com/artifact/org.springdoc.openapi-gradle-plugin/org.springdoc.openapi-gradle-plugin.gradle.plugin
+
+palantir-java-format = "2.73.0" # https://mvnrepository.com/artifact/com.palantir.javaformat/palantir-java-format
 
 lombok = "1.18.38" # https://mvnrepository.com/artifact/org.projectlombok/lombok
 mybatis = "3.0.5" # https://mvnrepository.com/artifact/org.mybatis.spring.boot/mybatis-spring-boot-starter
@@ -42,6 +45,7 @@ api = [
   "spring-boot-starter-actuator",
   "spring-boot-configuration-processor",
   "mybatis-spring-boot-starter",
+  "mysql-connector-j",
   "micrometer-registry-prometheus",
   "springdoc-openapi-starter-webmvc-ui",
   "jackson-dataformat-csv",
@@ -50,8 +54,6 @@ core = [
   "spring-boot-starter-web",
   "spring-boot-starter-validation",
   "spring-boot-configuration-processor",
-  "mybatis-spring-boot-starter",
-  "mysql-connector-j",
 ]
 test = [
   "spring-boot-starter-test",
@@ -61,5 +63,6 @@ test = [
 ]
 
 [plugins]
+spotless = { id = "com.diffplug.spotless", version.ref = "spotless-plugin" }
 spring-boot = { id = "org.springframework.boot", version.ref = "springboot-plugin" }
 springdoc-openapi = { id = "org.springdoc.openapi-gradle-plugin", version.ref = "springdoc-plugin" }

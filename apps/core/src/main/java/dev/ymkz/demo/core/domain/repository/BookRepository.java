@@ -9,15 +9,15 @@ import java.util.List;
 import java.util.Optional;
 
 public interface BookRepository {
-  Pagination<Book> search(BookSearchQuery query);
+    Pagination<Book> search(BookSearchQuery query);
 
-  List<Book> download(BookSearchQuery query);
+    List<Book> download(BookSearchQuery query);
 
-  Optional<Book> findById(long id);
+    Optional<Book> findById(long id);
 
-  void create(BookCreateCommand book);
+    void create(BookCreateCommand book);
 
-  void update(BookUpdateCommand book);
+    void update(BookUpdateCommand book);
 
-  void delete(long id);
+    void delete(long id);
 }

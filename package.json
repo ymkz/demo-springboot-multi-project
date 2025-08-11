@@ -20,8 +20,6 @@
     "@biomejs/biome": "catalog:",
     "knip": "catalog:",
     "orval": "catalog:",
-    "prettier": "catalog:",
-    "prettier-plugin-java": "catalog:",
     "typescript": "catalog:"
   }
 }

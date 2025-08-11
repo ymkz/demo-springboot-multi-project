@@ -7,8 +7,8 @@ import org.apache.ibatis.annotations.Select;
 
 @Mapper
 public interface BookMapper {
-  @Select(
-    """
+    @Select(
+            """
         <script>
         SELECT
             COUNT(1)
@@ -53,12 +53,11 @@ public interface BookMapper {
                 AND b.published_at &lt;= #{publishedAtRange.end}
             </if>
         </script>
-    """
-  )
-  int count(BookSearchQuery query);
+    """)
+    int count(BookSearchQuery query);
 
-  @Select(
-    """
+    @Select(
+            """
         <script>
         SELECT
             b.id,
@@ -121,12 +120,11 @@ public interface BookMapper {
         OFFSET
             #{offset}
         </script>
-    """
-  )
-  List<BookEntity> list(BookSearchQuery query);
+    """)
+    List<BookEntity> list(BookSearchQuery query);
 
-  @Select(
-    """
+    @Select(
+            """
         <script>
         SELECT
             b.id,
@@ -185,7 +183,6 @@ public interface BookMapper {
         ORDER BY
             #{order.orderBy}
         </script>
-    """
-  )
-  List<BookEntity> download(BookSearchQuery query);
+    """)
+    List<BookEntity> download(BookSearchQuery query);
 }

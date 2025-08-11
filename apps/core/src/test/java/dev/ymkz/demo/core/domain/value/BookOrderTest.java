@@ -9,53 +9,53 @@ import org.junit.jupiter.api.Test;
 
 public class BookOrderTest {
 
-  @Test
-  void testFromStringValid() {
-    // given
-    String value = "+price";
+    @Test
+    void testFromStringValid() {
+        // given
+        String value = "+price";
 
-    // when
-    BookOrder order = BookOrder.fromString(value);
+        // when
+        BookOrder order = BookOrder.fromString(value);
 
-    // then
-    assertThat(order, is(BookOrder.PRICE_ASC));
-  }
+        // then
+        assertThat(order, is(BookOrder.PRICE_ASC));
+    }
 
-  @Test
-  void testFromStringInvalid() {
-    // given
-    String value = "+invalid";
+    @Test
+    void testFromStringInvalid() {
+        // given
+        String value = "+invalid";
 
-    // when
-    IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
-      BookOrder.fromString(value);
-    });
+        // when
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
+            BookOrder.fromString(value);
+        });
 
-    // then
-    assertThat(exception.getMessage(), is("Invalid BookOrder value: +invalid"));
-  }
+        // then
+        assertThat(exception.getMessage(), is("Invalid BookOrder value: +invalid"));
+    }
 
-  @Test
-  void testGetOrderByAsc() {
-    // given
-    BookOrder order = BookOrder.PRICE_ASC;
+    @Test
+    void testGetOrderByAsc() {
+        // given
+        BookOrder order = BookOrder.PRICE_ASC;
 
-    // when
-    String orderBy = order.getOrderBy();
+        // when
+        String orderBy = order.getOrderBy();
 
-    // then
-    assertThat(orderBy, is("price ASC"));
-  }
+        // then
+        assertThat(orderBy, is("price ASC"));
+    }
 
-  @Test
-  void testGetOrderByDesc() {
-    // given
-    BookOrder order = BookOrder.PRICE_DESC;
+    @Test
+    void testGetOrderByDesc() {
+        // given
+        BookOrder order = BookOrder.PRICE_DESC;
 
-    // when
-    String orderBy = order.getOrderBy();
+        // when
+        String orderBy = order.getOrderBy();
 
-    // then
-    assertThat(orderBy, is("price DESC"));
-  }
+        // then
+        assertThat(orderBy, is("price DESC"));
+    }
 }

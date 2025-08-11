@@ -9,33 +9,31 @@ import org.junit.jupiter.api.Test;
 
 class RangeTimeTest {
 
-  @Test
-  void givenValidRange_whenCreatingRangeTime_thenNoException() {
-    // given
-    var start = LocalDateTime.of(2023, 1, 1, 0, 0);
-    var end = LocalDateTime.of(2023, 1, 2, 0, 0);
+    @Test
+    void givenValidRange_whenCreatingRangeTime_thenNoException() {
+        // given
+        var start = LocalDateTime.of(2023, 1, 1, 0, 0);
+        var end = LocalDateTime.of(2023, 1, 2, 0, 0);
 
-    // when
-    RangeTime range = RangeTime.of(start, end);
+        // when
+        RangeTime range = RangeTime.of(start, end);
 
-    // then
-    assertThat(range.start(), is(start));
-    assertThat(range.end(), is(end));
-  }
+        // then
+        assertThat(range.start(), is(start));
+        assertThat(range.end(), is(end));
+    }
 
-  @Test
-  void givenInvalidRange_whenCreatingRangeTime_thenThrowException() {
-    // given
-    var start = LocalDateTime.of(2023, 1, 2, 0, 0);
-    var end = LocalDateTime.of(2023, 1, 1, 0, 0);
+    @Test
+    void givenInvalidRange_whenCreatingRangeTime_thenThrowException() {
+        // given
+        var start = LocalDateTime.of(2023, 1, 2, 0, 0);
+        var end = LocalDateTime.of(2023, 1, 1, 0, 0);
 
-    // when
-    IllegalArgumentException exception = org.junit.jupiter.api.Assertions.assertThrows(
-      IllegalArgumentException.class,
-      () -> RangeTime.of(start, end)
-    );
+        // when
+        IllegalArgumentException exception = org.junit.jupiter.api.Assertions.assertThrows(
+                IllegalArgumentException.class, () -> RangeTime.of(start, end));
 
-    // then
-    assertThat(exception.getMessage(), is("The start value is greater than the end value"));
-  }
+        // then
+        assertThat(exception.getMessage(), is("The start value is greater than the end value"));
+    }
 }

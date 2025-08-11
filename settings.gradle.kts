@@ -1,2 +1,6 @@
 rootProject.name = "demo"
-include(":apps:core", "apps:api")
+
+include(
+  ":apps:core",
+  ":apps:api",
+)

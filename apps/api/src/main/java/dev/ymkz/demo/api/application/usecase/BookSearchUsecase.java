@@ -11,9 +11,9 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class BookSearchUsecase {
 
-  private final BookRepository repository;
+    private final BookRepository repository;
 
-  public Pagination<Book> execute(BookSearchQuery query) {
-    return repository.search(query);
-  }
+    public Pagination<Book> execute(BookSearchQuery query) {
+        return repository.search(query);
+    }
 }

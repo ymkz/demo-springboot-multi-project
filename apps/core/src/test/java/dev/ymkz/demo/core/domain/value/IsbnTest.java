@@ -14,36 +14,35 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 public class IsbnTest {
 
-  @Test
-  void nullIsbnShouldReturnNull() {
-    Isbn isbn = Isbn.of(null);
-    assertNull(isbn);
-  }
+    @Test
+    void nullIsbnShouldReturnNull() {
+        Isbn isbn = Isbn.of(null);
+        assertNull(isbn);
+    }
 
-  @ParameterizedTest
-  @MethodSource("validIsbnProvider")
-  void validIsbnShouldBeCreated(String isbnValue) {
-    Isbn isbn = Isbn.of(isbnValue);
-    assertNotNull(isbn);
-    assertEquals(isbnValue, isbn.value());
-  }
+    @ParameterizedTest
+    @MethodSource("validIsbnProvider")
+    void validIsbnShouldBeCreated(String isbnValue) {
+        Isbn isbn = Isbn.of(isbnValue);
+        assertNotNull(isbn);
+        assertEquals(isbnValue, isbn.value());
+    }
 
-  static Stream<Arguments> validIsbnProvider() {
-    return Stream.of(Arguments.of("9784150310196"), Arguments.of("9784150117429"));
-  }
+    static Stream<Arguments> validIsbnProvider() {
+        return Stream.of(Arguments.of("9784150310196"), Arguments.of("9784150117429"));
+    }
 
-  @ParameterizedTest
-  @MethodSource("invalidIsbnProvider")
-  void invalidIsbnShouldThrowException(String isbnValue) {
-    assertThrows(IllegalArgumentException.class, () -> Isbn.of(isbnValue));
-  }
+    @ParameterizedTest
+    @MethodSource("invalidIsbnProvider")
+    void invalidIsbnShouldThrowException(String isbnValue) {
+        assertThrows(IllegalArgumentException.class, () -> Isbn.of(isbnValue));
+    }
 
-  static Stream<Arguments> invalidIsbnProvider() {
-    return Stream.of(
-      Arguments.of("123456789012"),
-      Arguments.of("9781234567890"),
-      Arguments.of("invalidisbn123"),
-      Arguments.of("97812345678a7")
-    );
-  }
+    static Stream<Arguments> invalidIsbnProvider() {
+        return Stream.of(
+                Arguments.of("123456789012"),
+                Arguments.of("9781234567890"),
+                Arguments.of("invalidisbn123"),
+                Arguments.of("97812345678a7"));
+    }
 }
