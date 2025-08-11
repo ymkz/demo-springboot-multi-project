@@ -60,12 +60,6 @@ importers:
       '@types/node':
         specifier: 'catalog:'
         version: 24.2.1
-      '@types/react':
-        specifier: 'catalog:'
-        version: 19.1.9
-      '@types/react-dom':
-        specifier: 'catalog:'
-        version: 19.1.7(@types/react@19.1.9)
       knip:
         specifier: 'catalog:'
         version: 5.62.0(@types/node@24.2.1)(typescript@5.9.2)
@@ -99,6 +93,13 @@ importers:
       react-dom:
         specifier: 'catalog:'
         version: 19.1.1(react@19.1.1)
+    devDependencies:
+      '@types/react':
+        specifier: 'catalog:'
+        version: 19.1.9
+      '@types/react-dom':
+        specifier: 'catalog:'
+        version: 19.1.7(@types/react@19.1.9)
 
   frontend/web-tool:
     dependencies:
@@ -117,6 +118,13 @@ importers:
       react-dom:
         specifier: 'catalog:'
         version: 19.1.1(react@19.1.1)
+    devDependencies:
+      '@types/react':
+        specifier: 'catalog:'
+        version: 19.1.9
+      '@types/react-dom':
+        specifier: 'catalog:'
+        version: 19.1.7(@types/react@19.1.9)
 
 packages:
 
