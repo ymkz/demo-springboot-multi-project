@@ -1,23 +1,24 @@
-package dev.ymkz.demo.core.infrastructure.datasource;
+package dev.ymkz.demo.api.infrastructure.datasource;
 
 import dev.ymkz.demo.core.domain.model.Book;
 import dev.ymkz.demo.core.domain.valueobject.BookStatus;
 import dev.ymkz.demo.core.domain.valueobject.Isbn;
+import jakarta.annotation.Nonnull;
 import jakarta.annotation.Nullable;
 import java.time.LocalDateTime;
 
 public record BookEntity(
-  long id,
-  String isbn,
-  String title,
+  @Nonnull long id,
+  @Nonnull String isbn,
+  @Nonnull String title,
   @Nullable Integer price,
-  BookStatus status,
+  @Nonnull BookStatus status,
   @Nullable LocalDateTime publishedAt,
-  int authorId,
-  String authorName,
-  int publisherId,
-  String publisherName,
-  LocalDateTime createdAt,
+  @Nonnull int authorId,
+  @Nonnull String authorName,
+  @Nonnull int publisherId,
+  @Nonnull String publisherName,
+  @Nonnull LocalDateTime createdAt,
   @Nullable LocalDateTime updatedAt,
   @Nullable LocalDateTime deletedAt
 ) {
