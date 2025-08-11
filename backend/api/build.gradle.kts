@@ -1,6 +1,21 @@
 plugins {
+  java
+  alias(libs.plugins.spotless)
   alias(libs.plugins.spring.boot)
   alias(libs.plugins.springdoc.openapi)
+}
+
+group = "dev.ymkz"
+version = "1.0.0"
+
+java {
+  toolchain {
+    languageVersion.set(JavaLanguageVersion.of(21))
+  }
+}
+
+repositories {
+  mavenCentral()
 }
 
 configurations {
@@ -25,6 +40,16 @@ dependencies {
 
 tasks.withType<Test> {
   useJUnitPlatform()
+}
+
+tasks.withType<JavaCompile> {
+  options.encoding = "UTF-8"
+}
+
+spotless {
+  java {
+    palantirJavaFormat(libs.versions.palantir.java.format.get())
+  }
 }
 
 openApi {
