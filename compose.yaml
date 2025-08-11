@@ -1,7 +1,7 @@
 services:
-  demo-db:
-    container_name: demo-db
-    image: mysql:9.1
+  demo-monorepo-db:
+    container_name: demo-monorepo-db
+    image: mysql:8
     restart: always
     ports:
       - 3306:3306
@@ -10,11 +10,11 @@ services:
       - ./compose/mysql/my.conf:/etc/mysql/conf.d/my.cnf
     environment:
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: demo
-      MYSQL_USER: app
-      MYSQL_PASSWORD: app
+      MYSQL_DATABASE: demo_db
+      MYSQL_USER: demo_user
+      MYSQL_PASSWORD: ${DEMODB_DEMOUSER_PASSWORD}
     healthcheck:
-      test: mysqladmin ping -uapp -papp
-      timeout: 10s
-      interval: 5s
-      retries: 10
+      test: mysqladmin ping -udemo_user -p${DEMODB_DEMOUSER_PASSWORD}
+      timeout: 20s
+      interval: 4s
+      retries: 3

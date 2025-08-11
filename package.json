@@ -1,25 +1,69 @@
 {
-  "name": "demo-springboot-multi-project",
+  "name": "demo-monorepo",
   "version": "1.0.0",
   "private": true,
   "type": "module",
+  "packageManager": "pnpm@10.14.0",
   "engines": {
-    "node": ">=22.14.0",
-    "pnpm": ">=10.7.1"
+    "node": ">=24",
+    "pnpm": ">=10"
   },
   "scripts": {
-    "dev": "pnpm --recursive run dev",
-    "build": "pnpm --recursive run build",
-    "typecheck": "pnpm --recursive run typecheck",
-    "lint": "pnpm --recursive run lint",
-    "format": "pnpm --recursive run format",
+    "dev": "wireit",
+    "build": "wireit",
+    "typecheck": "wireit",
+    "test": "wireit",
+    "coverage": "wireit",
+    "check": "wireit",
+    "lint": "biome check",
+    "format": "biome check --write",
     "generate": "pnpm --recursive run /^generate:.*/",
-    "analyze": "knip"
+    "analyze": "knip",
+    "update": "pnpm update --latest --interactive --recursive"
+  },
+  "wireit": {
+    "dev": {
+      "dependencies": [
+        "./frontend/web-form:dev"
+      ]
+    },
+    "build": {
+      "dependencies": [
+        "./frontend/web-form:build"
+      ]
+    },
+    "typecheck": {
+      "dependencies": [
+        "./frontend/web-form:typecheck"
+      ]
+    },
+    "test": {
+      "dependencies": [
+        "./frontend/web-form:test"
+      ]
+    },
+    "coverage": {
+      "dependencies": [
+        "./frontend/web-form:coverage"
+      ]
+    },
+    "check": {
+      "dependencies": [
+        "lint",
+        "typecheck",
+        "build"
+      ]
+    }
   },
   "devDependencies": {
     "@biomejs/biome": "catalog:",
+    "@types/node": "catalog:",
+    "@types/react": "catalog:",
+    "@types/react-dom": "catalog:",
     "knip": "catalog:",
     "orval": "catalog:",
-    "typescript": "catalog:"
+    "typescript": "catalog:",
+    "vitest": "catalog:",
+    "wireit": "catalog:"
   }
 }

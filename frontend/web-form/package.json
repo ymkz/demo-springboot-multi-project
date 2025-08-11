@@ -1,0 +1,57 @@
+{
+  "name": "web-form",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "dev": "wireit",
+    "build": "wireit",
+    "typecheck": "wireit",
+    "generate:openapi": "wireit"
+  },
+  "wireit": {
+    "generate:openapi": {
+      "command": "orval generate"
+    },
+    "dev": {
+      "command": "next dev --turbopack -p 3000",
+      "dependencies": [
+        "generate:openapi"
+      ]
+    },
+    "build": {
+      "command": "next build",
+      "dependencies": [
+        "generate:openapi"
+      ]
+    },
+    "typecheck": {
+      "command": "tsc --noEmit",
+      "dependencies": [
+        "generate:openapi"
+      ]
+    },
+    "test": {
+      "command": "vitest --run",
+      "dependencies": [
+        "generate:openapi"
+      ]
+    },
+    "coverage": {
+      "command": "vitest --run --coverage",
+      "dependencies": [
+        "generate:openapi"
+      ]
+    }
+  },
+  "dependencies": {
+    "httpxy": "catalog:",
+    "react": "catalog:",
+    "react-dom": "catalog:",
+    "next": "catalog:",
+    "nuqs": "catalog:"
+  }
+}
