@@ -10,7 +10,7 @@ palantir-java-format = "2.73.0" # https://mvnrepository.com/artifact/com.palanti
 
 lombok = "1.18.38" # https://mvnrepository.com/artifact/org.projectlombok/lombok
 mybatis = "3.0.5" # https://mvnrepository.com/artifact/org.mybatis.spring.boot/mybatis-spring-boot-starter
-mysql = "9.3.0" # https://mvnrepository.com/artifact/com.mysql/mysql-connector-j
+mysql = "9.4.0" # https://mvnrepository.com/artifact/com.mysql/mysql-connector-j
 micrometer = "1.15.2" # https://mvnrepository.com/artifact/io.micrometer/micrometer-registry-prometheus
 springdoc-webmvc-ui = "2.8.9" # https://mvnrepository.com/artifact/org.springdoc/springdoc-openapi-starter-webmvc-ui
 mockito = "5.18.0" # https://mvnrepository.com/artifact/org.mockito/mockito-junit-jupiter
