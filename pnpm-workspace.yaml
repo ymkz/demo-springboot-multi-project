@@ -1,5 +1,5 @@
 packages:
-  - apps/*
+  - frontend/*
 catalog:
   "@biomejs/biome": 1.9.4
   "@types/node": 22.16.4

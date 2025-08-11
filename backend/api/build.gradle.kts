@@ -20,7 +20,7 @@ dependencies {
   implementation(libs.bundles.api)
   testImplementation(libs.bundles.test)
 
-  implementation(project(":apps:core"))
+  implementation(project(":backend:core"))
 }
 
 tasks.withType<Test> {
