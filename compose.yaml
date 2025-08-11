@@ -1,7 +1,7 @@
 services:
   demo-monorepo-db:
     container_name: demo-monorepo-db
-    image: mysql:8
+    image: mysql:8 # renovate: ignore
     restart: always
     ports:
       - 3306:3306
