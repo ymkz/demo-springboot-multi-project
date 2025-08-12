@@ -9,8 +9,8 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Schema(name = "SearchBooksResponse")
-public record SearchBooksResponse(List<ResponseItem> items, ResponsePagination pagination) {
-    record ResponseItem(
+public record SearchBooksResponse(List<SearchBooksResponseItem> items, ResponsePagination pagination) {
+    record SearchBooksResponseItem(
             @Schema(description = "書籍ID", example = "1") @NotNull long id,
             @Schema(description = "ISBN-13", example = "9784873115658") @NotNull String isbn,
             @Schema(description = "タイトル", example = "リーダブルコード") @NotNull String title,
@@ -21,8 +21,8 @@ public record SearchBooksResponse(List<ResponseItem> items, ResponsePagination p
             @Schema(description = "著者名", example = "Dustin Boswell") String authorName,
             @Schema(description = "出版社ID", example = "1") int publisherId,
             @Schema(description = "出版社名", example = "O'Reilly") String publisherName) {
-        private static ResponseItem of(Book book) {
-            return new ResponseItem(
+        private static SearchBooksResponseItem of(Book book) {
+            return new SearchBooksResponseItem(
                     book.id(),
                     book.isbn().value(),
                     book.title(),
@@ -44,7 +44,7 @@ public record SearchBooksResponse(List<ResponseItem> items, ResponsePagination p
 
     public static SearchBooksResponse of(Pagination<Book> data) {
         return new SearchBooksResponse(
-                data.items().stream().map(ResponseItem::of).toList(),
+                data.items().stream().map(SearchBooksResponseItem::of).toList(),
                 new ResponsePagination(data.returnedCount(), data.currentPage(), data.totalCount(), data.totalPages()));
     }
 }

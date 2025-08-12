@@ -10,8 +10,6 @@ spring:
     resources:
       add-mappings: false
   mvc:
-    problemdetails:
-      enabled: true
     contentnegotiation:
       media-types:
         csv: text/csv

@@ -47,7 +47,7 @@ export type SearchBooksParams = {
 	 * 取得置
 	 * @minimum 0
 	 */
-	offset: number;
+	offset?: number;
 	/**
 	 * 取得数
 	 * @minimum 1

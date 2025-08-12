@@ -16,6 +16,7 @@
         "tags": [
           "Book"
         ],
+        "description": "書籍情報を検索して取得する",
         "operationId": "searchBooks",
         "parameters": [
           {
@@ -156,7 +157,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ProblemDetail"
+                  "$ref": "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -166,7 +167,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ProblemDetail"
+                  "$ref": "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -177,6 +178,7 @@
         "tags": [
           "Book"
         ],
+        "description": "新しい書籍情報を作成する",
         "operationId": "createBook",
         "requestBody": {
           "content": {
@@ -197,7 +199,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ProblemDetail"
+                  "$ref": "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -207,7 +209,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ProblemDetail"
+                  "$ref": "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -220,6 +222,7 @@
         "tags": [
           "Book"
         ],
+        "description": "指定したIDの書籍情報を取得する",
         "operationId": "findBookById",
         "parameters": [
           {
@@ -248,7 +251,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ProblemDetail"
+                  "$ref": "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -258,7 +261,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ProblemDetail"
+                  "$ref": "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -268,7 +271,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ProblemDetail"
+                  "$ref": "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -279,6 +282,7 @@
         "tags": [
           "Book"
         ],
+        "description": "指定したIDの書籍情報を削除する",
         "operationId": "deleteBook",
         "parameters": [
           {
@@ -300,7 +304,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ProblemDetail"
+                  "$ref": "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -310,7 +314,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ProblemDetail"
+                  "$ref": "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -320,7 +324,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ProblemDetail"
+                  "$ref": "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -331,6 +335,7 @@
         "tags": [
           "Book"
         ],
+        "description": "指定したIDの書籍情報を更新する",
         "operationId": "updateBook",
         "parameters": [
           {
@@ -362,7 +367,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ProblemDetail"
+                  "$ref": "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -372,7 +377,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ProblemDetail"
+                  "$ref": "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -382,7 +387,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ProblemDetail"
+                  "$ref": "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -395,6 +400,7 @@
         "tags": [
           "Book"
         ],
+        "description": "[Internal Use Only]書籍情報をCSV形式でダウンロードする",
         "operationId": "downloadBooks",
         "parameters": [
           {
@@ -511,7 +517,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ProblemDetail"
+                  "$ref": "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -521,7 +527,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ProblemDetail"
+                  "$ref": "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -577,30 +583,14 @@
           "title"
         ]
       },
-      "ProblemDetail": {
+      "ErrorResponse": {
         "type": "object",
         "properties": {
-          "type": {
-            "type": "string",
-            "format": "uri"
-          },
-          "title": {
+          "code": {
             "type": "string"
           },
-          "status": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "detail": {
+          "message": {
             "type": "string"
-          },
-          "instance": {
-            "type": "string",
-            "format": "uri"
-          },
-          "properties": {
-            "type": "object",
-            "additionalProperties": {}
           }
         }
       },
@@ -642,7 +632,56 @@
           }
         }
       },
-      "ResponseItem": {
+      "ResponsePagination": {
+        "type": "object",
+        "properties": {
+          "returnedCount": {
+            "type": "integer",
+            "format": "int32",
+            "description": "取得件数",
+            "example": 0
+          },
+          "currentPage": {
+            "type": "integer",
+            "format": "int32",
+            "description": "現在のページ番号",
+            "example": 100
+          },
+          "totalCount": {
+            "type": "integer",
+            "format": "int32",
+            "description": "総件数",
+            "example": 100
+          },
+          "totalPages": {
+            "type": "integer",
+            "format": "int32",
+            "description": "総ページ数",
+            "example": 1
+          }
+        },
+        "required": [
+          "currentPage",
+          "returnedCount",
+          "totalCount",
+          "totalPages"
+        ]
+      },
+      "SearchBooksResponse": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SearchBooksResponseItem"
+            }
+          },
+          "pagination": {
+            "$ref": "#/components/schemas/ResponsePagination"
+          }
+        }
+      },
+      "SearchBooksResponseItem": {
         "type": "object",
         "properties": {
           "id": {
@@ -712,55 +751,6 @@
           "status",
           "title"
         ]
-      },
-      "ResponsePagination": {
-        "type": "object",
-        "properties": {
-          "returnedCount": {
-            "type": "integer",
-            "format": "int32",
-            "description": "取得件数",
-            "example": 0
-          },
-          "currentPage": {
-            "type": "integer",
-            "format": "int32",
-            "description": "現在のページ番号",
-            "example": 100
-          },
-          "totalCount": {
-            "type": "integer",
-            "format": "int32",
-            "description": "総件数",
-            "example": 100
-          },
-          "totalPages": {
-            "type": "integer",
-            "format": "int32",
-            "description": "総ページ数",
-            "example": 1
-          }
-        },
-        "required": [
-          "currentPage",
-          "returnedCount",
-          "totalCount",
-          "totalPages"
-        ]
-      },
-      "SearchBooksResponse": {
-        "type": "object",
-        "properties": {
-          "items": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ResponseItem"
-            }
-          },
-          "pagination": {
-            "$ref": "#/components/schemas/ResponsePagination"
-          }
-        }
       },
       "FindBookByIdResponse": {
         "type": "object",

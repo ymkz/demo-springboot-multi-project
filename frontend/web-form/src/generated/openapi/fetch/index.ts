@@ -7,25 +7,28 @@
 import type {
 	CreateBookBody,
 	DownloadBooksParams,
+	ErrorResponse,
 	FindBookByIdResponse,
-	ProblemDetail,
 	SearchBooksParams,
 	SearchBooksResponse,
 	UpdateBookBody,
 } from "../schema";
 
+/**
+ * 書籍情報を検索して取得する
+ */
 export type searchBooksResponse200 = {
 	data: SearchBooksResponse;
 	status: 200;
 };
 
 export type searchBooksResponse400 = {
-	data: ProblemDetail;
+	data: ErrorResponse;
 	status: 400;
 };
 
 export type searchBooksResponse500 = {
-	data: ProblemDetail;
+	data: ErrorResponse;
 	status: 500;
 };
 
@@ -35,7 +38,7 @@ export type searchBooksResponse = searchBooksResponseComposite & {
 	headers: Headers;
 };
 
-export const getSearchBooksUrl = (params: SearchBooksParams) => {
+export const getSearchBooksUrl = (params?: SearchBooksParams) => {
 	const normalizedParams = new URLSearchParams();
 
 	Object.entries(params || {}).forEach(([key, value]) => {
@@ -58,7 +61,7 @@ export const getSearchBooksUrl = (params: SearchBooksParams) => {
 		: `${process.env.API_URL}/books`;
 };
 
-export const searchBooks = async (params: SearchBooksParams, options?: RequestInit): Promise<searchBooksResponse> => {
+export const searchBooks = async (params?: SearchBooksParams, options?: RequestInit): Promise<searchBooksResponse> => {
 	const res = await fetch(getSearchBooksUrl(params), {
 		...options,
 		method: "GET",
@@ -70,18 +73,21 @@ export const searchBooks = async (params: SearchBooksParams, options?: RequestIn
 	return { data, status: res.status, headers: res.headers } as searchBooksResponse;
 };
 
+/**
+ * 新しい書籍情報を作成する
+ */
 export type createBookResponse201 = {
 	data: null;
 	status: 201;
 };
 
 export type createBookResponse400 = {
-	data: ProblemDetail;
+	data: ErrorResponse;
 	status: 400;
 };
 
 export type createBookResponse500 = {
-	data: ProblemDetail;
+	data: ErrorResponse;
 	status: 500;
 };
 
@@ -112,23 +118,26 @@ export const createBook = async (
 	return { data, status: res.status, headers: res.headers } as createBookResponse;
 };
 
+/**
+ * 指定したIDの書籍情報を取得する
+ */
 export type findBookByIdResponse200 = {
 	data: FindBookByIdResponse;
 	status: 200;
 };
 
 export type findBookByIdResponse400 = {
-	data: ProblemDetail;
+	data: ErrorResponse;
 	status: 400;
 };
 
 export type findBookByIdResponse404 = {
-	data: ProblemDetail;
+	data: ErrorResponse;
 	status: 404;
 };
 
 export type findBookByIdResponse500 = {
-	data: ProblemDetail;
+	data: ErrorResponse;
 	status: 500;
 };
 
@@ -158,23 +167,26 @@ export const findBookById = async (id: number, options?: RequestInit): Promise<f
 	return { data, status: res.status, headers: res.headers } as findBookByIdResponse;
 };
 
+/**
+ * 指定したIDの書籍情報を削除する
+ */
 export type deleteBookResponse204 = {
 	data: null;
 	status: 204;
 };
 
 export type deleteBookResponse400 = {
-	data: ProblemDetail;
+	data: ErrorResponse;
 	status: 400;
 };
 
 export type deleteBookResponse404 = {
-	data: ProblemDetail;
+	data: ErrorResponse;
 	status: 404;
 };
 
 export type deleteBookResponse500 = {
-	data: ProblemDetail;
+	data: ErrorResponse;
 	status: 500;
 };
 
@@ -204,23 +216,26 @@ export const deleteBook = async (id: number, options?: RequestInit): Promise<del
 	return { data, status: res.status, headers: res.headers } as deleteBookResponse;
 };
 
+/**
+ * 指定したIDの書籍情報を更新する
+ */
 export type updateBookResponse200 = {
 	data: null;
 	status: 200;
 };
 
 export type updateBookResponse400 = {
-	data: ProblemDetail;
+	data: ErrorResponse;
 	status: 400;
 };
 
 export type updateBookResponse404 = {
-	data: ProblemDetail;
+	data: ErrorResponse;
 	status: 404;
 };
 
 export type updateBookResponse500 = {
-	data: ProblemDetail;
+	data: ErrorResponse;
 	status: 500;
 };
 
@@ -256,18 +271,21 @@ export const updateBook = async (
 	return { data, status: res.status, headers: res.headers } as updateBookResponse;
 };
 
+/**
+ * [Internal Use Only]書籍情報をCSV形式でダウンロードする
+ */
 export type downloadBooksResponse200 = {
 	data: string;
 	status: 200;
 };
 
 export type downloadBooksResponse400 = {
-	data: ProblemDetail;
+	data: ErrorResponse;
 	status: 400;
 };
 
 export type downloadBooksResponse500 = {
-	data: ProblemDetail;
+	data: ErrorResponse;
 	status: 500;
 };
 
