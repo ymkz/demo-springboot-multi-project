@@ -118,7 +118,7 @@
             "name": "offset",
             "in": "query",
             "description": "取得置",
-            "required": true,
+            "required": false,
             "schema": {
               "type": "integer",
               "format": "int32",
@@ -130,7 +130,7 @@
             "name": "limit",
             "in": "query",
             "description": "取得数",
-            "required": true,
+            "required": false,
             "schema": {
               "type": "integer",
               "format": "int32",

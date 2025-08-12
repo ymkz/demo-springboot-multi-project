@@ -4,7 +4,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 
 import dev.ymkz.demo.core.domain.valueobject.RangeTime;
-import java.time.LocalDateTime;
+import java.time.Instant;
 import org.junit.jupiter.api.Test;
 
 class RangeTimeTest {
@@ -12,8 +12,8 @@ class RangeTimeTest {
     @Test
     void givenValidRange_whenCreatingRangeTime_thenNoException() {
         // given
-        var start = LocalDateTime.of(2023, 1, 1, 0, 0);
-        var end = LocalDateTime.of(2023, 1, 2, 0, 0);
+        var start = Instant.parse("2023-01-01T01:23:45.123Z");
+        var end = Instant.parse("2023-01-02T01:23:45.123Z");
 
         // when
         RangeTime range = RangeTime.of(start, end);
@@ -26,8 +26,8 @@ class RangeTimeTest {
     @Test
     void givenInvalidRange_whenCreatingRangeTime_thenThrowException() {
         // given
-        var start = LocalDateTime.of(2023, 1, 2, 0, 0);
-        var end = LocalDateTime.of(2023, 1, 1, 0, 0);
+        var start = Instant.parse("2023-01-02T01:23:45.123Z");
+        var end = Instant.parse("2023-01-01T01:23:45.123Z");
 
         // when
         IllegalArgumentException exception = org.junit.jupiter.api.Assertions.assertThrows(

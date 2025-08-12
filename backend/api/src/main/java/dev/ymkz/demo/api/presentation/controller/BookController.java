@@ -21,6 +21,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import lombok.RequiredArgsConstructor;
@@ -37,6 +38,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -64,9 +66,9 @@ public class BookController {
                         content = @Content(schema = @Schema(implementation = ProblemDetail.class))),
             })
     public SearchBooksResponse searchBooks(
-            @ParameterObject SearchBooksQueryParam queryParam,
-            @Parameter(description = "取得置") @Schema(defaultValue = "0") @Min(0) Integer offset,
-            @Parameter(description = "取得数") @Schema(defaultValue = "20") @Min(1) @Max(100) Integer limit) {
+            @Valid @ParameterObject SearchBooksQueryParam queryParam,
+            @Parameter(description = "取得置") @RequestParam(defaultValue = "0") @Min(0) Integer offset,
+            @Parameter(description = "取得数") @RequestParam(defaultValue = "20") @Min(1) @Max(100) Integer limit) {
         var data = bookSearchUsecase.execute(new BookSearchQuery(
                 Isbn.of(queryParam.isbn()),
                 queryParam.title(),
@@ -74,8 +76,8 @@ public class BookController {
                 queryParam.status(),
                 RangeTime.of(queryParam.publishedAtStart(), queryParam.publishedAtEnd()),
                 queryParam.order(),
-                offset == null ? 0 : offset,
-                limit == null ? 20 : limit));
+                offset,
+                limit));
 
         return SearchBooksResponse.of(data);
     }

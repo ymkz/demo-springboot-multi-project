@@ -1,5 +1,6 @@
 package dev.ymkz.demo.core.domain.valueobject;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.Arrays;
 
@@ -22,6 +23,7 @@ public enum BookOrder {
         _value = value;
     }
 
+    @JsonCreator
     public static BookOrder fromString(String value) {
         return Arrays.stream(values())
                 .filter(order -> order._value.equals(value))
