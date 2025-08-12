@@ -4,7 +4,6 @@ import dev.ymkz.demo.core.domain.valueobject.BookOrder;
 import dev.ymkz.demo.core.domain.valueobject.BookStatus;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Schema;
-import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -18,18 +17,10 @@ public record SearchBooksQueryParam(
         @Parameter(description = "出版日時:ISO8601:開始", example = "2025-01-23T01:23:45.000Z")
                 LocalDateTime publishedAtStart,
         @Parameter(description = "出版日時:ISO8601:終了", example = "2025-01-23T01:23:45.000Z") LocalDateTime publishedAtEnd,
-        @Parameter(description = "並び順") @Schema(defaultValue = "-published_at") BookOrder order,
-        @Parameter(description = "取得開始位置") @Schema(defaultValue = "0") @Min(0) Integer offset,
-        @Parameter(description = "取得数") @Schema(defaultValue = "20") @Min(1) @Max(100) Integer limit) {
+        @Parameter(description = "並び順") @Schema(defaultValue = "-published_at") BookOrder order) {
     public SearchBooksQueryParam {
         if (order == null) {
             order = BookOrder.PUBLISHED_AT_DESC;
-        }
-        if (offset == null) {
-            offset = 0;
-        }
-        if (limit == null) {
-            limit = 20;
         }
     }
 }

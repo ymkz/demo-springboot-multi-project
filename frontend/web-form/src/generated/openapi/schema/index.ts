@@ -20,6 +20,8 @@ export * from "./problemDetail";
 export * from "./problemDetailProperties";
 export * from "./responseHit";
 export * from "./responseHitStatus";
+export * from "./responseItem";
+export * from "./responseItemStatus";
 export * from "./responsePagination";
 export * from "./searchBooksOrder";
 export * from "./searchBooksParams";

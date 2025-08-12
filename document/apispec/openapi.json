@@ -117,8 +117,8 @@
           {
             "name": "offset",
             "in": "query",
-            "description": "取得開始位置",
-            "required": false,
+            "description": "取得置",
+            "required": true,
             "schema": {
               "type": "integer",
               "format": "int32",
@@ -130,7 +130,7 @@
             "name": "limit",
             "in": "query",
             "description": "取得数",
-            "required": false,
+            "required": true,
             "schema": {
               "type": "integer",
               "format": "int32",
@@ -492,31 +492,6 @@
                 "-published_at"
               ]
             }
-          },
-          {
-            "name": "offset",
-            "in": "query",
-            "description": "取得開始位置",
-            "required": false,
-            "schema": {
-              "type": "integer",
-              "format": "int32",
-              "default": 0,
-              "minimum": 0
-            }
-          },
-          {
-            "name": "limit",
-            "in": "query",
-            "description": "取得数",
-            "required": false,
-            "schema": {
-              "type": "integer",
-              "format": "int32",
-              "default": 20,
-              "maximum": 100,
-              "minimum": 1
-            }
           }
         ],
         "responses": {
@@ -667,7 +642,7 @@
           }
         }
       },
-      "ResponseHit": {
+      "ResponseItem": {
         "type": "object",
         "properties": {
           "id": {
@@ -741,42 +716,49 @@
       "ResponsePagination": {
         "type": "object",
         "properties": {
-          "offset": {
+          "returnedCount": {
             "type": "integer",
             "format": "int32",
-            "description": "取得開始位置",
+            "description": "取得件数",
             "example": 0
           },
-          "limit": {
+          "currentPage": {
             "type": "integer",
             "format": "int32",
-            "description": "取得数",
+            "description": "現在のページ番号",
             "example": 100
           },
-          "total": {
+          "totalCount": {
             "type": "integer",
             "format": "int32",
-            "description": "検索ヒット総数",
+            "description": "総件数",
+            "example": 100
+          },
+          "totalPages": {
+            "type": "integer",
+            "format": "int32",
+            "description": "総ページ数",
             "example": 1
           }
         },
         "required": [
-          "limit",
-          "offset",
-          "total"
+          "currentPage",
+          "returnedCount",
+          "totalCount",
+          "totalPages"
         ]
       },
       "SearchBooksResponse": {
         "type": "object",
         "properties": {
-          "pagination": {
-            "$ref": "#/components/schemas/ResponsePagination"
-          },
-          "hits": {
+          "items": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/ResponseHit"
+              "$ref": "#/components/schemas/ResponseItem"
             }
+          },
+          "pagination": {
+            "$ref": "#/components/schemas/ResponsePagination"
           }
         }
       },

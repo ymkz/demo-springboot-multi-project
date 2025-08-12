@@ -6,10 +6,12 @@
  */
 
 export interface ResponsePagination {
-	/** 取得開始位置 */
-	offset: number;
-	/** 取得数 */
-	limit: number;
-	/** 検索ヒット総数 */
-	total: number;
+	/** 取得件数 */
+	returnedCount: number;
+	/** 現在のページ番号 */
+	currentPage: number;
+	/** 総件数 */
+	totalCount: number;
+	/** 総ページ数 */
+	totalPages: number;
 }

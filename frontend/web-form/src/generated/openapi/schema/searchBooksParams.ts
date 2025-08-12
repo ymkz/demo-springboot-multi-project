@@ -44,10 +44,10 @@ export type SearchBooksParams = {
 	 */
 	order?: SearchBooksOrder;
 	/**
-	 * 取得開始位置
+	 * 取得置
 	 * @minimum 0
 	 */
-	offset?: number;
+	offset: number;
 	/**
 	 * 取得数
 	 * @minimum 1

@@ -54,7 +54,7 @@ spotless {
 
 openApi {
   apiDocsUrl.set("http://localhost:8080/spec/openapi.json")
-  outputDir.set(rootProject.file("docs/apispec"))
+  outputDir.set(rootProject.file("document/apispec"))
   outputFileName.set("openapi.json")
 }
 

@@ -4,11 +4,10 @@
  * API仕様書
  * OpenAPI spec version: 1.0.0
  */
-
-import type { ResponseHit } from "./responseHit";
+import type { ResponseItem } from "./responseItem";
 import type { ResponsePagination } from "./responsePagination";
 
 export interface SearchBooksResponse {
+	items?: ResponseItem[];
 	pagination?: ResponsePagination;
-	hits?: ResponseHit[];
 }

@@ -43,15 +43,4 @@ export type DownloadBooksParams = {
 	 * 並び順
 	 */
 	order?: DownloadBooksOrder;
-	/**
-	 * 取得開始位置
-	 * @minimum 0
-	 */
-	offset?: number;
-	/**
-	 * 取得数
-	 * @minimum 1
-	 * @maximum 100
-	 */
-	limit?: number;
 };

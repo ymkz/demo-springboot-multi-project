@@ -9,13 +9,8 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Schema(name = "SearchBooksResponse")
-public record SearchBooksResponse(ResponsePagination pagination, List<ResponseHit> hits) {
-    record ResponsePagination(
-            @Schema(description = "取得開始位置", example = "0") @NotNull int offset,
-            @Schema(description = "取得数", example = "100") @NotNull int limit,
-            @Schema(description = "検索ヒット総数", example = "1") @NotNull int total) {}
-
-    record ResponseHit(
+public record SearchBooksResponse(List<ResponseItem> items, ResponsePagination pagination) {
+    record ResponseItem(
             @Schema(description = "書籍ID", example = "1") @NotNull long id,
             @Schema(description = "ISBN-13", example = "9784873115658") @NotNull String isbn,
             @Schema(description = "タイトル", example = "リーダブルコード") @NotNull String title,
@@ -26,8 +21,8 @@ public record SearchBooksResponse(ResponsePagination pagination, List<ResponseHi
             @Schema(description = "著者名", example = "Dustin Boswell") String authorName,
             @Schema(description = "出版社ID", example = "1") int publisherId,
             @Schema(description = "出版社名", example = "O'Reilly") String publisherName) {
-        private static ResponseHit of(Book book) {
-            return new ResponseHit(
+        private static ResponseItem of(Book book) {
+            return new ResponseItem(
                     book.id(),
                     book.isbn().value(),
                     book.title(),
@@ -41,9 +36,15 @@ public record SearchBooksResponse(ResponsePagination pagination, List<ResponseHi
         }
     }
 
+    record ResponsePagination(
+            @Schema(description = "取得件数", example = "0") @NotNull int returnedCount,
+            @Schema(description = "現在のページ番号", example = "100") @NotNull int currentPage,
+            @Schema(description = "総件数", example = "100") @NotNull int totalCount,
+            @Schema(description = "総ページ数", example = "1") @NotNull int totalPages) {}
+
     public static SearchBooksResponse of(Pagination<Book> data) {
         return new SearchBooksResponse(
-                new ResponsePagination(data.offset(), data.limit(), data.total()),
-                data.content().stream().map(ResponseHit::of).toList());
+                data.items().stream().map(ResponseItem::of).toList(),
+                new ResponsePagination(data.returnedCount(), data.currentPage(), data.totalCount(), data.totalPages()));
     }
 }

@@ -15,11 +15,14 @@ import dev.ymkz.demo.core.domain.valueobject.Isbn;
 import dev.ymkz.demo.core.domain.valueobject.RangeInteger;
 import dev.ymkz.demo.core.domain.valueobject.RangeTime;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 import lombok.RequiredArgsConstructor;
 import org.springdoc.core.annotations.ParameterObject;
 import org.springframework.http.HttpStatus;
@@ -60,7 +63,10 @@ public class BookController {
                         description = "アプリケーションエラー",
                         content = @Content(schema = @Schema(implementation = ProblemDetail.class))),
             })
-    public SearchBooksResponse searchBooks(@ParameterObject SearchBooksQueryParam queryParam) {
+    public SearchBooksResponse searchBooks(
+            @ParameterObject SearchBooksQueryParam queryParam,
+            @Parameter(description = "取得置") @Schema(defaultValue = "0") @Min(0) Integer offset,
+            @Parameter(description = "取得数") @Schema(defaultValue = "20") @Min(1) @Max(100) Integer limit) {
         var data = bookSearchUsecase.execute(new BookSearchQuery(
                 Isbn.of(queryParam.isbn()),
                 queryParam.title(),
@@ -68,8 +74,8 @@ public class BookController {
                 queryParam.status(),
                 RangeTime.of(queryParam.publishedAtStart(), queryParam.publishedAtEnd()),
                 queryParam.order(),
-                queryParam.offset(),
-                queryParam.limit()));
+                offset == null ? 0 : offset,
+                limit == null ? 20 : limit));
 
         return SearchBooksResponse.of(data);
     }
@@ -102,8 +108,8 @@ public class BookController {
                 queryParam.status(),
                 RangeTime.of(queryParam.publishedAtStart(), queryParam.publishedAtEnd()),
                 queryParam.order(),
-                queryParam.offset(),
-                queryParam.limit()));
+                null,
+                null));
 
         final var MEDIA_TYPE_TEXT_CSV = new MediaType("text", "csv");
         final var CONTENT_DISPOSITION_VALUE = "attachment; filename=download.csv";

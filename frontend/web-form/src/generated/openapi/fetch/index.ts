@@ -35,7 +35,7 @@ export type searchBooksResponse = searchBooksResponseComposite & {
 	headers: Headers;
 };
 
-export const getSearchBooksUrl = (params?: SearchBooksParams) => {
+export const getSearchBooksUrl = (params: SearchBooksParams) => {
 	const normalizedParams = new URLSearchParams();
 
 	Object.entries(params || {}).forEach(([key, value]) => {
@@ -58,7 +58,7 @@ export const getSearchBooksUrl = (params?: SearchBooksParams) => {
 		: `${process.env.API_URL}/books`;
 };
 
-export const searchBooks = async (params?: SearchBooksParams, options?: RequestInit): Promise<searchBooksResponse> => {
+export const searchBooks = async (params: SearchBooksParams, options?: RequestInit): Promise<searchBooksResponse> => {
 	const res = await fetch(getSearchBooksUrl(params), {
 		...options,
 		method: "GET",

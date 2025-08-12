@@ -5,13 +5,10 @@ import dev.ymkz.demo.core.domain.model.BookCreateCommand;
 import dev.ymkz.demo.core.domain.model.BookSearchQuery;
 import dev.ymkz.demo.core.domain.model.BookUpdateCommand;
 import dev.ymkz.demo.core.domain.valueobject.Pagination;
-import java.util.List;
 import java.util.Optional;
 
 public interface BookRepository {
     Pagination<Book> search(BookSearchQuery query);
-
-    List<Book> download(BookSearchQuery query);
 
     Optional<Book> findById(long id);
 

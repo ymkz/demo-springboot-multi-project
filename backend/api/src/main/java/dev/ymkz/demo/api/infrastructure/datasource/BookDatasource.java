@@ -6,7 +6,6 @@ import dev.ymkz.demo.core.domain.model.BookSearchQuery;
 import dev.ymkz.demo.core.domain.model.BookUpdateCommand;
 import dev.ymkz.demo.core.domain.repository.BookRepository;
 import dev.ymkz.demo.core.domain.valueobject.Pagination;
-import java.util.List;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
@@ -22,12 +21,6 @@ public class BookDatasource implements BookRepository {
         var total = mapper.count(query);
         var content = mapper.list(query).stream().map(BookEntity::toBook).toList();
         return new Pagination<>(content, total, query.offset(), query.limit());
-    }
-
-    @Override
-    public List<Book> download(BookSearchQuery query) {
-        var content = mapper.download(query).stream().map(BookEntity::toBook).toList();
-        return content;
     }
 
     @Override

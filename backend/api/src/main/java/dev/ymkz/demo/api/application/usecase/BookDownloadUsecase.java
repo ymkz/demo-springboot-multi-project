@@ -24,14 +24,14 @@ public class BookDownloadUsecase {
     private final BookRepository repository;
 
     public byte[] execute(BookSearchQuery query) {
-        var data = repository.download(query);
-        var text =
-                mapBooksToCsvText(data.stream().map(DownloadBooksResponse::from).toList());
+        var data = repository.search(query);
+        var text = mapBooksToCsvText(
+                data.items().stream().map(DownloadBooksResponse::from).toList());
         var bytes = text.getBytes(StandardCharsets.UTF_8);
         return bytes;
     }
 
-    public String mapBooksToCsvText(List<DownloadBooksResponse> data) {
+    private String mapBooksToCsvText(List<DownloadBooksResponse> data) {
         try {
             var schema = mapper.schemaFor(DownloadBooksResponse.class).withHeader();
             var text = mapper.writer(schema).writeValueAsString(data);
