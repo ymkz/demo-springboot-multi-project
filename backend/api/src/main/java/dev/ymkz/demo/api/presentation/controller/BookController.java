@@ -25,6 +25,7 @@ import jakarta.validation.Valid;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springdoc.core.annotations.ParameterObject;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -46,6 +47,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/books")
 @Tag(name = "Book")
 @RequiredArgsConstructor
+@Slf4j
 public class BookController {
 
     private final BookSearchUsecase bookSearchUsecase;
@@ -69,6 +71,7 @@ public class BookController {
             @Valid @ParameterObject SearchBooksQueryParam queryParam,
             @Parameter(description = "取得置") @RequestParam(defaultValue = "0") @Min(0) Integer offset,
             @Parameter(description = "取得数") @RequestParam(defaultValue = "20") @Min(1) @Max(100) Integer limit) {
+        log.info("queryParam={} offset={} limit={}", queryParam, offset);
         var data = bookSearchUsecase.execute(new BookSearchQuery(
                 Isbn.of(queryParam.isbn()),
                 queryParam.title(),

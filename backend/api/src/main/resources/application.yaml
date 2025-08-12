@@ -23,10 +23,21 @@ server:
 mybatis:
   configuration:
     map-underscore-to-camel-case: true
-# logging:
-#   structured:
-#     format:
-#       console: logstash
+logging:
+  structured:
+    format:
+      console: logstash
+    json:
+      add:
+        app: demo-api
+      exclude:
+        - "@version"
+        - thread_name
+        - logger_name
+        - level_value
+      rename:
+        "[@timestamp]": time
+        message: msg
 management:
   endpoints:
     web:
