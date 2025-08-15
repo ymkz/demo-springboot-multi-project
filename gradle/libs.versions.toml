@@ -21,9 +21,9 @@ jackson = "2.19.2" # https://mvnrepository.com/artifact/com.fasterxml.jackson.da
 springboot-bom = { group = "org.springframework.boot", name = "spring-boot-dependencies", version.ref = "springboot-bom" }
 junit-bom = { group = "org.junit", name = "junit-bom", version.ref = "junit-bom" }
 
+lombok = { group = "org.projectlombok", name = "lombok", version.ref = "lombok" }
 spring-boot-devtools = { group = "org.springframework.boot", name = "spring-boot-devtools" } # managed by springboot-bom
 spring-boot-starter-web = { group = "org.springframework.boot", name = "spring-boot-starter-web" } # managed by springboot-bom
-spring-boot-starter-pulsar = { group = "org.springframework.boot", name = "spring-boot-starter-pulsar" } # managed by springboot-bom
 spring-boot-starter-validation = { group = "org.springframework.boot", name = "spring-boot-starter-validation" } # managed by springboot-bom
 spring-boot-starter-actuator = { group = "org.springframework.boot", name = "spring-boot-starter-actuator" } # managed by springboot-bom
 spring-boot-configuration-processor = { group = "org.springframework.boot", name = "spring-boot-configuration-processor" } # managed by springboot-bom
@@ -32,7 +32,6 @@ mysql-connector-j = { group = "com.mysql", name = "mysql-connector-j", version.r
 micrometer-registry-prometheus = { group = "io.micrometer", name = "micrometer-registry-prometheus", version.ref = "micrometer" }
 springdoc-openapi-starter-webmvc-ui = { group = "org.springdoc", name = "springdoc-openapi-starter-webmvc-ui", version.ref = "springdoc-webmvc-ui" }
 jackson-dataformat-csv = { group = "com.fasterxml.jackson.dataformat", name = "jackson-dataformat-csv", version.ref = "jackson" }
-lombok = { group = "org.projectlombok", name = "lombok", version.ref = "lombok" }
 
 spring-boot-starter-test = { group = "org.springframework.boot", name = "spring-boot-starter-test" } # managed by springboot-bom
 junit-platform-launcher = { group = "org.junit.platform", name = "junit-platform-launcher" } # managed by junit-bom
@@ -50,13 +49,6 @@ api = [
   "micrometer-registry-prometheus",
   "springdoc-openapi-starter-webmvc-ui",
   "jackson-dataformat-csv",
-]
-pulsar = [
-  "spring-boot-starter-pulsar",
-  "spring-boot-starter-validation",
-  "spring-boot-starter-actuator",
-  "spring-boot-configuration-processor",
-  "micrometer-registry-prometheus",
 ]
 core = [
   "spring-boot-starter-web",
