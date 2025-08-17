@@ -1,7 +1,7 @@
 package dev.ymkz.demo.api.presentation.dto;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import dev.ymkz.demo.core.domain.model.Book;
+import dev.ymkz.demo.api.domain.model.Book;
 
 @JsonPropertyOrder({
     "id",

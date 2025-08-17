@@ -1,6 +1,6 @@
 package dev.ymkz.demo.api.infrastructure.datasource;
 
-import dev.ymkz.demo.core.domain.model.BookSearchQuery;
+import dev.ymkz.demo.api.domain.model.BookSearchQuery;
 import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;

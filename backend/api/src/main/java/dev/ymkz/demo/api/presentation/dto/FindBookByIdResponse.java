@@ -1,6 +1,6 @@
 package dev.ymkz.demo.api.presentation.dto;
 
-import dev.ymkz.demo.core.domain.model.Book;
+import dev.ymkz.demo.api.domain.model.Book;
 import dev.ymkz.demo.core.domain.valueobject.BookStatus;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotNull;

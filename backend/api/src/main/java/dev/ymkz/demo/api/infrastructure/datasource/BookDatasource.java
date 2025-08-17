@@ -1,10 +1,10 @@
 package dev.ymkz.demo.api.infrastructure.datasource;
 
-import dev.ymkz.demo.core.domain.model.Book;
-import dev.ymkz.demo.core.domain.model.BookCreateCommand;
-import dev.ymkz.demo.core.domain.model.BookSearchQuery;
-import dev.ymkz.demo.core.domain.model.BookUpdateCommand;
-import dev.ymkz.demo.core.domain.repository.BookRepository;
+import dev.ymkz.demo.api.domain.model.Book;
+import dev.ymkz.demo.api.domain.model.BookCreateCommand;
+import dev.ymkz.demo.api.domain.model.BookSearchQuery;
+import dev.ymkz.demo.api.domain.model.BookUpdateCommand;
+import dev.ymkz.demo.api.domain.repository.BookRepository;
 import dev.ymkz.demo.core.domain.valueobject.Pagination;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;

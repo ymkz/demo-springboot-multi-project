@@ -5,13 +5,13 @@ import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
 import dev.ymkz.demo.api.application.usecase.BookDownloadUsecase;
 import dev.ymkz.demo.api.application.usecase.BookSearchUsecase;
+import dev.ymkz.demo.api.domain.model.BookSearchQuery;
 import dev.ymkz.demo.api.presentation.dto.CreateBookBody;
 import dev.ymkz.demo.api.presentation.dto.ErrorResponse;
 import dev.ymkz.demo.api.presentation.dto.FindBookByIdResponse;
 import dev.ymkz.demo.api.presentation.dto.SearchBooksQueryParam;
 import dev.ymkz.demo.api.presentation.dto.SearchBooksResponse;
 import dev.ymkz.demo.api.presentation.dto.UpdateBookBody;
-import dev.ymkz.demo.core.domain.model.BookSearchQuery;
 import dev.ymkz.demo.core.domain.valueobject.Isbn;
 import dev.ymkz.demo.core.domain.valueobject.RangeInteger;
 import dev.ymkz.demo.core.domain.valueobject.RangeTime;

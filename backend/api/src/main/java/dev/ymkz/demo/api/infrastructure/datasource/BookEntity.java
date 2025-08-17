@@ -1,6 +1,6 @@
 package dev.ymkz.demo.api.infrastructure.datasource;
 
-import dev.ymkz.demo.core.domain.model.Book;
+import dev.ymkz.demo.api.domain.model.Book;
 import dev.ymkz.demo.core.domain.valueobject.BookStatus;
 import dev.ymkz.demo.core.domain.valueobject.Isbn;
 import jakarta.annotation.Nonnull;

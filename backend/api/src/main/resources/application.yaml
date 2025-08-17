@@ -4,6 +4,8 @@ spring:
   profiles:
     active:
       - local
+  lifecycle:
+    timeout-per-shutdown-phase: 20s
   main:
     banner-mode: "off"
   web:
@@ -13,8 +15,11 @@ spring:
     contentnegotiation:
       media-types:
         csv: text/csv
-  lifecycle:
-    timeout-per-shutdown-phase: 20s
+  devtools:
+    restart:
+      enabled: false
+    livereload:
+      enabled: false
 server:
   port: 8080
   shutdown: graceful
