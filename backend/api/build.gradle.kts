@@ -1,63 +1,29 @@
 plugins {
-  java
-  alias(libs.plugins.spotless)
-  alias(libs.plugins.spring.boot)
-  alias(libs.plugins.springdoc.openapi)
-}
-
-group = "dev.ymkz"
-version = "1.0.0"
-
-java {
-  toolchain {
-    languageVersion.set(JavaLanguageVersion.of(21))
-  }
-}
-
-repositories {
-  mavenCentral()
-}
-
-configurations {
-  compileOnly {
-    extendsFrom(configurations.annotationProcessor.get())
-  }
+    id("common-conventions")
+    alias(libs.plugins.spring.boot)
+    alias(libs.plugins.springdoc.openapi)
 }
 
 dependencies {
-  implementation(platform(libs.springboot.bom))
-  implementation(platform(libs.junit.bom))
+    implementation(platform(libs.springboot.bom))
+    implementation(platform(libs.junit.bom))
 
-  annotationProcessor(libs.lombok)
-  compileOnly(libs.lombok)
-  runtimeOnly(libs.spring.boot.devtools)
+    annotationProcessor(libs.lombok)
+    compileOnly(libs.lombok)
+    runtimeOnly(libs.spring.boot.devtools)
 
-  implementation(libs.bundles.api)
-  testImplementation(libs.bundles.test)
+    implementation(libs.bundles.api)
+    testImplementation(libs.bundles.test)
 
-  implementation(project(":backend:core"))
-}
-
-tasks.withType<Test> {
-  useJUnitPlatform()
-}
-
-tasks.withType<JavaCompile> {
-  options.encoding = "UTF-8"
-}
-
-spotless {
-  java {
-    palantirJavaFormat(libs.versions.palantir.java.format.get())
-  }
+    implementation(project(":backend:core"))
 }
 
 openApi {
-  apiDocsUrl.set("http://localhost:8080/spec/openapi.json")
-  outputDir.set(rootProject.file("document/apispec"))
-  outputFileName.set("openapi.json")
+    apiDocsUrl.set("http://localhost:8080/spec/openapi.json")
+    outputDir.set(rootProject.file("document/apispec"))
+    outputFileName.set("openapi.json")
 }
 
 tasks.named("build") {
-  dependsOn("generateOpenApiDocs")
+    dependsOn("generateOpenApiDocs")
 }

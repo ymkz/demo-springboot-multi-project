@@ -1,6 +1,6 @@
 rootProject.name = "demo"
 
 include(
-  ":backend:core",
-  ":backend:api",
+    ":backend:core",
+    ":backend:api",
 )
