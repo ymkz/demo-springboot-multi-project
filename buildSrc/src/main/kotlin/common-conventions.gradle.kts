@@ -24,10 +24,10 @@ configurations {
 
 spotless {
     java {
-        palantirJavaFormat()
+        palantirJavaFormat() // https://mvnrepository.com/artifact/com.palantir.javaformat/palantir-java-format
     }
     kotlinGradle {
-        ktlint()
+        ktlint() // https://mvnrepository.com/artifact/com.pinterest.ktlint/ktlint-ruleset-standard
     }
 }
 

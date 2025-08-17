@@ -12,7 +12,9 @@ dependencies {
     compileOnly(libs.lombok)
     runtimeOnly(libs.spring.boot.devtools)
 
+    implementation(libs.bundles.base)
     implementation(libs.bundles.api)
+
     testImplementation(libs.bundles.test)
 
     implementation(project(":backend:core"))

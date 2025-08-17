@@ -10,6 +10,7 @@ dependencies {
     annotationProcessor(libs.lombok)
     compileOnly(libs.lombok)
 
-    implementation(libs.bundles.core)
+    implementation(libs.bundles.base)
+
     testImplementation(libs.bundles.test)
 }

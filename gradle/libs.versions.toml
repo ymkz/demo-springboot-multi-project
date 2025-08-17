@@ -5,8 +5,6 @@ junit-bom = "5.13.4" # https://mvnrepository.com/artifact/org.junit/junit-bom
 springboot-plugin = "3.5.4" # https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-gradle-plugin
 springdoc-plugin = "1.9.0" # https://mvnrepository.com/artifact/org.springdoc.openapi-gradle-plugin/org.springdoc.openapi-gradle-plugin.gradle.plugin
 
-palantir-java-format = "2.73.0" # https://mvnrepository.com/artifact/com.palantir.javaformat/palantir-java-format
-
 lombok = "1.18.38" # https://mvnrepository.com/artifact/org.projectlombok/lombok
 mybatis = "3.0.5" # https://mvnrepository.com/artifact/org.mybatis.spring.boot/mybatis-spring-boot-starter
 mysql = "9.4.0" # https://mvnrepository.com/artifact/com.mysql/mysql-connector-j
@@ -21,11 +19,11 @@ springboot-bom = { group = "org.springframework.boot", name = "spring-boot-depen
 junit-bom = { group = "org.junit", name = "junit-bom", version.ref = "junit-bom" }
 
 lombok = { group = "org.projectlombok", name = "lombok", version.ref = "lombok" }
-spring-boot-devtools = { group = "org.springframework.boot", name = "spring-boot-devtools" } # managed by springboot-bom
 spring-boot-starter-web = { group = "org.springframework.boot", name = "spring-boot-starter-web" } # managed by springboot-bom
 spring-boot-starter-validation = { group = "org.springframework.boot", name = "spring-boot-starter-validation" } # managed by springboot-bom
 spring-boot-starter-actuator = { group = "org.springframework.boot", name = "spring-boot-starter-actuator" } # managed by springboot-bom
 spring-boot-configuration-processor = { group = "org.springframework.boot", name = "spring-boot-configuration-processor" } # managed by springboot-bom
+spring-boot-devtools = { group = "org.springframework.boot", name = "spring-boot-devtools" } # managed by springboot-bom
 mybatis-spring-boot-starter = { group = "org.mybatis.spring.boot", name = "mybatis-spring-boot-starter", version.ref = "mybatis" }
 mysql-connector-j = { group = "com.mysql", name = "mysql-connector-j", version.ref = "mysql" }
 micrometer-registry-prometheus = { group = "io.micrometer", name = "micrometer-registry-prometheus", version.ref = "micrometer" }
@@ -38,18 +36,7 @@ mockito-junit-jupiter = { group = "org.mockito", name = "mockito-junit-jupiter",
 rest-assured = { group = "io.rest-assured", name = "rest-assured", version.ref = "rest-assured" }
 
 [bundles]
-api = [
-  "spring-boot-starter-web",
-  "spring-boot-starter-validation",
-  "spring-boot-starter-actuator",
-  "spring-boot-configuration-processor",
-  "mybatis-spring-boot-starter",
-  "mysql-connector-j",
-  "micrometer-registry-prometheus",
-  "springdoc-openapi-starter-webmvc-ui",
-  "jackson-dataformat-csv",
-]
-core = [
+base = [
   "spring-boot-starter-web",
   "spring-boot-starter-validation",
   "spring-boot-configuration-processor",
@@ -59,6 +46,14 @@ test = [
   "mockito-junit-jupiter",
   "rest-assured",
   "junit-platform-launcher",
+]
+api = [
+  "spring-boot-starter-actuator",
+  "mybatis-spring-boot-starter",
+  "mysql-connector-j",
+  "micrometer-registry-prometheus",
+  "springdoc-openapi-starter-webmvc-ui",
+  "jackson-dataformat-csv",
 ]
 
 [plugins]
